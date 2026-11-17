@@ -4,453 +4,405 @@ export const VERBATIM_WHATS_IN_A_BOWL_COPY =
 export const VERBATIM_FOUNDER_STORY_COPY =
   "In 2024, after moving to Cody, Megan put the idea of an Açaí Bowl Food Truck into action. Balancing a heavy workload—raising five children, relocating to a new state, continuing to work in Montana, and building a new business—she poured her time, energy, and creativity into launching Altitude Açaí. With hands-on support from her husband, they brought the food truck and now a Brick and Mortar to life, and began serving at local summer events and the Park County community all year long." as const;
 
-export type LandingSectionId =
-  | "whats-in-a-bowl"
-  | "signature-bowls"
-  | "build-your-own"
-  | "our-story"
-  | "hours"
-  | "visit-us";
+export type RouteTarget =
+  | '/#whats-in-a-bowl'
+  | '/menu'
+  | '/#hours'
+  | '/#visit-us';
 
 export type BowlLayerId =
-  | "acai-sorbet"
-  | "crunch"
-  | "favorite-fruit"
-  | "topping"
-  | "sauce";
+  | 'acai-sorbet'
+  | 'crunch'
+  | 'favorite-fruit'
+  | 'topping'
+  | 'sauce';
 
-export type SeasonKey = "spring" | "summer" | "fall" | "winter";
+export type SeasonKey = 'spring' | 'summer' | 'fall' | 'winter';
 
 export interface NavLinkCopy {
-  readonly id: LandingSectionId;
+  readonly id: string;
   readonly label: string;
-}
-
-export interface NavigationCopy {
-  readonly brandLabel: string;
-  readonly skipToContent: string;
-  readonly mobileMenuOpenLabel: string;
-  readonly mobileMenuCloseLabel: string;
-  readonly links: readonly NavLinkCopy[];
-  readonly primaryCta: string;
-}
-
-export interface ActionLinkCopy {
-  readonly label: string;
-  readonly ariaLabel?: string;
-  readonly href: string;
-}
-
-export interface HeroCopy {
-  readonly locationTag: string;
-  readonly headline: string;
-  readonly subhead: string;
-  readonly primaryCta: ActionLinkCopy & {
-    readonly address: string;
-  };
-  readonly secondaryCta: ActionLinkCopy & {
-    readonly handle: string;
-  };
-  readonly quickFacts: readonly string[];
-  readonly logoAlt: string;
-}
-
-export interface BowlAnatomyLayerCopy {
-  readonly id: BowlLayerId;
-  readonly stepNumber: number;
-  readonly name: string;
-  readonly shortLabel: string;
-  readonly summary: string;
-}
-
-export interface WhatsInABowlCopy {
-  readonly eyebrow: string;
-  readonly title: string;
-  readonly officialParagraph: typeof VERBATIM_WHATS_IN_A_BOWL_COPY;
-  readonly interactionPrompt: string;
-  readonly layerOrderNote: string;
-  readonly layers: readonly BowlAnatomyLayerCopy[];
-}
-
-export interface SignatureBowlsCopy {
-  readonly eyebrow: string;
-  readonly title: string;
-  readonly intro: string;
-  readonly sizesLabel: string;
-  readonly sizes: readonly ["12 oz Bowl", "16 oz Bowl"];
-  readonly baseRule: string;
-  readonly inStoreNote: string;
-  readonly ingredientsLabel: string;
-}
-
-export interface BuilderCategoryCopy {
-  readonly title: string;
-  readonly selectionLimit: number;
-  readonly ruleText: string;
-}
-
-export interface CreateYourOwnCopy {
-  readonly eyebrow: string;
-  readonly title: string;
-  readonly intro: string;
-  readonly officialRule: string;
-  readonly baseIncluded: string;
-  readonly sizeSectionLabel: string;
-  readonly categories: {
-    readonly fruits: BuilderCategoryCopy;
-    readonly toppings: BuilderCategoryCopy;
-    readonly sauces: BuilderCategoryCopy;
-  };
-  readonly previewPanel: {
-    readonly title: string;
-    readonly emptyState: string;
-    readonly baseIncludedBadge: string;
-    readonly selectedCountTemplate: string;
-    readonly limitReachedMessage: string;
-    readonly resetButtonLabel: string;
-    readonly visitHint: string;
-  };
-}
-
-export interface StoryMilestoneCopy {
-  readonly label: string;
-  readonly detail: string;
-}
-
-export interface FounderStoryCopy {
-  readonly eyebrow: string;
-  readonly title: string;
-  readonly officialParagraph: typeof VERBATIM_FOUNDER_STORY_COPY;
-  readonly milestones: readonly StoryMilestoneCopy[];
-}
-
-export interface SeasonTabCopy {
-  readonly label: string;
-  readonly summary: string;
-}
-
-export interface SeasonalHoursCopy {
-  readonly eyebrow: string;
-  readonly title: string;
-  readonly intro: string;
-  readonly timezoneNote: string;
-  readonly springNotice: string;
-  readonly status: {
-    readonly openNow: string;
-    readonly closedPrefix: string;
-    readonly closedDayLabel: string;
-    readonly openDayPrefix: string;
-    readonly todayBadge: string;
-    readonly activeSeasonBadge: string;
-  };
-  readonly seasonTabs: Record<SeasonKey, SeasonTabCopy>;
-}
-
-export interface LocationContactCopy {
-  readonly eyebrow: string;
-  readonly title: string;
-  readonly intro: string;
-  readonly address: {
-    readonly businessName: string;
-    readonly street: string;
-    readonly cityStateZip: string;
-    readonly directionsAddress: string;
-    readonly fullDisplay: string;
-  };
-  readonly channels: {
-    readonly googleMaps: ActionLinkCopy & { readonly subtitle: string };
-    readonly instagram: ActionLinkCopy & { readonly handle: string };
-    readonly facebook: ActionLinkCopy;
-    readonly phone: ActionLinkCopy & { readonly display: string };
-    readonly email: ActionLinkCopy & { readonly display: string };
-  };
-  readonly mapEmbedTitle: string;
-}
-
-export interface FooterCopy {
-  readonly brandName: string;
-  readonly tagline: string;
-  readonly addressLine: string;
-  readonly phoneLabel: string;
-  readonly emailLabel: string;
-  readonly instagramLabel: string;
-  readonly facebookLabel: string;
-  readonly directionsLabel: string;
-  readonly navigationHeading: string;
-  readonly visitHeading: string;
-  readonly connectHeading: string;
-  readonly closingNote: string;
+  readonly to: RouteTarget;
 }
 
 export interface EditorialCopy {
-  readonly navigation: NavigationCopy;
-  readonly hero: HeroCopy;
-  readonly whatsInABowl: WhatsInABowlCopy;
-  readonly signatureBowls: SignatureBowlsCopy;
-  readonly createYourOwn: CreateYourOwnCopy;
-  readonly founderStory: FounderStoryCopy;
-  readonly seasonalHours: SeasonalHoursCopy;
-  readonly locationAndContact: LocationContactCopy;
-  readonly footer: FooterCopy;
+  readonly navigation: {
+    readonly brandLabel: string;
+    readonly skipToContent: string;
+    readonly mobileMenuOpenLabel: string;
+    readonly mobileMenuCloseLabel: string;
+    readonly links: readonly NavLinkCopy[];
+    readonly primaryCta: string;
+    readonly primaryCtaAria: string;
+  };
+  readonly hero: {
+    readonly badge: string;
+    readonly headline: string;
+    readonly subhead: string;
+    readonly primaryCta: {
+      readonly label: string;
+      readonly to: '/menu';
+      readonly ariaLabel: string;
+    };
+    readonly secondaryCta: {
+      readonly label: string;
+      readonly ariaLabel: string;
+    };
+    readonly logoAlt: string;
+  };
+  readonly whatsInABowl: {
+    readonly title: string;
+    readonly officialParagraph: typeof VERBATIM_WHATS_IN_A_BOWL_COPY;
+    readonly interactionPrompt: string;
+    readonly layerOrderNote: string;
+    readonly layers: readonly {
+      readonly id: BowlLayerId;
+      readonly stepNumber: number;
+      readonly name: string;
+      readonly summary: string;
+    }[];
+  };
+  readonly featuredPreview: {
+    readonly title: string;
+    readonly intro: string;
+    readonly ctaLabel: string;
+    readonly ctaTo: '/menu';
+    readonly featuredIds: readonly ['mountain-man', 'montana-mama', 'goldilocks'];
+  };
+  readonly menuPage: {
+    readonly title: string;
+    readonly intro: string;
+    readonly sizes: readonly ['12 oz Bowl', '16 oz Bowl'];
+    readonly baseRule: string;
+    readonly signatureSectionTitle: string;
+    readonly createYourOwn: {
+      readonly title: string;
+      readonly intro: string;
+      readonly officialRule: string;
+      readonly categories: {
+        readonly fruits: {
+          readonly title: string;
+          readonly selectionLimit: 3;
+          readonly ruleText: string;
+        };
+        readonly toppings: {
+          readonly title: string;
+          readonly selectionLimit: 2;
+          readonly ruleText: string;
+        };
+        readonly sauces: {
+          readonly title: string;
+          readonly selectionLimit: 1;
+          readonly ruleText: string;
+        };
+      };
+      readonly previewPanel: {
+        readonly title: string;
+        readonly emptyState: string;
+        readonly selectedCountTemplate: string;
+        readonly resetButtonLabel: string;
+      };
+    };
+  };
+  readonly founderStory: {
+    readonly title: string;
+    readonly officialParagraph: typeof VERBATIM_FOUNDER_STORY_COPY;
+    readonly milestones: readonly {
+      readonly label: string;
+      readonly detail: string;
+    }[];
+  };
+  readonly seasonalHours: {
+    readonly title: string;
+    readonly intro: string;
+    readonly springNotice: string;
+    readonly status: {
+      readonly closedDayLabel: string;
+      readonly todayBadge: string;
+      readonly activeSeasonBadge: string;
+    };
+    readonly seasonTabs: Record<
+      SeasonKey,
+      {
+        readonly label: string;
+        readonly summary: string;
+      }
+    >;
+    readonly foodTruckBanner: {
+      readonly title: string;
+      readonly description: string;
+      readonly instagramLabel: string;
+      readonly facebookLabel: string;
+    };
+  };
+  readonly locationAndContact: {
+    readonly title: string;
+    readonly intro: string;
+    readonly cityRegionDisplay: string;
+    readonly addressLine: string;
+    readonly channels: {
+      readonly googleMaps: {
+        readonly label: string;
+        readonly ariaLabel: string;
+      };
+      readonly instagram: {
+        readonly label: string;
+        readonly ariaLabel: string;
+      };
+      readonly facebook: {
+        readonly label: string;
+        readonly ariaLabel: string;
+      };
+      readonly phone: {
+        readonly label: string;
+        readonly ariaLabel: string;
+        readonly href: string;
+      };
+      readonly email: {
+        readonly label: string;
+        readonly ariaLabel: string;
+        readonly href: string;
+      };
+    };
+    readonly mapEmbedTitle: string;
+  };
+  readonly footer: {
+    readonly brandName: string;
+    readonly tagline: string;
+    readonly addressLine: string;
+    readonly phoneLabel: string;
+    readonly emailLabel: string;
+    readonly instagramLabel: string;
+    readonly facebookLabel: string;
+    readonly directionsLabel: string;
+    readonly navigationHeading: string;
+    readonly visitHeading: string;
+    readonly connectHeading: string;
+    readonly closingNote: string;
+  };
+  readonly notFound: {
+    readonly heading: string;
+    readonly ctaLabel: string;
+    readonly bowlIllustrationAlt: string;
+  };
 }
 
 export const editorialCopy: EditorialCopy = {
   navigation: {
-    brandLabel: "Altitude Açaí",
-    skipToContent: "Skip to main content",
-    mobileMenuOpenLabel: "Open navigation menu",
-    mobileMenuCloseLabel: "Close navigation menu",
+    brandLabel: 'Altitude Açaí',
+    skipToContent: 'Skip to main content',
+    mobileMenuOpenLabel: 'Open navigation menu',
+    mobileMenuCloseLabel: 'Close navigation menu',
     links: [
-      { id: "whats-in-a-bowl", label: "Inside a Bowl" },
-      { id: "signature-bowls", label: "Signature Bowls" },
-      { id: "build-your-own", label: "Build Your Own" },
-      { id: "our-story", label: "Our Story" },
-      { id: "hours", label: "Hours" },
-      { id: "visit-us", label: "Visit Us" },
+      { id: 'whats-in-a-bowl', label: 'Inside a Bowl', to: '/#whats-in-a-bowl' },
+      { id: 'menu', label: 'Menu', to: '/menu' },
+      { id: 'hours', label: 'Hours', to: '/#hours' },
+      { id: 'visit-us', label: 'Visit Us', to: '/#visit-us' },
     ],
-    primaryCta: "Get Directions",
+    primaryCta: 'Get Directions',
+    primaryCtaAria: 'Get directions to Altitude Açaí on Google Maps',
   },
   hero: {
-    locationTag: "Cody, Wyoming",
-    headline: "Handcrafted Açaí Bowls in Cody, Wyoming",
+    badge: 'FRESH SUPERFOOD BOWLS',
+    headline: 'Handcrafted Açaí Bowls in Cody, Wyoming',
     subhead:
-      "Smooth açaí sorbet with crunchy granola, fresh fruit, and your pick of toppings at 1302 Beck Avenue.",
+      'Smooth açaí sorbet layered with crunchy granola, fresh fruit, and your favorite toppings.',
     primaryCta: {
-      label: "Get Directions",
-      ariaLabel:
-        "Get directions to Altitude Açaí at 1302 Beck Avenue, Cody, WY 82414",
-      address: "1302 Beck Avenue, Cody, WY 82414",
-      href: "https://www.google.com/maps/search/?api=1&query=1302+Beck+Avenue%2C+Cody%2C+WY+82414",
+      label: 'Explore Full Menu',
+      to: '/menu',
+      ariaLabel: 'Explore Full Menu',
     },
     secondaryCta: {
-      label: "Follow @altitude_acai",
-      ariaLabel: "Follow @altitude_acai on Instagram",
-      handle: "@altitude_acai",
-      href: "https://www.instagram.com/altitude_acai",
+      label: 'Get Directions',
+      ariaLabel: 'Get Directions on Google Maps',
     },
-    quickFacts: [
-      "12 oz and 16 oz bowls",
-      "Açaí sorbet and granola base",
-      "1302 Beck Avenue, Cody",
-    ],
-    logoAlt: "Altitude Açaí logo",
+    logoAlt: 'Altitude Açaí logo',
   },
   whatsInABowl: {
-    eyebrow: "Five Simple Layers",
     title: "What's in an Açaí Bowl?",
     officialParagraph: VERBATIM_WHATS_IN_A_BOWL_COPY,
-    interactionPrompt:
-      "Select any layer in the diagram to see what goes into it.",
-    layerOrderNote: "Stacked from bottom to top",
+    interactionPrompt: 'Select any layer in the diagram to inspect its ingredients.',
+    layerOrderNote: 'Stacked bottom to top',
     layers: [
       {
-        id: "acai-sorbet",
+        id: 'acai-sorbet',
         stepNumber: 1,
-        name: "ACAI SORBET",
-        shortLabel: "Base",
-        summary: "Smooth, refreshing açaí sorbet forms the base of every bowl.",
+        name: 'ACAI SORBET',
+        summary: 'Smooth, refreshing açaí sorbet forms the base layer.',
       },
       {
-        id: "crunch",
+        id: 'crunch',
         stepNumber: 2,
-        name: "CRUNCH",
-        shortLabel: "Crunch",
-        summary:
-          "Granola is included in every bowl, with a protein granola option available.",
+        name: 'CRUNCH',
+        summary: 'Toasted granola gives every spoonful crisp texture.',
       },
       {
-        id: "favorite-fruit",
+        id: 'favorite-fruit',
         stepNumber: 3,
-        name: "FAVORITE FRUIT",
-        shortLabel: "Fruit",
+        name: 'FAVORITE FRUIT',
         summary:
-          "Strawberries, blueberries, blackberries, raspberries, pineapple, mango, and bananas.",
+          'Strawberries, blueberries, blackberries, raspberries, pineapple, mango, and banana.',
       },
       {
-        id: "topping",
+        id: 'topping',
         stepNumber: 4,
-        name: "TOPPING",
-        shortLabel: "Toppings",
+        name: 'TOPPING',
         summary:
-          "Hemp hearts, chia seeds, flax seeds, pumpkin seeds, coconut shavings, slivered almonds, dark chocolate shavings, rolled oats, graham crackers, and bee pollen.",
+          'Hemp hearts, chia seeds, flax seeds, pumpkin seeds, coconut shavings, slivered almonds, dark chocolate shavings, rolled oats, graham cracker, and bee pollen.',
       },
       {
-        id: "sauce",
+        id: 'sauce',
         stepNumber: 5,
-        name: "SAUCE",
-        shortLabel: "Sauce",
-        summary:
-          "Honey, peanut butter, almond butter, dark chocolate, or Nutella drizzled on top.",
+        name: 'SAUCE',
+        summary: 'Dark chocolate, Nutella, honey, almond butter, or peanut butter drizzled on top.',
       },
     ],
   },
-  signatureBowls: {
-    eyebrow: "House Combinations",
-    title: "Signature Açaí Bowls",
-    intro:
-      "Six house combinations served in 12 oz and 16 oz bowls. Every bowl starts with our açaí sorbet base and granola.",
-    sizesLabel: "Available Sizes",
-    sizes: ["12 oz Bowl", "16 oz Bowl"],
-    baseRule: "All bowls start with Açaí Base and Granola",
-    inStoreNote:
-      "Visit 1302 Beck Avenue in Cody to enjoy any signature bowl fresh at the shop.",
-    ingredientsLabel: "Ingredients",
+  featuredPreview: {
+    title: 'Signature Bowls',
+    intro: 'Three house combinations layered with fresh fruit, crunch, and rich toppings.',
+    ctaLabel: 'See All Signature Bowls & Toppings',
+    ctaTo: '/menu',
+    featuredIds: ['mountain-man', 'montana-mama', 'goldilocks'],
   },
-  createYourOwn: {
-    eyebrow: "Custom Combinations",
-    title: "Create Your Own Bowl",
-    intro:
-      "Choose a bowl size, then mix up to three fruits, two toppings, and one sauce over açaí sorbet and granola.",
-    officialRule: "Pick up to: 3 Fruits, 2 Toppings, 1 Sauce",
-    baseIncluded: "Açaí Sorbet Base and Granola",
-    sizeSectionLabel: "Bowl Size",
-    categories: {
-      fruits: {
-        title: "Fruits",
-        selectionLimit: 3,
-        ruleText: "Pick up to 3",
+  menuPage: {
+    title: 'Official Menu',
+    intro: 'Browse every house bowl combination or plan your custom mix before your visit.',
+    sizes: ['12 oz Bowl', '16 oz Bowl'],
+    baseRule: 'All bowls start with Açaí Base and Granola',
+    signatureSectionTitle: 'Signature Açaí Bowls',
+    createYourOwn: {
+      title: 'Create Your Own Bowl',
+      intro: 'Choose up to three fruits, two toppings, and one finishing sauce.',
+      officialRule: 'Pick up to: 3 Fruits, 2 Toppings, 1 Sauce',
+      categories: {
+        fruits: {
+          title: 'Fruits',
+          selectionLimit: 3,
+          ruleText: 'Pick up to 3',
+        },
+        toppings: {
+          title: 'Toppings',
+          selectionLimit: 2,
+          ruleText: 'Granola Base Included — Pick up to 2',
+        },
+        sauces: {
+          title: 'Sauces',
+          selectionLimit: 1,
+          ruleText: 'Pick 1',
+        },
       },
-      toppings: {
-        title: "Toppings",
-        selectionLimit: 2,
-        ruleText: "Granola base included. Pick up to 2",
+      previewPanel: {
+        title: 'Your Bowl Mix',
+        emptyState: 'Select fruits, toppings, and a sauce to preview your combination.',
+        selectedCountTemplate: '{count} of {max} selected',
+        resetButtonLabel: 'Clear Selections',
       },
-      sauces: {
-        title: "Sauces",
-        selectionLimit: 1,
-        ruleText: "Pick 1",
-      },
-    },
-    previewPanel: {
-      title: "Your Bowl Preview",
-      emptyState: "Pick fruits, toppings, and a sauce to preview your bowl.",
-      baseIncludedBadge: "Base Included: Açaí Sorbet and Granola",
-      selectedCountTemplate: "{count} of {max} selected",
-      limitReachedMessage:
-        "Category limit reached. Remove an item to pick another.",
-      resetButtonLabel: "Clear Selections",
-      visitHint: "Bring your favorite mix to 1302 Beck Avenue in Cody.",
     },
   },
   founderStory: {
-    eyebrow: "Cody, Wyoming",
-    title: "How Altitude Açaí Started in Cody",
+    title: 'How Altitude Açaí Started',
     officialParagraph: VERBATIM_FOUNDER_STORY_COPY,
     milestones: [
       {
-        label: "2024",
-        detail: "Moved to Cody and launched the Altitude Açaí food truck",
+        label: '2024',
+        detail: 'Launched the Altitude Açaí food truck',
       },
       {
-        label: "Summer Events",
-        detail: "Served bowls across local Park County gatherings",
+        label: 'Summer Events',
+        detail: 'Served bowls across Park County community gatherings',
       },
       {
-        label: "Brick and Mortar",
-        detail: "Opened year-round at 1302 Beck Avenue, Suite C",
+        label: 'Brick & Mortar',
+        detail: 'Opened year-round storefront doors for local regulars',
       },
     ],
   },
   seasonalHours: {
-    eyebrow: "Mountain Time in Cody",
-    title: "Seasonal Hours",
-    intro:
-      "Our storefront hours shift with Cody's seasons. Today's status updates automatically for Mountain Time.",
-    timezoneNote: "Times follow Mountain Time in Cody, Wyoming.",
+    title: 'Seasonal Hours',
+    intro: 'Storefront hours adjust with the Wyoming seasons and sync automatically.',
     springNotice:
-      "Seasonal hours automatically updated for Cody, WY. Check our Instagram @altitude_acai for weather or holiday updates.",
+      'Seasonal hours update automatically. Check @altitude_acai on Instagram for weather or holiday updates.',
     status: {
-      openNow: "Open Now in Cody, WY",
-      closedPrefix: "Currently Closed",
-      closedDayLabel: "CLOSED",
-      openDayPrefix: "OPEN",
-      todayBadge: "Today",
-      activeSeasonBadge: "Current Season",
+      closedDayLabel: 'CLOSED',
+      todayBadge: 'Today',
+      activeSeasonBadge: 'Current Season',
     },
     seasonTabs: {
       spring: {
-        label: "Spring",
-        summary:
-          "Transitional Cody storefront hours with weather and holiday updates posted on Instagram.",
+        label: 'Spring',
+        summary: 'Off-peak storefront schedule with spring community food truck stops.',
       },
       summer: {
-        label: "Summer",
-        summary:
-          "Open daily 7:30 AM to 2:30 PM, plus Friday and Saturday evenings from 5:00 PM to 8:00 PM.",
+        label: 'Summer',
+        summary: 'Open daily 7:30 AM to 2:30 PM, plus Friday and Saturday evenings 5:00 PM to 8:00 PM.',
       },
       fall: {
-        label: "Fall",
+        label: 'Fall',
         summary:
-          "Starting in October: Wednesday through Saturday 8:00 AM to 2:00 PM, Sunday 11:00 AM to 2:00 PM, closed Monday and Tuesday.",
+          'Starting in October: Wednesday through Saturday 8:00 AM to 2:00 PM, Sunday 11:00 AM to 2:00 PM, closed Monday and Tuesday.',
       },
       winter: {
-        label: "Winter",
-        summary:
-          "Open Wednesday through Saturday 8:00 AM to 2:00 PM, closed Sunday through Tuesday.",
+        label: 'Winter',
+        summary: 'Open Wednesday through Saturday 8:00 AM to 2:00 PM, closed Sunday through Tuesday.',
       },
+    },
+    foodTruckBanner: {
+      title: 'Food Truck & Local Events',
+      description:
+        'Our mobile food truck schedule and local community stops vary throughout the year. Follow us on Instagram or Facebook for real-time locations, weather updates, and upcoming community events.',
+      instagramLabel: 'Check Instagram @altitude_acai',
+      facebookLabel: 'Check Facebook Updates',
     },
   },
   locationAndContact: {
-    eyebrow: "1302 Beck Avenue, Suite C",
-    title: "Visit Us in Cody",
-    intro:
-      "Stop by our Beck Avenue storefront, call the shop, or follow along for seasonal hours and summer food truck events.",
-    address: {
-      businessName: "Altitude Açaí",
-      street: "1302 Beck Avenue, Suite C",
-      cityStateZip: "Cody, WY 82414",
-      directionsAddress: "1302 Beck Avenue, Cody, WY 82414",
-      fullDisplay: "1302 Beck Avenue, Suite C, Cody, WY 82414",
-    },
+    title: 'Visit Us',
+    intro: 'Stop by our shop, give us a call, or follow along for seasonal updates.',
+    cityRegionDisplay: 'Cody, Wyoming',
+    addressLine: '1302 Beck Avenue, Cody, WY 82414',
     channels: {
       googleMaps: {
-        label: "Get Directions",
-        subtitle: "1302 Beck Avenue, Cody, WY 82414",
-        ariaLabel:
-          "Open Google Maps directions to 1302 Beck Avenue, Cody, WY 82414",
-        href: "https://www.google.com/maps/search/?api=1&query=1302+Beck+Avenue%2C+Cody%2C+WY+82414",
+        label: 'Get Directions',
+        ariaLabel: 'Get directions to 1302 Beck Avenue, Cody, WY 82414 on Google Maps',
       },
       instagram: {
-        label: "Follow @altitude_acai",
-        handle: "@altitude_acai",
-        ariaLabel: "Follow Altitude Açaí on Instagram at @altitude_acai",
-        href: "https://www.instagram.com/altitude_acai",
+        label: 'Follow @altitude_acai',
+        ariaLabel: 'Follow @altitude_acai on Instagram',
       },
       facebook: {
-        label: "Altitude Açaí on Facebook",
-        ariaLabel: "Visit Altitude Açaí on Facebook",
-        href: "https://web.facebook.com/people/Altitude-A%C3%A7a%C3%AD/61561749391480/",
+        label: 'Altitude Açaí on Facebook',
+        ariaLabel: 'Visit Altitude Açaí on Facebook',
       },
       phone: {
-        label: "Call 307-527-0812",
-        display: "307-527-0812",
-        ariaLabel: "Call Altitude Açaí at 307-527-0812",
-        href: "tel:307-527-0812",
+        label: 'Call 307-527-0812',
+        ariaLabel: 'Call 307-527-0812',
+        href: 'tel:307-527-0812',
       },
       email: {
-        label: "altitudeacai@gmail.com",
-        display: "altitudeacai@gmail.com",
-        ariaLabel: "Email Altitude Açaí at altitudeacai@gmail.com",
-        href: "mailto:altitudeacai@gmail.com",
+        label: 'altitudeacai@gmail.com',
+        ariaLabel: 'Email altitudeacai@gmail.com',
+        href: 'mailto:altitudeacai@gmail.com',
       },
     },
-    mapEmbedTitle:
-      "Map showing Altitude Açaí at 1302 Beck Avenue, Cody, WY 82414",
+    mapEmbedTitle: 'Map showing 1302 Beck Avenue, Cody, WY 82414',
   },
   footer: {
-    brandName: "Altitude Açaí",
-    tagline:
-      "Açaí bowls in Cody, Wyoming, from our Beck Avenue shop and summer food truck.",
-    addressLine: "1302 Beck Avenue, Suite C, Cody, WY 82414",
-    phoneLabel: "Call 307-527-0812",
-    emailLabel: "altitudeacai@gmail.com",
-    instagramLabel: "Follow @altitude_acai",
-    facebookLabel: "Altitude Açaí on Facebook",
-    directionsLabel: "Get Directions",
-    navigationHeading: "Explore",
-    visitHeading: "Cody Storefront",
-    connectHeading: "Connect",
-    closingNote:
-      "Altitude Açaí in Cody, Wyoming. Serving Park County all year long.",
+    brandName: 'Altitude Açaí',
+    tagline: 'Handcrafted superfood bowls and seasonal food truck stops.',
+    addressLine: '1302 Beck Avenue, Cody, WY 82414',
+    phoneLabel: '307-527-0812',
+    emailLabel: 'altitudeacai@gmail.com',
+    instagramLabel: '@altitude_acai',
+    facebookLabel: 'Facebook',
+    directionsLabel: 'Get Directions',
+    navigationHeading: 'Explore',
+    visitHeading: 'Storefront',
+    connectHeading: 'Connect',
+    closingNote: 'Serving Park County year-round.',
+  },
+  notFound: {
+    heading: 'This page does not exist',
+    ctaLabel: 'Back to Home',
+    bowlIllustrationAlt: 'Cordel woodcut illustration of a handcrafted açaí bowl',
   },
 } as const;

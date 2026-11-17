@@ -215,7 +215,7 @@
         "Blackberries",
         "Mango",
         "Pineapple",
-        "Bananas",
+        "Banana",
         "Raspberries"
       ],
       "toppings": [
@@ -227,16 +227,16 @@
         "Bee Pollen",
         "Chia Seeds",
         "Rolled Oats",
-        "Graham Crackers",
+        "Graham Cracker",
         "Flax Seeds",
         "Protein Granola Upgrade"
       ],
       "sauces": [
         "Dark Chocolate",
-        "Peanut Butter",
-        "Almond Butter",
         "Nutella",
-        "Honey"
+        "Honey",
+        "Almond Butter",
+        "Peanut Butter"
       ]
     },
     "specialtyDrinks": [
@@ -487,80 +487,10 @@
     }
   ],
   "foodTruck": {
-    "pageTitle": "Food Truck Hours and Event Locations",
+    "pageTitle": "Food Truck & Local Events",
     "sourceUrl": "https://www.altitudeacai.com/food-truck",
     "heroImageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_4456_1776963347.jpeg",
-    "events": [
-      {
-        "id": "cody-concerts-in-the-park",
-        "name": "Cody Concerts in the Park",
-        "scheduleSummary": "Thursdays at 5:00 PM starting in June (June 18 to August 13, 2026, excluding July 2)",
-        "dates": [
-          "June 18",
-          "June 25",
-          "July 9",
-          "July 16",
-          "July 23",
-          "July 30",
-          "August 6",
-          "August 13"
-        ],
-        "venue": "City Park",
-        "address": "908 Sheridan Ave, Cody, WY 82414",
-        "description": "Enjoy a family-friendly evening with live music at Cody Concerts in the Park, where outdoor entertainment meets a vibrant community atmosphere. Perfect for all ages, this event offers an unforgettable live music experience under the open sky. Cody Concerts in the Park runs Thursdays throughout the summer!",
-        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/2026-04-24_07-53-11_1777038807.jpg"
-      },
-      {
-        "id": "cody-wyoming-softball-tournament",
-        "name": "Cody Wyoming Softball Tournament",
-        "scheduleSummary": "April 30th 8:00 AM - 6:00 PM; May 1st 8:00 AM - 6:00 PM",
-        "dates": [
-          "April 30th 8:00am - 6:00pm",
-          "May 1st 8:00am - 6:00pm"
-        ],
-        "venue": "East Sheridan Softball Complex",
-        "address": "3708 Sheridan Ave, Cody, WY 82414",
-        "description": "We will be located at the East Sheridan Softball Complex.",
-        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-24%20at%2011.34.13%E2%80%AFAM_1777169027.png"
-      },
-      {
-        "id": "cody-soccer-tournament",
-        "name": "Cody Soccer Tournament",
-        "scheduleSummary": "May 2nd–3rd, 2026, 8:00 AM - 6:00 PM",
-        "dates": [
-          "May 2nd-3rd 2026, 8:00am - 6:00pm"
-        ],
-        "venue": "Open Gate Fellowship Church parking lot",
-        "address": "3219 Sheridan Ave, Cody, WY 82414",
-        "description": "We will be located in the Open Gate Fellowship Church parking lot.",
-        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-24%20at%208.07.58%E2%80%AFAM_1777039741.png"
-      },
-      {
-        "id": "cody-stampede-rodeo",
-        "name": "Cody Stampede Rodeo",
-        "scheduleSummary": "July 1st - July 4th, 2026 (pre-stampede Xtreme Bulls on June 30, 2026)",
-        "dates": [
-          "July 1st - July 4th 2026"
-        ],
-        "venue": "Stampede Park",
-        "address": "Stampede Park, Cody, WY",
-        "description": "The 2026 Cody Stampede Rodeo features four days of PRCA-sanctioned competition, with additional pre-stampede Xtreme Bulls action on June 30, 2026, at Stampede Park.",
-        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-24%20at%208.30.36%E2%80%AFAM_1777041048.png"
-      },
-      {
-        "id": "cody-warriors-lacrosse-tournament",
-        "name": "Cody Warriors Lacrosse Tournament",
-        "scheduleSummary": "May 8th 5:00 PM - 8:00 PM; May 9th 8:00 AM - 6:00 PM",
-        "dates": [
-          "May 8th 5:00-8:00pm",
-          "May 9th 8:00am-6:00pm"
-        ],
-        "venue": "Mentock Park",
-        "address": "1001 Blackburn St, Cody, WY 82414",
-        "description": "We will be located at Mentock Park.",
-        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_8282_1777427765.jpeg"
-      }
-    ]
+    "scheduleSummary": "Seasonal mobile food truck routes and Park County community stops vary throughout the year. Follow @altitude_acai on Instagram and Altitude Açaí on Facebook for real-time locations."
   },
   "officialMedia": {
     "logo": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Apple%20App%20Store_1768852044.jpg",
