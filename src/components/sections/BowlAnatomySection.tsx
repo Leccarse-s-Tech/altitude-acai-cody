@@ -3,6 +3,7 @@ import { Check, Sparkle } from '@phosphor-icons/react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy, type BowlLayerId } from '../../data/editorial-copy';
+import { CordelBackgroundArtwork } from '../ui/CordelBackgroundArtwork';
 import {
   CarvedWoodblockFrame,
   CordelDivider,
@@ -16,15 +17,14 @@ interface AnatomyLayerDetail {
   id: BowlLayerId;
   order: number;
   name: string;
-  displayName: string;
   role: string;
   description: string;
   ingredients: readonly string[];
 }
 
 const LAYER_INGREDIENTS: Record<BowlLayerId, readonly string[]> = {
-  'acai-sorbet': ['Organic Açaí Sorbet Base'],
-  crunch: ['Granola Base Included', 'Protein Granola Upgrade'],
+  'acai-sorbet': ['Açaí Sorbet'],
+  crunch: ['Granola', 'Protein Granola'],
   'favorite-fruit': brandData.menu.createYourOwn.fruits,
   topping: brandData.menu.createYourOwn.toppings,
   sauce: brandData.menu.createYourOwn.sauces,
@@ -35,7 +35,6 @@ const ANATOMY_LAYERS: readonly AnatomyLayerDetail[] =
     id: layer.id as BowlLayerId,
     order: layer.order,
     name: layer.name,
-    displayName: layer.displayName,
     role: layer.role,
     description: layer.description,
     ingredients: LAYER_INGREDIENTS[layer.id as BowlLayerId],
@@ -52,43 +51,24 @@ export function BowlAnatomySection() {
     <section
       id="whats-in-a-bowl"
       aria-labelledby="bowl-anatomy-heading"
-      className="surface-woodblock-indigo relative overflow-hidden py-20 text-[#FAFAFF] lg:py-24"
+      className="surface-woodblock-indigo relative overflow-hidden py-16 text-[#FAFAFF] sm:py-20 lg:py-24"
     >
       <CottonPaperGrain variant="dark" opacity={0.05} />
       <WoodgrainOverlay variant="dark" opacity={0.09} />
+      <CordelBackgroundArtwork placement="anatomy-fruits" variant="dark" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Headline + Verbatim Official Copy (Zero Eyebrow) */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <h2
-              id="bowl-anatomy-heading"
-              className="font-display text-3xl font-extrabold tracking-tight text-[#FAFAFF] sm:text-4xl lg:text-5xl"
-            >
-              {editorialCopy.whatsInABowl.title}
-            </h2>
-            <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-[#E4D9FF] sm:text-lg">
-              {editorialCopy.whatsInABowl.officialParagraph}
-            </p>
-          </div>
-
-          <div className="lg:col-span-5">
-            <CarvedWoodblockFrame variant="dark" showCornerMarks={false} className="p-5">
-              <div className="flex flex-wrap items-center gap-2.5">
-                {brandData.menu.sizes.map((size) => (
-                  <span
-                    key={size}
-                    className="inline-flex items-center rounded-sm border border-[#E4D9FF] bg-[#1E2749] px-3 py-1 font-mono text-xs font-semibold text-[#FAFAFF]"
-                  >
-                    {size}
-                  </span>
-                ))}
-              </div>
-              <p className="mt-3 text-sm font-medium text-[#E4D9FF]">
-                {brandData.menu.baseRule}
-              </p>
-            </CarvedWoodblockFrame>
-          </div>
+        {/* Section Headline + Verbatim Official Copy */}
+        <div className="max-w-3xl">
+          <h2
+            id="bowl-anatomy-heading"
+            className="font-display text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.1] font-extrabold tracking-tight text-[#FAFAFF]"
+          >
+            {editorialCopy.whatsInABowl.title}
+          </h2>
+          <p className="mt-5 w-full max-w-prose text-base leading-relaxed text-[#E4D9FF] sm:text-lg">
+            {editorialCopy.whatsInABowl.officialParagraph}
+          </p>
         </div>
 
         <CordelDivider variant="dark" className="my-10 lg:my-12" />
@@ -96,8 +76,8 @@ export function BowlAnatomySection() {
         {/* Interactive 5-Layer Woodcut Cutaway + Inspector */}
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left: Interactive Bowl Cutaway Diagram & Bottom-to-Top Strata Buttons */}
-          <div className="lg:col-span-6">
-            <CarvedWoodblockFrame variant="light" showCornerMarks={true} className="p-5 sm:p-6">
+          <div className="min-w-0 lg:col-span-6">
+            <CarvedWoodblockFrame variant="light" showCornerMarks={true} className="p-4 sm:p-6">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#1E2749]/15 pb-3">
                 <p className="font-mono text-xs font-semibold text-[#1E2749]">
                   {editorialCopy.whatsInABowl.layerOrderNote}
@@ -123,11 +103,10 @@ export function BowlAnatomySection() {
                       patternUnits="userSpaceOnUse"
                       patternTransform="rotate(35)"
                     >
-                      <line x1="0" y1="0" x2="0" y2="7" stroke="#1E2749" strokeWidth="1.5" />
+                      <path d="M0 0 Q1.5 3.5 0 7" stroke="#1E2749" strokeWidth="1.5" />
                     </pattern>
                   </defs>
 
-                  {/* Outer Ceramic Bowl Shell */}
                   <path
                     d="M46 146 C50 226 118 264 210 264 C302 264 370 226 374 146 Z"
                     fill="#FAFAFF"
@@ -143,11 +122,7 @@ export function BowlAnatomySection() {
                     strokeLinejoin="round"
                   />
 
-                  {/* Layer 1: ACAI SORBET (Bottom Base) */}
-                  <g
-                    onClick={() => setActiveLayerId('acai-sorbet')}
-                    className="cursor-pointer"
-                  >
+                  <g onClick={() => setActiveLayerId('acai-sorbet')} className="cursor-pointer">
                     <path
                       d="M68 188 C82 232 138 254 210 254 C282 254 338 232 352 188 Z"
                       fill={activeLayerId === 'acai-sorbet' ? '#273469' : '#575E8F'}
@@ -167,7 +142,6 @@ export function BowlAnatomySection() {
                     </text>
                   </g>
 
-                  {/* Layer 2: CRUNCH */}
                   <g onClick={() => setActiveLayerId('crunch')} className="cursor-pointer">
                     <path
                       d="M54 150 L366 150 L354 188 L66 188 Z"
@@ -189,15 +163,11 @@ export function BowlAnatomySection() {
                       fontWeight="700"
                       fontFamily="var(--font-mono)"
                     >
-                      2. CRUNCH (GRANOLA)
+                      2. CRUNCH
                     </text>
                   </g>
 
-                  {/* Layer 3: FAVORITE FRUIT */}
-                  <g
-                    onClick={() => setActiveLayerId('favorite-fruit')}
-                    className="cursor-pointer"
-                  >
+                  <g onClick={() => setActiveLayerId('favorite-fruit')} className="cursor-pointer">
                     <rect
                       x="64"
                       y="108"
@@ -221,7 +191,6 @@ export function BowlAnatomySection() {
                     </text>
                   </g>
 
-                  {/* Layer 4: TOPPING */}
                   <g onClick={() => setActiveLayerId('topping')} className="cursor-pointer">
                     <rect
                       x="92"
@@ -246,7 +215,6 @@ export function BowlAnatomySection() {
                     </text>
                   </g>
 
-                  {/* Layer 5: SAUCE */}
                   <g onClick={() => setActiveLayerId('sauce')} className="cursor-pointer">
                     <path
                       d="M128 32 C152 14 268 14 292 32 C302 42 296 58 278 58 L142 58 C124 58 118 42 128 32 Z"
@@ -269,7 +237,7 @@ export function BowlAnatomySection() {
                 </svg>
               </div>
 
-              {/* Accessible Interactive Stratum Buttons (DOM order 1..5, visually bottom-to-top) */}
+              {/* Interactive Stratum Buttons (Ordered Bottom to Top Visually) */}
               <div
                 role="group"
                 aria-label="Interactive bowl layers from bottom to top"
@@ -283,13 +251,13 @@ export function BowlAnatomySection() {
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => setActiveLayerId(layer.id)}
-                      className={`flex min-h-[48px] w-full items-center justify-between gap-3 rounded-sm border-2 px-4 py-2.5 text-left transition-all duration-200 ${
+                      className={`flex min-h-[48px] w-full flex-wrap items-center justify-between gap-2 rounded-sm border-2 px-3 py-2.5 text-left transition-all duration-200 sm:px-4 ${
                         isSelected
                           ? 'border-[#1E2749] bg-[#273469] text-[#FAFAFF] shadow-[3px_3px_0px_#1E2749]'
                           : 'border-[#1E2749] bg-[#FAFAFF] text-[#1E2749] hover:bg-[#E4D9FF]'
                       }`}
                     >
-                      <span className="flex items-center gap-3">
+                      <span className="flex items-center gap-2.5 sm:gap-3">
                         <span
                           className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-sm border font-mono text-xs font-bold ${
                             isSelected
@@ -299,13 +267,13 @@ export function BowlAnatomySection() {
                         >
                           0{layer.order}
                         </span>
-                        <span className="font-display text-base font-bold tracking-tight">
+                        <span className="font-display text-sm font-bold tracking-tight sm:text-base">
                           {layer.order}. {layer.name}
                         </span>
                       </span>
 
                       <span
-                        className={`font-mono text-xs font-medium ${
+                        className={`font-mono text-[11px] font-medium sm:text-xs ${
                           isSelected ? 'text-[#E4D9FF]' : 'text-[#575E8F]'
                         }`}
                       >
@@ -318,8 +286,8 @@ export function BowlAnatomySection() {
             </CarvedWoodblockFrame>
           </div>
 
-          {/* Right: Selected Stratum Role, Details & Ingredients */}
-          <div className="lg:col-span-6">
+          {/* Right: Selected Layer Inspector */}
+          <div className="min-w-0 lg:col-span-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLayer.id}
@@ -331,16 +299,12 @@ export function BowlAnatomySection() {
                 <CarvedWoodblockFrame
                   variant="periwinkle"
                   showCornerMarks={true}
-                  className="p-6 text-[#1E2749] sm:p-8"
+                  className="p-5 text-[#1E2749] sm:p-8"
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-1.5 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] px-3 py-1 font-mono text-xs font-bold text-[#1E2749] shadow-[2px_2px_0px_#1E2749]">
                       <Sparkle size={14} weight="bold" aria-hidden="true" />
                       Layer {activeLayer.order} of 5 · {activeLayer.role}
-                    </span>
-
-                    <span className="font-mono text-xs font-semibold text-[#575E8F]">
-                      12 oz & 16 oz Bowls
                     </span>
                   </div>
 
@@ -348,19 +312,19 @@ export function BowlAnatomySection() {
                     {activeLayer.order}. {activeLayer.name}
                   </h3>
 
-                  <p className="mt-3 max-w-[56ch] text-base leading-relaxed text-[#30343F] sm:text-lg">
+                  <p className="mt-3 w-full max-w-prose text-base leading-relaxed text-[#30343F] sm:text-lg">
                     {activeLayer.description}.
                   </p>
 
                   <div className="mt-6 border-t-2 border-[#1E2749]/20 pt-5">
                     <p className="font-mono text-xs font-bold text-[#1E2749]">
-                      Verified Options in This Layer
+                      In This Layer
                     </p>
-                    <ul className="mt-3 flex flex-wrap gap-2.5">
+                    <ul className="mt-3 flex flex-wrap gap-2">
                       {activeLayer.ingredients.map((item) => (
                         <li
                           key={item}
-                          className="inline-flex min-h-[40px] items-center gap-1.5 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] px-3.5 py-1.5 text-sm font-semibold text-[#1E2749] shadow-[2px_2px_0px_#1E2749]"
+                          className="inline-flex min-h-[40px] items-center gap-1.5 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] px-3 py-1.5 text-sm font-semibold text-[#1E2749] shadow-[2px_2px_0px_#1E2749]"
                         >
                           <Check size={14} weight="bold" aria-hidden="true" />
                           <span>{item}</span>
@@ -368,28 +332,9 @@ export function BowlAnatomySection() {
                       ))}
                     </ul>
                   </div>
-
-                  <div className="mt-6 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF]/85 p-4 text-sm text-[#30343F]">
-                    <span className="font-bold text-[#1E2749]">Shop Rule: </span>
-                    Pick up to 3 Fruits, 2 Toppings (Granola base included), and 1 Sauce over our
-                    smooth açaí sorbet.
-                  </div>
                 </CarvedWoodblockFrame>
               </motion.div>
             </AnimatePresence>
-
-            {/* Botanical Woodcut Print Strip */}
-            <div className="mt-6">
-              <CarvedWoodblockFrame variant="light" showCornerMarks={false}>
-                <img
-                  src="./assets/cordel/fruits-woodcut-frieze.svg"
-                  alt="Woodcut botanical frieze of fresh fruits: strawberries, bananas, blueberries, blackberries, raspberries, pineapple, and mango"
-                  className="h-auto w-full object-cover"
-                  width={1200}
-                  height={280}
-                />
-              </CarvedWoodblockFrame>
-            </div>
           </div>
         </div>
       </div>

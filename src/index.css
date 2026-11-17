@@ -167,6 +167,10 @@
     overflow-x: clip;
   }
 
+  h1, h2, h3, h4, p, li, figcaption {
+    overflow-wrap: break-word;
+  }
+
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.025em;

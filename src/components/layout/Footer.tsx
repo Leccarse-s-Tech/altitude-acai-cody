@@ -7,6 +7,7 @@ import {
 } from '@phosphor-icons/react';
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
+import { AppLink, assetUrl } from '../../lib/router';
 import { CordelDivider, CottonPaperGrain, WoodgrainOverlay } from '../ui/WoodcutTextures';
 
 export function Footer() {
@@ -27,7 +28,7 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <div className="h-16 w-16 shrink-0 overflow-hidden rounded-sm border-2 border-[#E4D9FF] bg-[#FAFAFF] shadow-[3px_3px_0px_#E4D9FF]">
                 <img
-                  src="./assets/brand/logo-official.webp"
+                  src={assetUrl('assets/brand/logo-official.webp')}
                   alt={editorialCopy.hero.logoAlt}
                   className="h-full w-full object-cover"
                   width={64}
@@ -52,7 +53,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={locationAndContact.channels.googleMaps.ariaLabel}
-                className="woodcut-btn woodcut-btn-on-dark text-sm whitespace-nowrap"
+                className="woodcut-btn woodcut-btn-on-dark text-sm"
               >
                 <MapPin size={18} weight="bold" aria-hidden="true" />
                 <span>{footer.directionsLabel}</span>
@@ -60,7 +61,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Section Navigation */}
+          {/* Route & Section Navigation */}
           <div className="md:col-span-3">
             <h3 className="font-display text-lg font-bold text-[#FAFAFF]">
               {footer.navigationHeading}
@@ -68,18 +69,18 @@ export function Footer() {
             <ul className="mt-4 space-y-1.5">
               {navigation.links.map((link) => (
                 <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
+                  <AppLink
+                    to={link.to}
                     className="focus-on-dark inline-flex min-h-[44px] items-center text-sm font-medium text-[#E4D9FF] transition-colors duration-150 hover:text-[#FAFAFF] hover:underline"
                   >
                     {link.label}
-                  </a>
+                  </AppLink>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Cody Storefront & Verified Contact */}
+          {/* Single-Line Address & Contact Channels */}
           <div className="md:col-span-4">
             <h3 className="font-display text-lg font-bold text-[#FAFAFF]">
               {footer.visitHeading}
@@ -87,9 +88,8 @@ export function Footer() {
 
             <address className="mt-4 space-y-2 text-sm not-italic text-[#E4D9FF]">
               <p className="font-semibold text-[#FAFAFF]">{footer.addressLine}</p>
-              <p>{brandData.location.building} · {brandData.location.county}, {brandData.location.state}</p>
 
-              <div className="pt-2 flex flex-col items-start gap-1">
+              <div className="flex flex-col items-start gap-1 pt-2">
                 <a
                   href={locationAndContact.channels.phone.href}
                   aria-label={locationAndContact.channels.phone.ariaLabel}
@@ -102,7 +102,7 @@ export function Footer() {
                 <a
                   href={locationAndContact.channels.email.href}
                   aria-label={locationAndContact.channels.email.ariaLabel}
-                  className="focus-on-dark inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-[#FAFAFF] hover:text-[#E4D9FF] hover:underline"
+                  className="focus-on-dark inline-flex min-h-[44px] items-center gap-2 text-sm font-medium break-all text-[#FAFAFF] hover:text-[#E4D9FF] hover:underline"
                 >
                   <EnvelopeSimple size={18} weight="bold" aria-hidden="true" />
                   <span>{footer.emailLabel}</span>
@@ -142,7 +142,7 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-[#E4D9FF]/30 pt-6 text-xs text-[#E4D9FF] sm:flex-row sm:items-center">
           <p>{footer.closingNote}</p>
           <p className="font-mono">
-            © {new Date().getFullYear()} {footer.brandName} · Cody, WY 82414
+            © {new Date().getFullYear()} {footer.brandName}
           </p>
         </div>
       </div>
