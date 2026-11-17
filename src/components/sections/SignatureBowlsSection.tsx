@@ -2,6 +2,8 @@ import { ArrowRight, Sparkle } from '@phosphor-icons/react';
 import { motion, useReducedMotion } from 'motion/react';
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
+import { assetUrl } from '../../lib/router';
+import { CordelBackgroundArtwork } from '../ui/CordelBackgroundArtwork';
 import {
   CarvedWoodblockFrame,
   CordelDivider,
@@ -26,12 +28,12 @@ const WOODCUT_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const BOWL_CONFIG_BY_ID: Record<string, SignatureBowlConfig> = {
   'mountain-man': {
     id: 'mountain-man',
-    imagePath: './assets/bowls/bowl-mountain-man.webp',
+    imagePath: 'assets/bowls/bowl-mountain-man.webp',
     imageAlt:
       'Mountain Man açaí bowl topped with strawberries, bananas, blueberries, chia seeds, hemp hearts, peanut butter, and honey',
     preset: {
       sourceBowlName: 'Mountain Man',
-      fruits: ['Strawberries', 'Bananas', 'Blueberries'],
+      fruits: ['Strawberries', 'Banana', 'Blueberries'],
       toppings: ['Chia Seeds', 'Hemp Hearts'],
       sauce: 'Peanut Butter',
       presetNote: 'In-shop Mountain Man also finishes with a drizzle of Honey.',
@@ -39,7 +41,7 @@ const BOWL_CONFIG_BY_ID: Record<string, SignatureBowlConfig> = {
   },
   'montana-mama': {
     id: 'montana-mama',
-    imagePath: './assets/bowls/bowl-montana-mama.webp',
+    imagePath: 'assets/bowls/bowl-montana-mama.webp',
     imageAlt:
       'Montana Mama açaí bowl topped with pineapples, strawberries, blackberries, coconut shavings, dark chocolate shavings, and honey',
     preset: {
@@ -51,19 +53,19 @@ const BOWL_CONFIG_BY_ID: Record<string, SignatureBowlConfig> = {
   },
   goldilocks: {
     id: 'goldilocks',
-    imagePath: './assets/bowls/bowl-goldilocks.webp',
+    imagePath: 'assets/bowls/bowl-goldilocks.webp',
     imageAlt:
       'Goldilocks açaí bowl topped with mangos, pineapples, bananas, coconut shavings, almonds, and dark chocolate sauce',
     preset: {
       sourceBowlName: 'Goldilocks',
-      fruits: ['Mango', 'Pineapple', 'Bananas'],
+      fruits: ['Mango', 'Pineapple', 'Banana'],
       toppings: ['Coconut Shavings', 'Slivered Almonds'],
       sauce: 'Dark Chocolate',
     },
   },
   'bear-attack': {
     id: 'bear-attack',
-    imagePath: './assets/bowls/bowl-bear-attack.webp',
+    imagePath: 'assets/bowls/bowl-bear-attack.webp',
     imageAlt:
       'Bear Attack açaí bowl topped with blackberries, raspberries, strawberries, pumpkin seeds, bee pollen, and honey',
     preset: {
@@ -75,20 +77,20 @@ const BOWL_CONFIG_BY_ID: Record<string, SignatureBowlConfig> = {
   },
   't-rux': {
     id: 't-rux',
-    imagePath: './assets/bowls/bowl-t-rux.webp',
+    imagePath: 'assets/bowls/bowl-t-rux.webp',
     imageAlt:
       'T-Rux açaí bowl topped with extra bananas, blueberries, rolled oats, graham crackers, and Nutella',
     preset: {
       sourceBowlName: 'T-Rux',
-      fruits: ['Bananas', 'Blueberries'],
-      toppings: ['Rolled Oats', 'Graham Crackers'],
+      fruits: ['Banana', 'Blueberries'],
+      toppings: ['Rolled Oats', 'Graham Cracker'],
       sauce: 'Nutella',
-      presetNote: 'In-shop T-Rux recipe is served with Extra Bananas.',
+      presetNote: 'In-shop T-Rux recipe includes extra banana slices.',
     },
   },
   'squatch-protein-bowl': {
     id: 'squatch-protein-bowl',
-    imagePath: './assets/bowls/bowl-squatch-protein.webp',
+    imagePath: 'assets/bowls/bowl-squatch-protein.webp',
     imageAlt:
       'SQUATch Protein Bowl with protein granola, blackberries, raspberries, pumpkin seeds, hemp hearts, peanut butter, and honey',
     preset: {
@@ -103,7 +105,7 @@ const BOWL_CONFIG_BY_ID: Record<string, SignatureBowlConfig> = {
 
 export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionProps) {
   const prefersReducedMotion = useReducedMotion();
-  const { signatureBowls } = editorialCopy;
+  const { menuPage } = editorialCopy;
 
   const bowls = brandData.menu.signatureBowls;
   const mountainMan = bowls.find((b) => b.id === 'mountain-man') ?? bowls[0];
@@ -116,65 +118,43 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
     <section
       id="signature-bowls"
       aria-labelledby="signature-bowls-heading"
-      className="surface-cotton-paper relative overflow-hidden py-20 lg:py-24"
+      className="surface-cotton-paper relative overflow-hidden py-16 sm:py-20"
     >
       <CottonPaperGrain variant="light" opacity={0.045} />
       <WoodgrainOverlay variant="light" opacity={0.08} />
+      <CordelBackgroundArtwork placement="menu-signatures" variant="light" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header (Zero Eyebrow) */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <h2
-              id="signature-bowls-heading"
-              className="font-display text-3xl font-extrabold tracking-tight text-[#1E2749] sm:text-4xl lg:text-5xl"
-            >
-              {signatureBowls.title}
-            </h2>
-            <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-[#30343F] sm:text-lg">
-              {signatureBowls.intro}
-            </p>
-          </div>
-
-          <div className="lg:col-span-5 lg:text-right">
-            <div className="inline-flex flex-wrap items-center gap-2 lg:justify-end">
-              {signatureBowls.sizes.map((size) => (
-                <span
-                  key={size}
-                  className="inline-flex items-center rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF] px-3 py-1 font-mono text-xs font-bold text-[#1E2749] shadow-[2px_2px_0px_#1E2749]"
-                >
-                  {size}
-                </span>
-              ))}
-            </div>
-            <p className="mt-2.5 text-sm font-semibold text-[#575E8F]">
-              {signatureBowls.baseRule}
-            </p>
-          </div>
+        <div className="max-w-2xl">
+          <h2
+            id="signature-bowls-heading"
+            className="font-display text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.1] font-extrabold tracking-tight text-[#1E2749]"
+          >
+            {menuPage.signatureSectionTitle}
+          </h2>
         </div>
 
-        <CordelDivider variant="light" className="my-10" />
+        <CordelDivider variant="light" className="my-8 sm:my-10" />
 
         {/* Top Asymmetric Duo: Mountain Man (7 cols) + SQUATch Protein Bowl (5 cols) */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12 lg:gap-8">
-          {/* Featured Lead Card: Mountain Man */}
           <motion.article
             initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.4, ease: WOODCUT_EASE }}
-            className="md:col-span-7"
+            className="min-w-0 md:col-span-7"
           >
             <CarvedWoodblockFrame
               variant="periwinkle"
               showCornerMarks={true}
-              className="h-full p-5 sm:p-6"
+              className="h-full p-4 sm:p-6"
             >
-              <div className="grid h-full grid-cols-1 items-center gap-6 sm:grid-cols-12">
+              <div className="grid h-full grid-cols-1 items-center gap-5 sm:grid-cols-12 sm:gap-6">
                 <div className="sm:col-span-6">
                   <div className="aspect-square overflow-hidden rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] shadow-[4px_4px_0px_#1E2749]">
                     <img
-                      src={BOWL_CONFIG_BY_ID[mountainMan.id].imagePath}
+                      src={assetUrl(BOWL_CONFIG_BY_ID[mountainMan.id].imagePath)}
                       alt={BOWL_CONFIG_BY_ID[mountainMan.id].imageAlt}
                       className="h-full w-full object-cover"
                       width={520}
@@ -183,7 +163,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                   </div>
                 </div>
 
-                <div className="flex h-full flex-col justify-between sm:col-span-6">
+                <div className="flex h-full min-w-0 flex-col justify-between sm:col-span-6">
                   <div>
                     <span className="inline-flex items-center gap-1.5 rounded-sm border border-[#1E2749] bg-[#FAFAFF] px-2.5 py-1 font-mono text-xs font-bold text-[#1E2749]">
                       <Sparkle size={13} weight="bold" aria-hidden="true" />
@@ -192,10 +172,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                     <h3 className="font-display mt-3 text-2xl font-extrabold text-[#1E2749] sm:text-3xl">
                       {mountainMan.name}
                     </h3>
-                    <p className="mt-3 font-mono text-xs font-bold text-[#575E8F]">
-                      {signatureBowls.ingredientsLabel}
-                    </p>
-                    <ul className="mt-2 flex flex-wrap gap-1.5">
+                    <ul className="mt-3 flex flex-wrap gap-1.5">
                       {mountainMan.ingredients.map((ingredient) => (
                         <li
                           key={ingredient}
@@ -210,7 +187,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                   <button
                     type="button"
                     onClick={() => onPreviewBowl(BOWL_CONFIG_BY_ID[mountainMan.id].preset)}
-                    className="woodcut-btn woodcut-btn-primary mt-6 w-full text-sm whitespace-nowrap"
+                    className="woodcut-btn woodcut-btn-primary mt-6 w-full text-xs sm:text-sm"
                   >
                     <span>Preview in Bowl Builder</span>
                     <ArrowRight size={17} weight="bold" aria-hidden="true" />
@@ -220,24 +197,23 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
             </CarvedWoodblockFrame>
           </motion.article>
 
-          {/* Featured Dark Woodblock Plate: SQUATch Protein Bowl */}
           <motion.article
             initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.45, delay: 0.06, ease: WOODCUT_EASE }}
-            className="md:col-span-5"
+            className="min-w-0 md:col-span-5"
           >
             <CarvedWoodblockFrame
               variant="dark"
               showCornerMarks={true}
-              className="h-full p-5 sm:p-6"
+              className="h-full p-4 sm:p-6"
             >
               <div className="flex h-full flex-col justify-between gap-5">
                 <div>
                   <div className="aspect-[16/10] overflow-hidden rounded-sm border-2 border-[#E4D9FF] bg-[#FAFAFF]">
                     <img
-                      src={BOWL_CONFIG_BY_ID[squatchBowl.id].imagePath}
+                      src={assetUrl(BOWL_CONFIG_BY_ID[squatchBowl.id].imagePath)}
                       alt={BOWL_CONFIG_BY_ID[squatchBowl.id].imageAlt}
                       className="h-full w-full object-cover"
                       width={520}
@@ -264,7 +240,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                 <button
                   type="button"
                   onClick={() => onPreviewBowl(BOWL_CONFIG_BY_ID[squatchBowl.id].preset)}
-                  className="woodcut-btn woodcut-btn-on-dark w-full text-sm whitespace-nowrap"
+                  className="woodcut-btn woodcut-btn-on-dark w-full text-xs sm:text-sm"
                 >
                   <span>Preview in Bowl Builder</span>
                   <ArrowRight size={17} weight="bold" aria-hidden="true" />
@@ -274,7 +250,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
           </motion.article>
         </div>
 
-        {/* Remaining 4 Signature Bowls (2-col asymmetric split plates on desktop, 1-col < 768px) */}
+        {/* Remaining 4 Signature Bowls */}
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-8 lg:gap-8">
           {galleryBowls.map((bowl, index) => {
             const config = BOWL_CONFIG_BY_ID[bowl.id];
@@ -286,13 +262,10 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                 initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.12 }}
-                transition={{
-                  duration: 0.36,
-                  delay: index * 0.04,
-                  ease: WOODCUT_EASE,
-                }}
+                transition={{ duration: 0.36, delay: index * 0.04, ease: WOODCUT_EASE }}
+                className="min-w-0"
               >
-                <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="h-full p-5">
+                <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="h-full p-4 sm:p-5">
                   <div className="grid h-full grid-cols-1 items-center gap-5 sm:grid-cols-12">
                     <div
                       className={`sm:col-span-5 ${
@@ -301,7 +274,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                     >
                       <div className="aspect-square overflow-hidden rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/30 shadow-[3px_3px_0px_#1E2749]">
                         <img
-                          src={config.imagePath}
+                          src={assetUrl(config.imagePath)}
                           alt={config.imageAlt}
                           className="h-full w-full object-cover"
                           width={380}
@@ -311,7 +284,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                     </div>
 
                     <div
-                      className={`flex h-full flex-col justify-between sm:col-span-7 ${
+                      className={`flex h-full min-w-0 flex-col justify-between sm:col-span-7 ${
                         imageFirstOnDesktop ? 'sm:order-2' : 'sm:order-1'
                       }`}
                     >
@@ -334,7 +307,7 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                       <button
                         type="button"
                         onClick={() => onPreviewBowl(config.preset)}
-                        className="woodcut-btn woodcut-btn-secondary mt-5 w-full text-sm whitespace-nowrap"
+                        className="woodcut-btn woodcut-btn-secondary mt-5 w-full text-xs sm:text-sm"
                       >
                         <span>Preview in Bowl Builder</span>
                         <ArrowRight size={16} weight="bold" aria-hidden="true" />
@@ -347,16 +320,11 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
           })}
         </div>
 
-        {/* Specialty Drink & In-Shop Callout */}
-        <div className="mt-8 rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/75 px-5 py-4 shadow-[4px_4px_0px_#1E2749]">
-          <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-            <p className="text-sm font-semibold text-[#1E2749]">
-              {signatureBowls.inStoreNote}
-            </p>
-            <p className="font-mono text-xs font-bold text-[#273469]">
-              Also served: {brandData.menu.specialtyDrinks.join(' · ')}
-            </p>
-          </div>
+        {/* Verified Specialty Drink Line */}
+        <div className="mt-8 rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/75 px-4 py-4 shadow-[4px_4px_0px_#1E2749] sm:px-5">
+          <p className="font-mono text-xs font-bold text-[#1E2749]">
+            Also on the menu: {brandData.menu.specialtyDrinks.join(' · ')}
+          </p>
         </div>
       </div>
     </section>

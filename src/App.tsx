@@ -1,34 +1,35 @@
-import { useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { MotionConfig } from 'motion/react';
 import { Footer } from './components/layout/Footer';
 import { Navbar } from './components/layout/Navbar';
-import { BowlAnatomySection } from './components/sections/BowlAnatomySection';
-import {
-  CreateYourOwnSimulator,
-  type BowlBuilderPreset,
-} from './components/sections/CreateYourOwnSimulator';
-import { HeroSection } from './components/sections/HeroSection';
-import { LocationContactSection } from './components/sections/LocationContactSection';
-import { SeasonalHoursSection } from './components/sections/SeasonalHoursSection';
-import { SignatureBowlsSection } from './components/sections/SignatureBowlsSection';
 import { editorialCopy } from './data/editorial-copy';
+import { usePathname } from './lib/router';
+import { HomePage } from './pages/HomePage';
+import { MenuPage } from './pages/MenuPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export function App() {
-  const [activePreset, setActivePreset] = useState<BowlBuilderPreset | null>(null);
-  const presetCounterRef = useRef(0);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+  const isMenu = pathname === '/menu';
+  const isNotFound = !isHome && !isMenu;
 
-  function handlePreviewBowl(preset: Omit<BowlBuilderPreset, 'requestId'>) {
-    presetCounterRef.current += 1;
-    setActivePreset({
-      ...preset,
-      requestId: presetCounterRef.current,
-    });
-
-    const target = document.getElementById('build-your-own');
-    if (target) {
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+  useEffect(() => {
+    if (isMenu) {
+      document.title = 'Menu | Altitude Açaí';
+    } else if (isNotFound) {
+      document.title = '404 | Altitude Açaí';
+    } else {
+      document.title = 'Altitude Açaí | Handcrafted Açaí Bowls in Cody, Wyoming';
     }
+  }, [isMenu, isNotFound]);
+
+  if (isNotFound) {
+    return (
+      <MotionConfig reducedMotion="user">
+        <NotFoundPage />
+      </MotionConfig>
+    );
   }
 
   return (
@@ -44,15 +45,7 @@ export function App() {
         <Navbar />
 
         <main id="main-content" tabIndex={-1} className="outline-none">
-          <HeroSection />
-          <BowlAnatomySection />
-          <SignatureBowlsSection onPreviewBowl={handlePreviewBowl} />
-          <CreateYourOwnSimulator
-            activePreset={activePreset}
-            onClearPreset={() => setActivePreset(null)}
-          />
-          <SeasonalHoursSection />
-          <LocationContactSection />
+          {isMenu ? <MenuPage /> : <HomePage />}
         </main>
 
         <Footer />

@@ -3,7 +3,6 @@ import {
   ArrowCounterClockwise,
   Check,
   Info,
-  MapPin,
   Sparkle,
   WarningCircle,
   X,
@@ -11,18 +10,16 @@ import {
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
+import { CordelBackgroundArtwork } from '../ui/CordelBackgroundArtwork';
 import {
   CarvedWoodblockFrame,
   CottonPaperGrain,
   WoodgrainOverlay,
 } from '../ui/WoodcutTextures';
 
-export type BowlSize = '12 oz Bowl' | '16 oz Bowl';
-
 export interface BowlBuilderPreset {
   requestId: number;
   sourceBowlName: string;
-  size?: BowlSize;
   fruits: string[];
   toppings: string[];
   sauce: string | null;
@@ -36,7 +33,6 @@ export interface CreateYourOwnSimulatorProps {
 
 const WOODCUT_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-const BOWL_SIZES: readonly BowlSize[] = ['12 oz Bowl', '16 oz Bowl'];
 const FRUITS_LIST: readonly string[] = brandData.menu.createYourOwn.fruits;
 const TOPPINGS_LIST: readonly string[] = brandData.menu.createYourOwn.toppings;
 const SAUCES_LIST: readonly string[] = brandData.menu.createYourOwn.sauces;
@@ -46,19 +42,12 @@ const TOPPINGS_MAX = brandData.menu.createYourOwn.rules.toppingsMax;
 const SAUCES_MAX = brandData.menu.createYourOwn.rules.saucesMax;
 
 interface LiveBowlSvgPreviewProps {
-  size: BowlSize;
   fruits: readonly string[];
   toppings: readonly string[];
   sauce: string | null;
 }
 
-function LiveBowlSvgPreview({
-  size,
-  fruits,
-  toppings,
-  sauce,
-}: LiveBowlSvgPreviewProps) {
-  const isLarge = size === '16 oz Bowl';
+function LiveBowlSvgPreview({ fruits, toppings, sauce }: LiveBowlSvgPreviewProps) {
   const fruitPositions = [
     { cx: 128, cy: 102 },
     { cx: 210, cy: 92 },
@@ -71,13 +60,13 @@ function LiveBowlSvgPreview({
 
   return (
     <svg
-      viewBox="0 0 420 230"
+      viewBox="0 0 420 220"
       className="h-auto w-full"
       role="img"
-      aria-label={`Visual preview of a ${size} with açaí sorbet, granola${
-        fruits.length > 0 ? `, ${fruits.join(', ')}` : ''
+      aria-label={`Visual preview of a custom bowl${
+        fruits.length > 0 ? ` with ${fruits.join(', ')}` : ''
       }${toppings.length > 0 ? `, ${toppings.join(', ')}` : ''}${
-        sauce ? `, and ${sauce} drizzle` : ''
+        sauce ? `, and ${sauce} sauce` : ''
       }`}
     >
       <defs>
@@ -88,48 +77,33 @@ function LiveBowlSvgPreview({
           patternUnits="userSpaceOnUse"
           patternTransform="rotate(28)"
         >
-          <line x1="0" y1="0" x2="0" y2="8" stroke="#1E2749" strokeWidth="1.5" />
+          <path d="M0 0 Q1.5 4 0 8" stroke="#1E2749" strokeWidth="1.5" />
         </pattern>
       </defs>
 
-      {/* Subtle Ground Print Shadow */}
       <ellipse
         cx="210"
-        cy="204"
-        rx={isLarge ? 132 : 112}
+        cy="196"
+        rx="126"
         ry="12"
         fill="#E4D9FF"
         stroke="#1E2749"
         strokeWidth="1.8"
       />
 
-      {/* Ceramic Bowl Vessel */}
       <path
-        d={
-          isLarge
-            ? 'M62 114 C68 180 128 202 210 202 C292 202 352 180 358 114 Z'
-            : 'M78 118 C84 176 136 198 210 198 C284 198 336 176 342 118 Z'
-        }
+        d="M66 114 C72 178 130 198 210 198 C290 198 348 178 354 114 Z"
         fill="#FAFAFF"
         stroke="#1E2749"
         strokeWidth="3.5"
         strokeLinejoin="round"
       />
 
-      {/* Açaí Sorbet Base Rim */}
-      <ellipse
-        cx="210"
-        cy="116"
-        rx={isLarge ? 148 : 132}
-        ry="32"
-        fill="#273469"
-        stroke="#1E2749"
-        strokeWidth="3"
-      />
+      <ellipse cx="210" cy="116" rx="142" ry="32" fill="#273469" stroke="#1E2749" strokeWidth="3" />
       <ellipse
         cx="210"
         cy="115"
-        rx={isLarge ? 130 : 114}
+        rx="124"
         ry="24"
         fill="#575E8F"
         stroke="#E4D9FF"
@@ -137,26 +111,9 @@ function LiveBowlSvgPreview({
         strokeDasharray="8 5"
       />
 
-      {/* Granola Base Layer (Always Included) */}
-      <ellipse
-        cx="210"
-        cy="114"
-        rx={isLarge ? 106 : 92}
-        ry="17"
-        fill="#E4D9FF"
-        stroke="#1E2749"
-        strokeWidth="2"
-      />
-      <ellipse
-        cx="210"
-        cy="114"
-        rx={isLarge ? 106 : 92}
-        ry="17"
-        fill="url(#sim-granola-hatch)"
-        opacity="0.24"
-      />
+      <ellipse cx="210" cy="114" rx="100" ry="17" fill="#E4D9FF" stroke="#1E2749" strokeWidth="2" />
+      <ellipse cx="210" cy="114" rx="100" ry="17" fill="url(#sim-granola-hatch)" opacity="0.24" />
 
-      {/* Selected Fruit Clusters (Up to 3) */}
       {fruits.map((fruit, index) => {
         const pos = fruitPositions[index] ?? fruitPositions[0];
         return (
@@ -182,7 +139,6 @@ function LiveBowlSvgPreview({
         );
       })}
 
-      {/* Selected Toppings Accents (Up to 2) */}
       {toppings.map((topping, index) => {
         const pos = toppingPositions[index] ?? toppingPositions[0];
         return (
@@ -198,48 +154,24 @@ function LiveBowlSvgPreview({
         );
       })}
 
-      {/* Selected Sauce Ribbon (Pick 1) */}
       {sauce && (
-        <path
-          d="M112 108 Q148 86 184 108 T252 108 T310 106"
-          fill="none"
-          stroke="#1E2749"
-          strokeWidth="5.5"
-          strokeLinecap="round"
-        />
+        <>
+          <path
+            d="M112 108 Q148 86 184 108 T252 108 T310 106"
+            fill="none"
+            stroke="#1E2749"
+            strokeWidth="5.5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M112 108 Q148 86 184 108 T252 108 T310 106"
+            fill="none"
+            stroke="#E4D9FF"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </>
       )}
-      {sauce && (
-        <path
-          d="M112 108 Q148 86 184 108 T252 108 T310 106"
-          fill="none"
-          stroke="#E4D9FF"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-      )}
-
-      {/* Size Stamp Inside Illustration */}
-      <rect
-        x="156"
-        y="150"
-        width="108"
-        height="28"
-        rx="3"
-        fill="#E4D9FF"
-        stroke="#1E2749"
-        strokeWidth="2"
-      />
-      <text
-        x="210"
-        y="168"
-        textAnchor="middle"
-        fill="#1E2749"
-        fontSize="11.5"
-        fontWeight="700"
-        fontFamily="var(--font-mono)"
-      >
-        {size.toUpperCase()}
-      </text>
     </svg>
   );
 }
@@ -248,7 +180,6 @@ export function CreateYourOwnSimulator({
   activePreset,
   onClearPreset,
 }: CreateYourOwnSimulatorProps) {
-  const [selectedSize, setSelectedSize] = useState<BowlSize>('12 oz Bowl');
   const [selectedFruits, setSelectedFruits] = useState<string[]>([]);
   const [selectedToppings, setSelectedToppings] = useState<string[]>([]);
   const [selectedSauce, setSelectedSauce] = useState<string | null>(null);
@@ -259,12 +190,10 @@ export function CreateYourOwnSimulator({
   } | null>(null);
 
   const prefersReducedMotion = useReducedMotion();
-  const { createYourOwn } = editorialCopy;
-  const directionsUrl = brandData.location.googleMapsDirectionsUrl;
+  const { createYourOwn } = editorialCopy.menuPage;
 
   useEffect(() => {
     if (!activePreset) return;
-    setSelectedSize(activePreset.size ?? '12 oz Bowl');
     setSelectedFruits(activePreset.fruits.slice(0, FRUITS_MAX));
     setSelectedToppings(activePreset.toppings.slice(0, TOPPINGS_MAX));
     setSelectedSauce(activePreset.sauce);
@@ -336,40 +265,37 @@ export function CreateYourOwnSimulator({
     <section
       id="build-your-own"
       aria-labelledby="create-your-own-heading"
-      className="surface-periwinkle-print relative overflow-hidden border-y-2 border-[#1E2749] py-20 lg:py-24"
+      className="surface-periwinkle-print relative overflow-hidden border-t-2 border-[#1E2749] py-16 sm:py-20"
     >
       <CottonPaperGrain variant="periwinkle" opacity={0.05} />
       <WoodgrainOverlay variant="periwinkle" opacity={0.09} />
+      <CordelBackgroundArtwork placement="menu-create-your-own" variant="periwinkle" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header (Zero Eyebrow) */}
+        {/* Header */}
         <div className="max-w-3xl">
           <h2
             id="create-your-own-heading"
-            className="font-display text-3xl font-extrabold tracking-tight text-[#1E2749] sm:text-4xl lg:text-5xl"
+            className="font-display text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.1] font-extrabold tracking-tight text-[#1E2749]"
           >
             {createYourOwn.title}
           </h2>
-          <p className="mt-4 max-w-[65ch] text-base leading-relaxed text-[#30343F] sm:text-lg">
+          <p className="mt-4 w-full max-w-prose text-base leading-relaxed text-[#30343F] sm:text-lg">
             {createYourOwn.intro}
           </p>
 
-          <div className="mt-5 flex flex-wrap gap-3">
-            <span className="inline-flex items-center gap-2 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] px-3.5 py-2 font-mono text-xs font-bold text-[#1E2749] shadow-[3px_3px_0px_#1E2749]">
-              <Sparkle size={15} weight="bold" aria-hidden="true" />
-              {createYourOwn.officialRule}
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-sm border-2 border-[#1E2749] bg-[#273469] px-3.5 py-2 font-mono text-xs font-bold text-[#FAFAFF] shadow-[3px_3px_0px_#1E2749]">
-              {createYourOwn.previewPanel.baseIncludedBadge}
+          <div className="mt-5">
+            <span className="inline-flex max-w-full items-center gap-2 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] px-3.5 py-2 font-mono text-xs font-bold text-[#1E2749] shadow-[3px_3px_0px_#1E2749]">
+              <Sparkle size={15} weight="bold" className="shrink-0" aria-hidden="true" />
+              <span>{createYourOwn.officialRule}</span>
             </span>
           </div>
         </div>
 
         {/* Interactive Workbench */}
-        <div className="mt-10 grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-10">
-          {/* Left Controls: Size Toggle + 3 Ingredient Categories */}
-          <div className="space-y-6 lg:col-span-7">
-            {/* Signature Bowl Preset Banner */}
+        <div className="mt-8 grid grid-cols-1 items-start gap-8 sm:mt-10 lg:grid-cols-12 lg:gap-10">
+          {/* Left Controls: 3 Ingredient Categories */}
+          <div className="min-w-0 space-y-6 lg:col-span-7">
             <AnimatePresence>
               {loadedInspiration && (
                 <motion.div
@@ -377,23 +303,21 @@ export function CreateYourOwnSimulator({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, ease: WOODCUT_EASE }}
-                  className="flex items-start justify-between gap-4 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] p-4 shadow-[3px_3px_0px_#1E2749]"
+                  className="flex items-start justify-between gap-3 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] p-4 shadow-[3px_3px_0px_#1E2749]"
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex min-w-0 items-start gap-3">
                     <Info
                       size={20}
                       weight="bold"
                       className="mt-0.5 shrink-0 text-[#273469]"
                       aria-hidden="true"
                     />
-                    <div>
+                    <div className="min-w-0">
                       <p className="font-display text-base font-bold text-[#1E2749]">
                         Previewing Inspiration: {loadedInspiration.name}
                       </p>
                       {loadedInspiration.note && (
-                        <p className="mt-0.5 text-sm text-[#575E8F]">
-                          {loadedInspiration.note}
-                        </p>
+                        <p className="mt-0.5 text-sm text-[#575E8F]">{loadedInspiration.note}</p>
                       )}
                     </div>
                   </div>
@@ -410,14 +334,13 @@ export function CreateYourOwnSimulator({
               )}
             </AnimatePresence>
 
-            {/* Non-Intrusive Category Limit Live Region */}
             <div aria-live="polite" className="min-h-[1px]">
               {limitNotice && (
                 <div
                   role="status"
                   className="flex items-center justify-between gap-3 rounded-sm border-2 border-[#1E2749] bg-[#1E2749] px-4 py-3 text-sm font-medium text-[#FAFAFF] shadow-[3px_3px_0px_#E4D9FF]"
                 >
-                  <span className="flex items-center gap-2.5">
+                  <span className="flex min-w-0 items-center gap-2.5">
                     <WarningCircle
                       size={19}
                       weight="bold"
@@ -438,46 +361,8 @@ export function CreateYourOwnSimulator({
               )}
             </div>
 
-            {/* Size Selector */}
-            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-5 sm:p-6">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="font-display text-xl font-bold text-[#1E2749]">
-                  {createYourOwn.sizeSectionLabel}
-                </h3>
-                <span className="font-mono text-xs font-semibold text-[#575E8F]">
-                  Served fresh in Cody
-                </span>
-              </div>
-
-              <div
-                role="group"
-                aria-label="Choose bowl size"
-                className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2"
-              >
-                {BOWL_SIZES.map((size) => {
-                  const isActive = selectedSize === size;
-                  return (
-                    <button
-                      key={size}
-                      type="button"
-                      aria-pressed={isActive}
-                      onClick={() => setSelectedSize(size)}
-                      className={`flex min-h-[48px] items-center justify-between rounded-sm border-2 px-4 py-3 text-left font-display text-base font-bold transition-all duration-200 ${
-                        isActive
-                          ? 'border-[#1E2749] bg-[#273469] text-[#FAFAFF] shadow-[3px_3px_0px_#1E2749]'
-                          : 'border-[#1E2749] bg-[#FAFAFF] text-[#1E2749] hover:bg-[#E4D9FF]'
-                      }`}
-                    >
-                      <span>{size}</span>
-                      {isActive && <Check size={18} weight="bold" aria-hidden="true" />}
-                    </button>
-                  );
-                })}
-              </div>
-            </CarvedWoodblockFrame>
-
             {/* Step 1: Fruits (Pick up to 3) */}
-            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-5 sm:p-6">
+            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-4 sm:p-6">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <h3 className="font-display text-xl font-bold text-[#1E2749]">
@@ -492,7 +377,7 @@ export function CreateYourOwnSimulator({
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2.5">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {FRUITS_LIST.map((fruit) => {
                   const isSelected = selectedFruits.includes(fruit);
                   return (
@@ -501,7 +386,7 @@ export function CreateYourOwnSimulator({
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => toggleFruit(fruit)}
-                      className="woodcut-chip text-sm"
+                      className="woodcut-chip text-xs sm:text-sm"
                     >
                       {isSelected && <Check size={15} weight="bold" aria-hidden="true" />}
                       <span>{fruit}</span>
@@ -511,8 +396,8 @@ export function CreateYourOwnSimulator({
               </div>
             </CarvedWoodblockFrame>
 
-            {/* Step 2: Toppings (Granola Base Included — Pick up to 2) */}
-            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-5 sm:p-6">
+            {/* Step 2: Toppings — Granola Base Included (Pick up to 2) */}
+            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-4 sm:p-6">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <h3 className="font-display text-xl font-bold text-[#1E2749]">
@@ -527,7 +412,7 @@ export function CreateYourOwnSimulator({
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2.5">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {TOPPINGS_LIST.map((topping) => {
                   const isSelected = selectedToppings.includes(topping);
                   return (
@@ -536,7 +421,7 @@ export function CreateYourOwnSimulator({
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => toggleTopping(topping)}
-                      className="woodcut-chip text-sm"
+                      className="woodcut-chip text-xs sm:text-sm"
                     >
                       {isSelected && <Check size={15} weight="bold" aria-hidden="true" />}
                       <span>{topping}</span>
@@ -547,7 +432,7 @@ export function CreateYourOwnSimulator({
             </CarvedWoodblockFrame>
 
             {/* Step 3: Sauces (Pick 1) */}
-            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-5 sm:p-6">
+            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-4 sm:p-6">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <h3 className="font-display text-xl font-bold text-[#1E2749]">
@@ -562,7 +447,7 @@ export function CreateYourOwnSimulator({
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2.5">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {SAUCES_LIST.map((sauce) => {
                   const isSelected = selectedSauce === sauce;
                   return (
@@ -571,7 +456,7 @@ export function CreateYourOwnSimulator({
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => toggleSauce(sauce)}
-                      className="woodcut-chip text-sm"
+                      className="woodcut-chip text-xs sm:text-sm"
                     >
                       {isSelected && <Check size={15} weight="bold" aria-hidden="true" />}
                       <span>{sauce}</span>
@@ -582,22 +467,17 @@ export function CreateYourOwnSimulator({
             </CarvedWoodblockFrame>
           </div>
 
-          {/* Right Column: Live Visual Bowl Preview Panel */}
-          <div className="lg:sticky lg:top-24 lg:col-span-5">
+          {/* Right Column: Clean Live Visual Bowl Preview (No Boxed Artwork, No Duplicate CTAs) */}
+          <div className="min-w-0 lg:sticky lg:top-24 lg:col-span-5">
             <CarvedWoodblockFrame
               variant="light"
               showCornerMarks={true}
-              className="p-5 shadow-[6px_6px_0px_#1E2749] sm:p-6"
+              className="p-4 shadow-[6px_6px_0px_#1E2749] sm:p-6"
             >
               <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#1E2749]/15 pb-3.5">
-                <div>
-                  <h3 className="font-display text-xl font-extrabold text-[#1E2749]">
-                    {createYourOwn.previewPanel.title}
-                  </h3>
-                  <p className="font-mono text-xs font-semibold text-[#575E8F]">
-                    {selectedSize}
-                  </p>
-                </div>
+                <h3 className="font-display text-xl font-extrabold text-[#1E2749]">
+                  {createYourOwn.previewPanel.title}
+                </h3>
 
                 <button
                   type="button"
@@ -613,32 +493,14 @@ export function CreateYourOwnSimulator({
               {/* Dynamic SVG Layered Bowl Preview */}
               <div className="mt-4 rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/35 p-3">
                 <LiveBowlSvgPreview
-                  size={selectedSize}
                   fruits={selectedFruits}
                   toppings={selectedToppings}
                   sauce={selectedSauce}
                 />
               </div>
 
-              {/* Cordel Toppings & Honey Woodcut Print Detail */}
-              <div className="mt-4 overflow-hidden rounded-sm border-2 border-[#1E2749]">
-                <img
-                  src="./assets/cordel/toppings-honey-woodcut.svg"
-                  alt="Cordel woodcut engravings of açaí bowl, honey dipper, granola clusters, coconut shavings, pumpkin seeds, and almonds"
-                  className="h-auto w-full object-cover"
-                  width={1000}
-                  height={320}
-                />
-              </div>
-
-              {/* Layer Summary Ledger */}
+              {/* Layer Summary */}
               <div className="mt-5 space-y-3 text-sm">
-                <div className="rounded-sm border border-[#1E2749]/35 bg-[#E4D9FF]/60 px-3.5 py-2.5">
-                  <p className="font-mono text-xs font-bold text-[#1E2749]">
-                    {createYourOwn.previewPanel.baseIncludedBadge}
-                  </p>
-                </div>
-
                 {!hasAnySelection ? (
                   <p className="py-2 text-sm text-[#575E8F]">
                     {createYourOwn.previewPanel.emptyState}
@@ -695,23 +557,6 @@ export function CreateYourOwnSimulator({
                     )}
                   </div>
                 )}
-              </div>
-
-              {/* Storefront Visit CTA */}
-              <div className="mt-6 border-t-2 border-[#1E2749]/15 pt-4">
-                <p className="text-sm font-medium text-[#30343F]">
-                  {createYourOwn.previewPanel.visitHint}
-                </p>
-                <a
-                  href={directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={editorialCopy.hero.primaryCta.ariaLabel}
-                  className="woodcut-btn woodcut-btn-primary mt-3 w-full text-sm whitespace-nowrap"
-                >
-                  <MapPin size={18} weight="bold" aria-hidden="true" />
-                  <span>{editorialCopy.hero.primaryCta.label}</span>
-                </a>
               </div>
             </CarvedWoodblockFrame>
           </div>

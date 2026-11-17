@@ -3,6 +3,7 @@ import { List, MapPin, X } from '@phosphor-icons/react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
+import { AppLink, assetUrl, usePathname } from '../../lib/router';
 import { getLiveStoreStatus, type LiveStoreStatus } from '../../lib/seasonalHoursEngine';
 import { CottonPaperGrain } from '../ui/WoodcutTextures';
 
@@ -10,10 +11,9 @@ const WOODCUT_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [liveStatus, setLiveStatus] = useState<LiveStoreStatus>(() =>
-    getLiveStoreStatus(),
-  );
+  const [liveStatus, setLiveStatus] = useState<LiveStoreStatus>(() => getLiveStoreStatus());
   const prefersReducedMotion = useReducedMotion();
+  const pathname = usePathname();
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -34,52 +34,58 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   const directionsUrl = brandData.location.googleMapsDirectionsUrl;
+  const compactStatusLabel = liveStatus.isOpen ? 'Open Now' : 'Closed';
 
   return (
     <header className="surface-woodblock-indigo sticky top-0 z-50 border-b-2 border-[#E4D9FF]/35">
       <CottonPaperGrain variant="dark" opacity={0.04} />
 
-      <div className="relative z-10 mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        {/* Brand Emblem & Wordmark */}
-        <a
-          href="#top"
-          className="focus-on-dark inline-flex min-h-[44px] shrink-0 items-center gap-3 rounded-sm pr-2"
+      <div className="relative z-10 mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-6 lg:px-8">
+        {/* Brand Crest & Wordmark */}
+        <AppLink
+          to="/"
+          className="focus-on-dark inline-flex min-h-[44px] min-w-0 shrink-0 items-center gap-2 rounded-sm pr-1 sm:gap-3 sm:pr-2"
         >
-          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-sm border-2 border-[#E4D9FF] bg-[#FAFAFF] shadow-[2px_2px_0px_#E4D9FF]">
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-sm border-2 border-[#E4D9FF] bg-[#FAFAFF] shadow-[2px_2px_0px_#E4D9FF] sm:h-11 sm:w-11">
             <img
-              src="./assets/brand/logo-official.webp"
+              src={assetUrl('assets/brand/logo-official.webp')}
               alt={editorialCopy.hero.logoAlt}
               className="h-full w-full object-cover"
               width={44}
               height={44}
             />
           </span>
-          <span className="font-display text-lg font-extrabold tracking-tight whitespace-nowrap text-[#FAFAFF] sm:text-xl">
+          <span className="font-display text-base font-extrabold tracking-tight whitespace-nowrap text-[#FAFAFF] sm:text-xl">
             {editorialCopy.navigation.brandLabel}
           </span>
-        </a>
+        </AppLink>
 
-        {/* Single-Line Desktop Navigation */}
-        <nav
-          aria-label="Primary navigation"
-          className="hidden items-center gap-1 lg:flex xl:gap-2"
-        >
-          {editorialCopy.navigation.links.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className="focus-on-dark inline-flex min-h-[44px] items-center rounded-sm px-2.5 text-sm font-medium whitespace-nowrap text-[#FAFAFF] transition-colors duration-200 hover:bg-[#273469] hover:text-[#E4D9FF]"
-            >
-              {link.label}
-            </a>
-          ))}
+        {/* Single-Line Desktop Navigation (>= 1024px) */}
+        <nav aria-label="Primary navigation" className="hidden items-center gap-1 lg:flex xl:gap-2">
+          {editorialCopy.navigation.links.map((link) => {
+            const isActiveRoute = link.to === '/menu' && pathname === '/menu';
+            return (
+              <AppLink
+                key={link.id}
+                to={link.to}
+                aria-current={isActiveRoute ? 'page' : undefined}
+                className={`focus-on-dark inline-flex min-h-[44px] items-center rounded-sm px-3 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
+                  isActiveRoute
+                    ? 'bg-[#E4D9FF] font-bold text-[#1E2749]'
+                    : 'text-[#FAFAFF] hover:bg-[#273469] hover:text-[#E4D9FF]'
+                }`}
+              >
+                {link.label}
+              </AppLink>
+            );
+          })}
         </nav>
 
-        {/* Live Cody Status Pill + Primary Directions CTA + Mobile Menu Toggle */}
-        <div className="flex shrink-0 items-center gap-2.5">
-          <a
-            href="#hours"
-            aria-label={`Current store status in Cody, Wyoming: ${liveStatus.statusBadgeText}`}
+        {/* Live Status Pill + Single Directions CTA + Hamburger Toggle (< 1024px) */}
+        <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+          <AppLink
+            to="/#hours"
+            aria-label={`Current store status: ${compactStatusLabel}`}
             className="focus-on-dark hidden min-h-[44px] items-center gap-2 rounded-sm border border-[#E4D9FF]/50 bg-[#273469] px-3 py-1.5 text-xs font-medium whitespace-nowrap text-[#FAFAFF] transition-colors duration-200 hover:border-[#E4D9FF] hover:bg-[#575E8F] xl:inline-flex"
           >
             <span
@@ -89,15 +95,15 @@ export function Navbar() {
               }`}
             />
             <span className="font-mono tracking-tight">
-              {liveStatus.isOpen ? 'Open in Cody' : 'Closed'} · {liveStatus.codyTimeLabel}
+              {compactStatusLabel} · {liveStatus.codyTimeLabel}
             </span>
-          </a>
+          </AppLink>
 
           <a
             href={directionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={editorialCopy.hero.primaryCta.ariaLabel}
+            aria-label={editorialCopy.navigation.primaryCtaAria}
             className="woodcut-btn woodcut-btn-on-dark hidden text-sm whitespace-nowrap sm:inline-flex"
           >
             <MapPin size={18} weight="bold" aria-hidden="true" />
@@ -125,7 +131,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Accessible Mobile Drawer */}
+      {/* Accessible Mobile & Tablet Drawer (< 1024px) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -138,7 +144,7 @@ export function Navbar() {
           >
             <CottonPaperGrain variant="dark" opacity={0.045} />
             <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-3">
-              <div className="flex items-center justify-between rounded-sm border border-[#E4D9FF]/45 bg-[#1E2749] px-3.5 py-2.5 text-sm text-[#FAFAFF]">
+              <div className="flex flex-wrap items-center justify-between gap-2 rounded-sm border border-[#E4D9FF]/45 bg-[#1E2749] px-3.5 py-2.5 text-sm text-[#FAFAFF]">
                 <span className="inline-flex items-center gap-2 font-medium">
                   <span
                     aria-hidden="true"
@@ -146,33 +152,39 @@ export function Navbar() {
                       liveStatus.isOpen ? 'bg-[#E4D9FF]' : 'bg-[#8687B4]'
                     }`}
                   />
-                  <span>{liveStatus.statusBadgeText}</span>
+                  <span>{compactStatusLabel}</span>
                 </span>
-                <span className="font-mono text-xs text-[#E4D9FF]">
-                  {liveStatus.codyTimeLabel}
-                </span>
+                <span className="font-mono text-xs text-[#E4D9FF]">{liveStatus.codyTimeLabel}</span>
               </div>
 
               <nav aria-label="Mobile navigation" className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-                {editorialCopy.navigation.links.map((link) => (
-                  <a
-                    key={link.id}
-                    href={`#${link.id}`}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="focus-on-dark flex min-h-[44px] items-center rounded-sm border border-[#E4D9FF]/25 bg-[#1E2749]/75 px-4 text-base font-medium text-[#FAFAFF] transition-colors duration-150 hover:border-[#E4D9FF] hover:bg-[#575E8F]"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {editorialCopy.navigation.links.map((link) => {
+                  const isActiveRoute = link.to === '/menu' && pathname === '/menu';
+                  return (
+                    <AppLink
+                      key={link.id}
+                      to={link.to}
+                      aria-current={isActiveRoute ? 'page' : undefined}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`focus-on-dark flex min-h-[44px] items-center rounded-sm border px-4 text-base font-medium transition-colors duration-150 ${
+                        isActiveRoute
+                          ? 'border-[#E4D9FF] bg-[#E4D9FF] font-bold text-[#1E2749]'
+                          : 'border-[#E4D9FF]/25 bg-[#1E2749]/75 text-[#FAFAFF] hover:border-[#E4D9FF] hover:bg-[#575E8F]'
+                      }`}
+                    >
+                      {link.label}
+                    </AppLink>
+                  );
+                })}
               </nav>
 
               <a
                 href={directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={editorialCopy.hero.primaryCta.ariaLabel}
+                aria-label={editorialCopy.navigation.primaryCtaAria}
                 onClick={() => setMobileMenuOpen(false)}
-                className="woodcut-btn woodcut-btn-on-dark mt-1 w-full text-base whitespace-nowrap"
+                className="woodcut-btn woodcut-btn-on-dark mt-1 w-full text-base"
               >
                 <MapPin size={19} weight="bold" aria-hidden="true" />
                 <span>{editorialCopy.navigation.primaryCta}</span>
