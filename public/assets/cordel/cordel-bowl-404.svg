@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" fill="none" role="img" aria-labelledby="cordel-bowl-404-title">
+  <title id="cordel-bowl-404-title">Cordel woodcut illustration of a handcrafted acai bowl with banana slices, strawberries, blueberries, granola, and spoon</title>
+  <defs>
+    <pattern id="bowl404-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-32)">
+      <path d="M0 0 Q2 3.5 0 7" stroke="#1E2749" stroke-width="1.6" />
+    </pattern>
+    <pattern id="bowl404-sorbet" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <path d="M0 6 Q6 3 12 6" stroke="#1E2749" stroke-width="1.4" opacity="0.45" />
+    </pattern>
+  </defs>
+
+  <!-- Organic hand-carved cast shadow beneath bowl -->
+  <ellipse cx="160" cy="272" rx="108" ry="18" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.5" />
+  <path d="M74 274 Q160 282 246 274" stroke="#575E8F" stroke-width="1.6" stroke-dasharray="14 8" />
+
+  <!-- Carved Wooden Spoon Resting Behind Right Rim -->
+  <g id="cordel-spoon">
+    <path d="M214 106 L278 30 C286 21 297 30 288 40 L228 118 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="3.2" stroke-linejoin="round" />
+    <path d="M226 98 L278 38" stroke="#575E8F" stroke-width="1.8" stroke-linecap="round" />
+    <ellipse cx="206" cy="116" rx="22" ry="14" transform="rotate(-40 206 116)" fill="#FAFAFF" stroke="#1E2749" stroke-width="3" />
+    <ellipse cx="206" cy="116" rx="14" ry="8" transform="rotate(-40 206 116)" fill="#8687B4" opacity="0.55" />
+  </g>
+
+  <!-- Footed Ceramic Vessel (3/4 + Top View) -->
+  <path d="M108 242 L116 268 C134 274 186 274 204 268 L212 242 Z" fill="#575E8F" stroke="#1E2749" stroke-width="3.2" stroke-linejoin="round" />
+  <path d="M36 132 C40 218 88 256 160 256 C232 256 280 218 284 132 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="4" stroke-linejoin="round" />
+  <!-- Woodcut shaded right & bottom crescent on bowl body -->
+  <path d="M188 156 C206 194 190 232 160 252 C226 248 274 210 280 134 C248 150 220 156 188 156 Z" fill="#E4D9FF" />
+  <path d="M188 156 C206 194 190 232 160 252 C226 248 274 210 280 134 C248 150 220 156 188 156 Z" fill="url(#bowl404-hatch)" opacity="0.52" />
+  <!-- Curved contour gouges on ceramic bowl -->
+  <path d="M56 168 Q114 194 188 184" stroke="#575E8F" stroke-width="2" stroke-linecap="round" />
+  <path d="M72 198 Q138 226 226 208" stroke="#1E2749" stroke-width="2" stroke-linecap="round" />
+  <path d="M98 228 Q160 246 222 228" stroke="#575E8F" stroke-width="1.8" stroke-linecap="round" />
+
+  <!-- Outer & Inner Ceramic Rim Ellipse -->
+  <ellipse cx="160" cy="132" rx="124" ry="52" fill="#FAFAFF" stroke="#1E2749" stroke-width="4" />
+  <ellipse cx="160" cy="132" rx="112" ry="44" fill="#273469" stroke="#1E2749" stroke-width="2.8" />
+  <ellipse cx="160" cy="132" rx="110" ry="42" fill="url(#bowl404-sorbet)" />
+
+  <!-- Swirled Acai Sorbet Crest -->
+  <path d="M62 134 C94 110 150 106 208 122 C240 130 256 138 264 130" stroke="#E4D9FF" stroke-width="2.2" stroke-linecap="round" opacity="0.65" />
+  <path d="M74 146 C118 164 198 166 248 144" stroke="#8687B4" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Granola Clusters Mound -->
+  <g id="bowl404-granola">
+    <path d="M114 128 C110 116 122 106 136 108 C144 102 158 106 160 118 C164 128 152 138 136 138 C122 140 116 134 114 128 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.4" />
+    <path d="M148 140 C148 128 162 120 176 124 C188 124 196 134 190 146 C184 156 164 158 154 150 C148 146 146 144 148 140 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.4" />
+    <ellipse cx="198" cy="144" rx="12" ry="7" transform="rotate(-14 198 144)" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.2" />
+    <ellipse cx="122" cy="146" rx="11" ry="6.5" transform="rotate(18 122 146)" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.2" />
+    <path d="M124 124 L144 120 M162 136 L180 138" stroke="#575E8F" stroke-width="1.7" stroke-linecap="round" />
+  </g>
+
+  <!-- Sliced Banana Rounds with Y-Carpel Marks (Left Arc) -->
+  <g id="bowl404-bananas">
+    <g transform="translate(86, 126) rotate(-18)">
+      <ellipse cx="0" cy="0" rx="22" ry="15" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.8" />
+      <ellipse cx="0" cy="0" rx="15" ry="10" fill="#E4D9FF" stroke="#575E8F" stroke-width="1.3" />
+      <path d="M0 0 L0 -6 M0 0 L-5 4 M0 0 L5 4" stroke="#30343F" stroke-width="1.8" stroke-linecap="round" />
+    </g>
+    <g transform="translate(106, 106) rotate(-8)">
+      <ellipse cx="0" cy="0" rx="20" ry="13.5" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.8" />
+      <ellipse cx="0" cy="0" rx="13" ry="8.5" fill="#E4D9FF" stroke="#575E8F" stroke-width="1.2" />
+      <path d="M0 0 L0 -5 M0 0 L-4 3.5 M0 0 L4 3.5" stroke="#30343F" stroke-width="1.7" stroke-linecap="round" />
+    </g>
+    <g transform="translate(132, 92) rotate(6)">
+      <ellipse cx="0" cy="0" rx="18" ry="12" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.6" />
+      <path d="M0 0 L0 -4.5 M0 0 L-3.5 3 M0 0 L3.5 3" stroke="#30343F" stroke-width="1.6" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- Halved Woodcut Strawberries (Top-Right) -->
+  <g id="bowl404-strawberries">
+    <g transform="translate(178, 92) rotate(14)">
+      <path d="M-16 -10 C-20 8 -8 24 0 28 C8 24 20 8 16 -10 C10 -14 -10 -14 -16 -10 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.8" stroke-linejoin="round" />
+      <path d="M-10 -12 C-6 -19 6 -19 10 -12 C4 -10 -4 -10 -10 -12 Z" fill="#575E8F" stroke="#1E2749" stroke-width="2" />
+      <g fill="#1E2749">
+        <circle cx="-6" cy="0" r="1.6" />
+        <circle cx="5" cy="1" r="1.6" />
+        <circle cx="0" cy="10" r="1.6" />
+        <circle cx="-4" cy="16" r="1.4" />
+      </g>
+    </g>
+    <g transform="translate(218, 114) rotate(32)">
+      <path d="M-14 -8 C-16 8 -6 20 0 24 C6 20 16 8 14 -8 C8 -12 -8 -12 -14 -8 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.6" stroke-linejoin="round" />
+      <path d="M-5 2 C-1 -3 4 -2 5 4 C4 10 -1 12 -5 8 Z" fill="#8687B4" />
+    </g>
+  </g>
+
+  <!-- Plump Blueberries with 5-Point Crowns (Front & Right) -->
+  <g id="bowl404-blueberries">
+    <circle cx="226" cy="134" r="14" fill="#575E8F" stroke="#1E2749" stroke-width="2.6" />
+    <circle cx="229" cy="128" r="4.5" fill="#1E2749" stroke="#FAFAFF" stroke-width="1.2" />
+    <circle cx="248" cy="124" r="12" fill="#8687B4" stroke="#1E2749" stroke-width="2.5" />
+    <circle cx="250" cy="119" r="3.5" fill="#1E2749" />
+    <circle cx="152" cy="110" r="13" fill="#575E8F" stroke="#1E2749" stroke-width="2.5" />
+    <circle cx="155" cy="105" r="4" fill="#E4D9FF" />
+    <circle cx="98" cy="144" r="12" fill="#8687B4" stroke="#1E2749" stroke-width="2.4" />
+    <circle cx="101" cy="139" r="3.5" fill="#FAFAFF" />
+  </g>
+
+  <!-- Honey Drizzle Ribbon & Seed Stipples -->
+  <path d="M96 122 Q130 144 166 126 T232 136" stroke="#1E2749" stroke-width="5.5" stroke-linecap="round" />
+  <path d="M96 122 Q130 144 166 126 T232 136" stroke="#E4D9FF" stroke-width="2.2" stroke-linecap="round" />
+  <g fill="#FAFAFF">
+    <circle cx="144" cy="152" r="2" />
+    <circle cx="164" cy="158" r="2" />
+    <circle cx="184" cy="154" r="2" />
+    <circle cx="210" cy="150" r="2" />
+  </g>
+</svg>

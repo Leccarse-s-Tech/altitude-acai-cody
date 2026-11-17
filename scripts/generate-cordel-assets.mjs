@@ -97,7 +97,7 @@ const GEMINI_PROMPTS = [
     height: 810,
     aspectRatio: '16:9',
     prompt:
-      'Brazilian Cordel woodcut printmaking (xilogravura) blended with Wyoming Absaroka mountain landscape at dawn, dramatic carved indigo and ghost-white mountain ridges, rising crescent sun rays, botanical acai palm berry branches framing the foreground, fine cotton paper texture, strictly monochrome indigo ink palette #1E2749, #273469, #575E8F, #8687B4, #E4D9FF, #FAFAFF, #30343F, zero text, zero watermarks, printmaker editorial illustration.',
+      'Brazilian Cordel woodcut printmaking (xilogravura) blended with Wyoming Absaroka mountain landscape, dramatic carved indigo and ghost-white mountain ridges, simple rustic natural sun disc partially covered by horizontal wavy organic clouds (strictly NO radial sunbeams or sunburst rays), curved organic woodcut sky and mountain hatching, pine trees and botanical acai/blueberry foliage framing the bottom corners, fine cotton paper texture, strictly indigo palette #1E2749, #273469, #575E8F, #8687B4, #E4D9FF, #FAFAFF, #30343F, zero text, zero watermarks, printmaker editorial illustration.',
   },
   {
     outDir: BRAND_DIR,

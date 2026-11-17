@@ -170,6 +170,7 @@ export interface CarvedWoodblockFrameProps {
   showCornerMarks?: boolean;
   showWoodgrain?: boolean;
   className?: string;
+  contentClassName?: string;
 }
 
 /**
@@ -182,6 +183,7 @@ export function CarvedWoodblockFrame({
   showCornerMarks = true,
   showWoodgrain = false,
   className = '',
+  contentClassName = 'h-full',
 }: CarvedWoodblockFrameProps) {
   const surfaceClass =
     variant === 'dark'
@@ -195,7 +197,7 @@ export function CarvedWoodblockFrame({
       <CottonPaperGrain variant={variant} opacity={0.045} />
       {showWoodgrain && <WoodgrainOverlay variant={variant} opacity={0.1} />}
       {showCornerMarks && <WoodcutCornerMarks variant={variant} />}
-      <div className="relative z-10">{children}</div>
+      <div className={`relative z-10 ${contentClassName}`}>{children}</div>
     </div>
   );
 }

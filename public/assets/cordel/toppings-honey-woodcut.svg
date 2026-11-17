@@ -6,10 +6,8 @@
     </pattern>
   </defs>
 
-  <!-- Cotton paper ground & Cordel frame -->
-  <rect x="0" y="0" width="1000" height="320" fill="#FAFAFF" />
-  <rect x="10" y="10" width="980" height="300" fill="none" stroke="#1E2749" stroke-width="3" />
-  <rect x="17" y="17" width="966" height="286" fill="none" stroke="#8687B4" stroke-width="1.4" />
+  <!-- Transparent canvas for frameless background integration -->
+  <g id="toppings-honey-specimens">
 
   <!-- 1. LAYERED ACAI BOWL CARVING (x ~ 165) -->
   <g id="woodcut-acai-bowl" transform="translate(165, 178)">
@@ -127,8 +125,5 @@
     </g>
   </g>
 
-  <!-- Decorative Cordel Rule Separating Scene & Specimens -->
-  <line x1="518" y1="34" x2="518" y2="286" stroke="#8687B4" stroke-width="1.8" stroke-dasharray="8 6" />
-  <line x1="518" y1="160" x2="964" y2="160" stroke="#8687B4" stroke-width="1.6" stroke-dasharray="8 6" />
-  <polygon points="518,150 528,160 518,170 508,160" fill="#1E2749" stroke="#FAFAFF" stroke-width="2" />
+  </g>
 </svg>

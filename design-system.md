@@ -98,6 +98,15 @@ Self-hosted variable `.woff2` families loaded locally via `@fontsource-variable/
 
 ---
 
+### Semiotic & Cordel Illustration Guardrails (CRITICAL)
+
+1. **Absolute Ban on Radial Sunbeams / Sunbursts:** Straight rays radiating outward from a sun center ("sunburst" / "rising sun" beams) are strictly prohibited across all SVG and raster plates.
+2. **Natural Sky & Sun Disc:** Render the sun as a simple, rustic, natural disc (`#FAFAFF` / `#E4D9FF`) partially veiled or integrated with asymmetric, horizontal, wavy, organic clouds.
+3. **Organic Woodcut Hatching:** Sky and mountain shading must use curved, hand-carved, imperfect Bézier gouge lines characteristic of traditional Brazilian Cordel and woodcut relief prints—never rigid straight parallel sunburst lines.
+4. **Local Wyoming & Açaí Base Flora:** Frame landscape bases with Cody evergreen pine trees, layered woodland foliage, and botanical açaí/blueberry branches.
+
+---
+
 ### Spacing, Grid & Touch Targets
 
 - **8pt Spatial Rhythm:** `4px / 8px / 12px / 16px / 24px / 32px / 48px / 64px / 96px`.

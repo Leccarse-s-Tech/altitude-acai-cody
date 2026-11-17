@@ -9,13 +9,8 @@
     </pattern>
   </defs>
 
-  <!-- Cotton paper & double Cordel print frame -->
-  <rect x="0" y="0" width="1200" height="280" fill="#FAFAFF" />
-  <rect x="10" y="10" width="1180" height="260" fill="none" stroke="#1E2749" stroke-width="3" />
-  <rect x="17" y="17" width="1166" height="246" fill="none" stroke="#8687B4" stroke-width="1.4" />
-
-  <!-- Continuous carved botanical vine connecting all 7 specimens -->
-  <path d="M40 228 Q220 205 400 228 T760 228 T1160 228" stroke="#575E8F" stroke-width="2" stroke-dasharray="10 6" fill="none" />
+  <!-- Transparent cotton canvas for frameless background integration -->
+  <g id="frieze-specimens">
 
   <!-- 1. STRAWBERRIES (x ~ 105) -->
   <g id="woodcut-strawberry" transform="translate(105, 130)">
@@ -186,13 +181,5 @@
     <path d="M-38 -32 L-16 -44" stroke="#E4D9FF" stroke-width="1.4" />
   </g>
 
-  <!-- Cordel diamond dividers -->
-  <g fill="#1E2749">
-    <polygon points="186,228 192,222 198,228 192,234" />
-    <polygon points="344,228 350,222 356,228 350,234" />
-    <polygon points="506,228 512,222 518,228 512,234" />
-    <polygon points="666,228 672,222 678,228 672,234" />
-    <polygon points="828,228 834,222 840,228 834,234" />
-    <polygon points="996,228 1002,222 1008,228 1002,234" />
   </g>
 </svg>
