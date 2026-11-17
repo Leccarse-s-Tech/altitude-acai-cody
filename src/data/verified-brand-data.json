@@ -1,0 +1,594 @@
+{
+  "metadata": {
+    "brandName": "Altitude Açaí",
+    "verifiedDate": "2026-11-17",
+    "sources": [
+      "https://www.altitudeacai.com/",
+      "https://www.altitudeacai.com/about-us",
+      "https://www.altitudeacai.com/menu",
+      "https://www.altitudeacai.com/store-location",
+      "https://www.altitudeacai.com/food-truck",
+      "https://www.altitudeacai.com/social-media",
+      "https://www.altitudeacai.com/uploads/b/afcdd9d0-f56e-11f0-817c-43ba668aacfa/0188a580-3fe1-11f1-8c8a-b305250ee03b.pdf",
+      "https://www.instagram.com/altitude_acai",
+      "https://web.facebook.com/people/Altitude-A%C3%A7a%C3%AD/61561749391480/"
+    ],
+    "pricingStripped": true
+  },
+  "brand": {
+    "name": "Altitude Açaí",
+    "siteTitle": "Altitude Acai",
+    "tagline": "Fun, refreshing and health-conscious!",
+    "websiteUrl": "https://www.altitudeacai.com/",
+    "menuPdfUrl": "https://www.altitudeacai.com/uploads/b/afcdd9d0-f56e-11f0-817c-43ba668aacfa/0188a580-3fe1-11f1-8c8a-b305250ee03b.pdf",
+    "foundedYear": 2024,
+    "founders": [
+      "Megan McDonald",
+      "Brandon McDonald"
+    ],
+    "storyHeadline": "Fun, refreshing and health-conscious!",
+    "story": "In 2024, after moving to Cody, Megan put the idea of an Açaí Bowl Food Truck into action. Balancing a heavy workload—raising five children, relocating to a new state, continuing to work in Montana, and building a new business—she poured her time, energy, and creativity into launching Altitude Açaí. With hands-on support from her husband, they brought the food truck and now a Brick and Mortar to life, and began serving at local summer events and the Park County community all year long."
+  },
+  "location": {
+    "formattedAddress": "1302 Beck Avenue, Suite C, Cody, WY 82414",
+    "street": "1302 Beck Avenue",
+    "suite": "Suite C",
+    "building": "Hart Mountain Suites",
+    "city": "Cody",
+    "county": "Park County",
+    "state": "Wyoming",
+    "stateCode": "WY",
+    "postalCode": "82414",
+    "country": "United States",
+    "countryCode": "US",
+    "timeZone": "America/Denver",
+    "coordinates": {
+      "lat": 44.52474,
+      "lng": -109.06195
+    },
+    "menuPageCoordinates": {
+      "lat": 44.52475,
+      "lng": -109.06169
+    },
+    "googleMapsDirectionsUrl": "https://www.google.com/maps/dir/?api=1&destination=1302+Beck+Avenue+Suite+C,+Cody,+WY+82414",
+    "googleMapsSearchUrl": "https://www.google.com/maps/search/?api=1&query=1302+Beck+Avenue+Suite+C,+Cody,+WY+82414",
+    "googleMapsEmbedUrl": "https://maps.google.com/maps?q=1302+Beck+Avenue+Suite+C,+Cody,+WY+82414&t=&z=16&ie=UTF8&iwloc=&output=embed"
+  },
+  "contact": {
+    "phone": "307-527-0812",
+    "phoneDisplay": "(307) 527-0812",
+    "phoneHref": "tel:+13075270812",
+    "email": "altitudeacai@gmail.com",
+    "emailHref": "mailto:altitudeacai@gmail.com"
+  },
+  "social": {
+    "instagram": {
+      "handle": "@altitude_acai",
+      "url": "https://www.instagram.com/altitude_acai"
+    },
+    "facebook": {
+      "name": "Altitude Açaí",
+      "url": "https://web.facebook.com/people/Altitude-A%C3%A7a%C3%AD/61561749391480/",
+      "profileUrl": "https://www.facebook.com/profile.php?id=61561749391480"
+    }
+  },
+  "bowlAnatomy": {
+    "heading": "What's in an Açaí Bowl?",
+    "siteHeading": "What's in an Acai Bowl???",
+    "copy": "An Açaí Bowl is your ultimate build-your-own adventure in a bowl—starting with our delicious, nutrient-rich superfood base: smooth, refreshing açaí sorbet. From there, it's all about YOU. Layer in your choice of CRUNCH, your favorite fruits, mouthwatering toppings, and a drizzle of sauce to finish it off. Every bowl is a perfect mix of flavor, texture, and feel-good energy—fresh, fun, and made exactly how you like it.",
+    "layersBottomToTop": [
+      {
+        "order": 1,
+        "id": "acai-sorbet",
+        "name": "ACAI SORBET",
+        "displayName": "Açaí Sorbet",
+        "role": "Base",
+        "description": "Smooth, refreshing nutrient-rich superfood açaí sorbet base"
+      },
+      {
+        "order": 2,
+        "id": "crunch",
+        "name": "CRUNCH",
+        "displayName": "Crunch",
+        "role": "Granola Layer",
+        "description": "Granola base included in every bowl"
+      },
+      {
+        "order": 3,
+        "id": "favorite-fruit",
+        "name": "FAVORITE FRUIT",
+        "displayName": "Favorite Fruit",
+        "role": "Fresh Fruit Layer",
+        "description": "Choice of up to 3 fresh fruits"
+      },
+      {
+        "order": 4,
+        "id": "topping",
+        "name": "TOPPING",
+        "displayName": "Topping",
+        "role": "Toppings Layer",
+        "description": "Choice of up to 2 seeds, nuts, shavings, or dry toppings"
+      },
+      {
+        "order": 5,
+        "id": "sauce",
+        "name": "SAUCE",
+        "displayName": "Sauce",
+        "role": "Finish Layer",
+        "description": "Drizzle of 1 sauce or nut butter to finish"
+      }
+    ]
+  },
+  "menu": {
+    "sizes": [
+      "12 oz Bowl",
+      "16 oz Bowl"
+    ],
+    "baseRule": "All bowls start with Açaí Sorbet Base and Granola",
+    "pdfBaseRule": "All bowls start with ACAI BASE and GRANOLA",
+    "signatureBowls": [
+      {
+        "id": "mountain-man",
+        "name": "Mountain Man",
+        "ingredients": [
+          "Strawberries",
+          "Bananas",
+          "Blueberries",
+          "Chia Seeds",
+          "Hemp Hearts",
+          "Peanut Butter",
+          "Honey"
+        ]
+      },
+      {
+        "id": "montana-mama",
+        "name": "Montana Mama",
+        "ingredients": [
+          "Pineapples",
+          "Strawberries",
+          "Blackberries",
+          "Coconut Shavings",
+          "Dark Chocolate Shavings",
+          "Honey"
+        ]
+      },
+      {
+        "id": "goldilocks",
+        "name": "Goldilocks",
+        "ingredients": [
+          "Mangos",
+          "Pineapples",
+          "Bananas",
+          "Coconut Shavings",
+          "Almonds",
+          "Dark Chocolate Sauce"
+        ]
+      },
+      {
+        "id": "bear-attack",
+        "name": "Bear Attack",
+        "ingredients": [
+          "Blackberries",
+          "Raspberries",
+          "Strawberries",
+          "Pumpkin Seeds",
+          "Bee Pollen",
+          "Honey"
+        ]
+      },
+      {
+        "id": "t-rux",
+        "name": "T-Rux",
+        "ingredients": [
+          "Extra Bananas",
+          "Blueberries",
+          "Rolled Oats",
+          "Graham Crackers",
+          "Nutella"
+        ]
+      },
+      {
+        "id": "squatch-protein-bowl",
+        "name": "SQUATch Protein Bowl",
+        "ingredients": [
+          "Protein Granola",
+          "Blackberries/Raspberries",
+          "Pumpkin Seeds",
+          "Hemp Hearts",
+          "Peanut Butter",
+          "Honey"
+        ]
+      }
+    ],
+    "createYourOwn": {
+      "baseRule": "All bowls start with Açaí Sorbet Base and Granola",
+      "rules": {
+        "fruitsMax": 3,
+        "toppingsMax": 2,
+        "saucesMax": 1,
+        "toppingsNote": "Granola Base Included",
+        "summary": "Pick up to: 3 Fruits, 2 Toppings, 1 Sauce"
+      },
+      "fruits": [
+        "Strawberries",
+        "Blueberries",
+        "Blackberries",
+        "Mango",
+        "Pineapple",
+        "Bananas",
+        "Raspberries"
+      ],
+      "toppings": [
+        "Hemp Hearts",
+        "Coconut Shavings",
+        "Slivered Almonds",
+        "Dark Chocolate Shavings",
+        "Pumpkin Seeds",
+        "Bee Pollen",
+        "Chia Seeds",
+        "Rolled Oats",
+        "Graham Crackers",
+        "Flax Seeds",
+        "Protein Granola Upgrade"
+      ],
+      "sauces": [
+        "Dark Chocolate",
+        "Peanut Butter",
+        "Almond Butter",
+        "Nutella",
+        "Honey"
+      ]
+    },
+    "specialtyDrinks": [
+      "Açaí Italian Soda Floats"
+    ]
+  },
+  "seasonalSchedules": {
+    "timeZone": "America/Denver",
+    "instagramNotice": "Seasonal hours automatically updated for Cody, WY — check our Instagram @altitude_acai for weather or holiday updates",
+    "seasons": {
+      "summer": {
+        "id": "summer",
+        "label": "Summer Hours",
+        "subtitle": "Daily Morning & Weekend Evenings",
+        "summary": "7 days a week 7:30 AM – 2:30 PM, plus Friday & Saturday evenings 5:00 PM – 8:00 PM",
+        "storeLocationTransitionNote": "Note: The /store-location page block currently labeled 'Summer Hours' displays the off-season Wednesday–Saturday 8:00 AM – 2:00 PM schedule (Sunday–Tuesday CLOSED).",
+        "days": {
+          "Sunday": {
+            "isOpen": true,
+            "display": "7:30 AM - 2:30 PM",
+            "intervals": [
+              { "open": "07:30", "close": "14:30" }
+            ]
+          },
+          "Monday": {
+            "isOpen": true,
+            "display": "7:30 AM - 2:30 PM",
+            "intervals": [
+              { "open": "07:30", "close": "14:30" }
+            ]
+          },
+          "Tuesday": {
+            "isOpen": true,
+            "display": "7:30 AM - 2:30 PM",
+            "intervals": [
+              { "open": "07:30", "close": "14:30" }
+            ]
+          },
+          "Wednesday": {
+            "isOpen": true,
+            "display": "7:30 AM - 2:30 PM",
+            "intervals": [
+              { "open": "07:30", "close": "14:30" }
+            ]
+          },
+          "Thursday": {
+            "isOpen": true,
+            "display": "7:30 AM - 2:30 PM",
+            "intervals": [
+              { "open": "07:30", "close": "14:30" }
+            ]
+          },
+          "Friday": {
+            "isOpen": true,
+            "display": "7:30 AM - 2:30 PM & 5:00 PM - 8:00 PM",
+            "intervals": [
+              { "open": "07:30", "close": "14:30" },
+              { "open": "17:00", "close": "20:00" }
+            ]
+          },
+          "Saturday": {
+            "isOpen": true,
+            "display": "7:30 AM - 2:30 PM & 5:00 PM - 8:00 PM",
+            "intervals": [
+              { "open": "07:30", "close": "14:30" },
+              { "open": "17:00", "close": "20:00" }
+            ]
+          }
+        }
+      },
+      "fall": {
+        "id": "fall",
+        "label": "Fall Hours",
+        "subtitle": "Starting in October",
+        "summary": "Wednesday–Saturday 8:00 AM – 2:00 PM; Sunday 11:00 AM – 2:00 PM; Monday & Tuesday CLOSED",
+        "source": "https://www.altitudeacai.com/menu",
+        "days": {
+          "Sunday": {
+            "isOpen": true,
+            "display": "11:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "11:00", "close": "14:00" }
+            ]
+          },
+          "Monday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Tuesday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Wednesday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Thursday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Friday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Saturday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          }
+        }
+      },
+      "winter": {
+        "id": "winter",
+        "label": "Winter Hours",
+        "subtitle": "Official Winter Schedule",
+        "summary": "Wednesday–Saturday 8:00 AM – 2:00 PM; Sunday, Monday & Tuesday CLOSED",
+        "source": "Official New Winter Hours graphic on https://www.altitudeacai.com/",
+        "days": {
+          "Sunday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Monday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Tuesday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Wednesday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Thursday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Friday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Saturday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          }
+        }
+      },
+      "spring": {
+        "id": "spring",
+        "label": "Spring Hours",
+        "subtitle": "Off-Peak Storefront & Spring Food Truck Kickoff",
+        "summary": "Wednesday–Saturday 8:00 AM – 2:00 PM; Sunday, Monday & Tuesday CLOSED (plus scheduled Spring Food Truck events starting late April)",
+        "verificationNote": "No dedicated Spring-only storefront schedule was published on altitudeacai.com, Instagram @altitude_acai, or Facebook. Storefront applies the verified Wednesday–Saturday 8:00 AM – 2:00 PM schedule until Summer hours begin, while Food Truck tournament events launch April 30.",
+        "instagramNotice": "Seasonal hours automatically updated for Cody, WY — check our Instagram @altitude_acai for weather or holiday updates",
+        "days": {
+          "Sunday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Monday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Tuesday": {
+            "isOpen": false,
+            "display": "CLOSED",
+            "intervals": []
+          },
+          "Wednesday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Thursday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Friday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          },
+          "Saturday": {
+            "isOpen": true,
+            "display": "8:00 AM - 2:00 PM",
+            "intervals": [
+              { "open": "08:00", "close": "14:00" }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "specialHolidayNotices": [
+    {
+      "id": "veterans-day",
+      "title": "Veterans Day — Honoring Those Who Serve",
+      "date": "Wednesday, November 11th",
+      "hours": "11:30 AM - 2:00 PM",
+      "details": "Free Acai Bowl to every Veteran and Active Duty Military Member! Thank you for your service!",
+      "flyerImageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_1090_1794279629.PNG"
+    },
+    {
+      "id": "thanksgiving-break",
+      "title": "Thanksgiving Break",
+      "status": "Closed for Thanksgiving Break",
+      "reopening": "Reopening Wednesday, December 2",
+      "normalHours": "8:00 AM - 2:00 PM",
+      "flyerImageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_0991_1794279795.PNG"
+    }
+  ],
+  "foodTruck": {
+    "pageTitle": "Food Truck Hours and Event Locations",
+    "sourceUrl": "https://www.altitudeacai.com/food-truck",
+    "heroImageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_4456_1776963347.jpeg",
+    "events": [
+      {
+        "id": "cody-concerts-in-the-park",
+        "name": "Cody Concerts in the Park",
+        "scheduleSummary": "Thursdays at 5:00 PM starting in June (June 18 to August 13, 2026, excluding July 2)",
+        "dates": [
+          "June 18",
+          "June 25",
+          "July 9",
+          "July 16",
+          "July 23",
+          "July 30",
+          "August 6",
+          "August 13"
+        ],
+        "venue": "City Park",
+        "address": "908 Sheridan Ave, Cody, WY 82414",
+        "description": "Enjoy a family-friendly evening with live music at Cody Concerts in the Park, where outdoor entertainment meets a vibrant community atmosphere. Perfect for all ages, this event offers an unforgettable live music experience under the open sky. Cody Concerts in the Park runs Thursdays throughout the summer!",
+        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/2026-04-24_07-53-11_1777038807.jpg"
+      },
+      {
+        "id": "cody-wyoming-softball-tournament",
+        "name": "Cody Wyoming Softball Tournament",
+        "scheduleSummary": "April 30th 8:00 AM - 6:00 PM; May 1st 8:00 AM - 6:00 PM",
+        "dates": [
+          "April 30th 8:00am - 6:00pm",
+          "May 1st 8:00am - 6:00pm"
+        ],
+        "venue": "East Sheridan Softball Complex",
+        "address": "3708 Sheridan Ave, Cody, WY 82414",
+        "description": "We will be located at the East Sheridan Softball Complex.",
+        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-24%20at%2011.34.13%E2%80%AFAM_1777169027.png"
+      },
+      {
+        "id": "cody-soccer-tournament",
+        "name": "Cody Soccer Tournament",
+        "scheduleSummary": "May 2nd–3rd, 2026, 8:00 AM - 6:00 PM",
+        "dates": [
+          "May 2nd-3rd 2026, 8:00am - 6:00pm"
+        ],
+        "venue": "Open Gate Fellowship Church parking lot",
+        "address": "3219 Sheridan Ave, Cody, WY 82414",
+        "description": "We will be located in the Open Gate Fellowship Church parking lot.",
+        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-24%20at%208.07.58%E2%80%AFAM_1777039741.png"
+      },
+      {
+        "id": "cody-stampede-rodeo",
+        "name": "Cody Stampede Rodeo",
+        "scheduleSummary": "July 1st - July 4th, 2026 (pre-stampede Xtreme Bulls on June 30, 2026)",
+        "dates": [
+          "July 1st - July 4th 2026"
+        ],
+        "venue": "Stampede Park",
+        "address": "Stampede Park, Cody, WY",
+        "description": "The 2026 Cody Stampede Rodeo features four days of PRCA-sanctioned competition, with additional pre-stampede Xtreme Bulls action on June 30, 2026, at Stampede Park.",
+        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-24%20at%208.30.36%E2%80%AFAM_1777041048.png"
+      },
+      {
+        "id": "cody-warriors-lacrosse-tournament",
+        "name": "Cody Warriors Lacrosse Tournament",
+        "scheduleSummary": "May 8th 5:00 PM - 8:00 PM; May 9th 8:00 AM - 6:00 PM",
+        "dates": [
+          "May 8th 5:00-8:00pm",
+          "May 9th 8:00am-6:00pm"
+        ],
+        "venue": "Mentock Park",
+        "address": "1001 Blackburn St, Cody, WY 82414",
+        "description": "We will be located at Mentock Park.",
+        "imageUrl": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_8282_1777427765.jpeg"
+      }
+    ]
+  },
+  "officialMedia": {
+    "logo": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Apple%20App%20Store_1768852044.jpg",
+    "heroLogoWithContact": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-23%20at%2011.49.13%E2%80%AFAM_1776966571.png",
+    "heroBackgroundSpread": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/4bb716e8-589d-4629-92fc-d976ae926ecd_1768853478.jpg",
+    "bowlAnatomyInfographic": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202025-05-29%20at%2011.44.01%E2%80%AFAM_1768852706.png",
+    "aboutUsFamilyIllustration": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_0040_1777171559.png",
+    "winterHoursFlyer": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_0990_1793411261.png",
+    "thanksgivingBreakFlyer": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_0991_1794279795.PNG",
+    "veteransDayFlyer": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_1090_1794279629.PNG",
+    "foodTruckBanner": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_4456_1776963347.jpeg",
+    "bowlGallery": [
+      {
+        "url": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/Screenshot%202026-04-25%20at%208.08.30%E2%80%AFPM_1777169327.png",
+        "alt": "Layered Altitude Açaí bowl with granola, slivered almonds, coconut shavings, banana, dark chocolate curls, and peanut butter drizzle"
+      },
+      {
+        "url": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_4447_1776966816.jpeg",
+        "alt": "Two fresh Altitude Açaí bowls topped with dark chocolate shavings, almonds, berries, bee pollen, and honey"
+      },
+      {
+        "url": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_4422_1776966806.jpeg",
+        "alt": "Altitude Açaí bowl served at the food truck window with blackberries, chia seeds, pumpkin seeds, and honey"
+      },
+      {
+        "url": "https://www.altitudeacai.com/uploads/b/52f626134a279b273bf3535d713888543adce4234f67002f386a0a546714fb6c/IMG_4348_1776966796.jpeg",
+        "alt": "Berry açaí bowl topped with strawberries, blackberries, raspberries, bee pollen, and honey"
+      }
+    ]
+  }
+}

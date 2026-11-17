@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+dist-ssr/
+coverage/
+.vite/
+*.local
+
+# Environment & Secrets (NEVER COMMIT)
+.env
+.env.*
+!.env.example
+
+# Logs & OS files
+logs
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+
+# Editor directories
+.vscode/*
+!.vscode/extensions.json
+.idea
