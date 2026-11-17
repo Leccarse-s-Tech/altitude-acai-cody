@@ -1,0 +1,409 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   1. Self-Hosted Variable Typography (.woff2 — Zero External Font CDNs)
+   ========================================================================== */
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url("@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url("@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url("@fontsource-variable/dm-sans/files/dm-sans-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url("@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url("@fontsource-variable/dm-sans/files/dm-sans-latin-ext-wght-italic.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url("@fontsource-variable/dm-sans/files/dm-sans-latin-wght-italic.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
+   2. Tailwind CSS v4 @theme — Exclusive 7-Color Cordel / Woodcut Palette
+   ========================================================================== */
+
+@theme {
+  /* 7 Mandatory Palette Colors */
+  --color-jet-black: #30343F;
+  --color-ghost-white: #FAFAFF;
+  --color-periwinkle: #E4D9FF;
+  --color-lavender-grey: #8687B4;
+  --color-dusty-grape: #575E8F;
+  --color-twilight-indigo: #273469;
+  --color-space-indigo: #1E2749;
+
+  /* Semantic Role Mapping */
+  --color-canvas: #FAFAFF;
+  --color-ink: #30343F;
+  --color-ink-deep: #1E2749;
+  --color-ink-muted: #575E8F;
+  --color-surface-highlight: #E4D9FF;
+  --color-border-ornamental: #8687B4;
+  --color-primary: #273469;
+
+  /* Typography Families */
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Woodcut Hard Block Shadows (Carved Relief Offset) */
+  --shadow-woodcut-sm: 3px 3px 0px #1E2749;
+  --shadow-woodcut: 4px 4px 0px #1E2749;
+  --shadow-woodcut-lg: 6px 6px 0px #1E2749;
+  --shadow-woodcut-hover: 5px 5px 0px #1E2749;
+  --shadow-woodcut-pressed: 2px 2px 0px #1E2749;
+  --shadow-woodcut-periwinkle: 4px 4px 0px #E4D9FF;
+}
+
+/* ==========================================================================
+   3. Exact OKLCH Equivalents & Motion Calibration
+   ========================================================================== */
+
+:root {
+  --oklch-jet-black: oklch(32.57% 0.0203 269.50);
+  --oklch-ghost-white: oklch(98.65% 0.0066 286.28);
+  --oklch-periwinkle: oklch(90.59% 0.0526 298.58);
+  --oklch-lavender-grey: oklch(63.93% 0.0671 283.34);
+  --oklch-dusty-grape: oklch(49.72% 0.0787 276.92);
+  --oklch-twilight-indigo: oklch(34.40% 0.0936 270.46);
+  --oklch-space-indigo: oklch(28.33% 0.0637 270.72);
+
+  --duration-press: 200ms;
+  --duration-settle: 300ms;
+  --ease-woodcut: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Inline SVG Cotton-Paper Grain (feTurbulence @ ~4.5% visual ink opacity) */
+  --cordel-paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.118 0 0 0 0 0.153 0 0 0 0 0.286 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+
+  /* Carved Woodblock Horizontal Gouge Fiber Texture */
+  --cordel-wood-fiber: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='64' viewBox='0 0 240 64'%3E%3Cg stroke='%238687B4' stroke-opacity='0.11' fill='none' stroke-width='1'%3E%3Cpath d='M0 8 Q60 5 120 8 T240 8'/%3E%3Cpath d='M0 24 Q80 27 160 23 T240 25'/%3E%3Cpath d='M0 42 Q50 39 110 43 T240 41'/%3E%3Cpath d='M0 57 Q75 60 150 56 T240 58'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* Deep Indigo Woodcut Carving Texture for Dark Sections */
+  --cordel-wood-gouge-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='72' viewBox='0 0 260 72'%3E%3Cg stroke='%23E4D9FF' stroke-opacity='0.06' fill='none' stroke-width='1.15'%3E%3Cpath d='M0 10 Q65 6 130 11 T260 10'/%3E%3Cpath d='M0 28 Q85 32 170 27 T260 29'/%3E%3Cpath d='M0 46 Q60 42 125 47 T260 45'/%3E%3Cpath d='M0 63 Q95 66 190 61 T260 63'/%3E%3C/g%3E%3C/svg%3E");
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   4. Base Typography & Tactile Page Canvas (Zero Flat Backgrounds)
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAFAFF;
+    color: #30343F;
+    font-family: var(--font-body);
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: #FAFAFF;
+    background-image: var(--cordel-paper-grain), var(--cordel-wood-fiber);
+    background-repeat: repeat;
+    color: #30343F;
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+
+  :focus-visible {
+    outline: 3px solid #273469;
+    outline-offset: 3px;
+  }
+}
+
+/* ==========================================================================
+   5. Tactile Cotton-Paper, Woodgrain & Carved Relief Surfaces
+   ========================================================================== */
+
+@utility surface-cotton-paper {
+  background-color: #FAFAFF;
+  background-image: var(--cordel-paper-grain), var(--cordel-wood-fiber);
+  background-repeat: repeat;
+  color: #30343F;
+}
+
+@utility surface-periwinkle-print {
+  background-color: #E4D9FF;
+  background-image:
+    var(--cordel-paper-grain),
+    repeating-linear-gradient(
+      -38deg,
+      rgba(30, 39, 73, 0.03) 0px,
+      rgba(30, 39, 73, 0.03) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  color: #1E2749;
+}
+
+@utility surface-woodblock-indigo {
+  background-color: #1E2749;
+  background-image: var(--cordel-paper-grain), var(--cordel-wood-gouge-dark);
+  background-repeat: repeat;
+  color: #FAFAFF;
+}
+
+@utility surface-twilight-plate {
+  background-color: #273469;
+  background-image: var(--cordel-paper-grain), var(--cordel-wood-gouge-dark);
+  background-repeat: repeat;
+  color: #FAFAFF;
+}
+
+@utility surface-dusty-plate {
+  background-color: #575E8F;
+  background-image: var(--cordel-paper-grain), var(--cordel-wood-gouge-dark);
+  background-repeat: repeat;
+  color: #FAFAFF;
+}
+
+/* ==========================================================================
+   6. Carved Woodcut Borders, Block Shadows & Press Interactions
+   ========================================================================== */
+
+@utility woodcut-card {
+  background-color: #FAFAFF;
+  background-image: var(--cordel-paper-grain);
+  border: 2px solid #1E2749;
+  box-shadow: 4px 4px 0px #1E2749, inset 0 0 0 1px rgba(134, 135, 180, 0.34);
+  transition:
+    transform var(--duration-settle) var(--ease-woodcut),
+    box-shadow var(--duration-settle) var(--ease-woodcut),
+    border-color var(--duration-settle) var(--ease-woodcut);
+}
+
+@utility woodcut-card-periwinkle {
+  background-color: #E4D9FF;
+  background-image: var(--cordel-paper-grain);
+  border: 2px solid #1E2749;
+  box-shadow: 4px 4px 0px #1E2749, inset 0 0 0 1px rgba(87, 94, 143, 0.28);
+}
+
+@utility woodcut-card-dark {
+  background-color: #273469;
+  background-image: var(--cordel-paper-grain), var(--cordel-wood-gouge-dark);
+  border: 2px solid #E4D9FF;
+  box-shadow: 4px 4px 0px #E4D9FF, inset 0 0 0 1px rgba(134, 135, 180, 0.35);
+  color: #FAFAFF;
+}
+
+@utility woodcut-border-carved {
+  border: 2px solid #1E2749;
+  outline: 1px solid rgba(134, 135, 180, 0.55);
+  outline-offset: -6px;
+}
+
+@utility woodcut-border-carved-light {
+  border: 2px solid #E4D9FF;
+  outline: 1px solid rgba(134, 135, 180, 0.65);
+  outline-offset: -6px;
+}
+
+@utility woodcut-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.6875rem 1.375rem;
+  border: 2px solid #1E2749;
+  box-shadow: 4px 4px 0px #1E2749;
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--duration-press) var(--ease-woodcut),
+    box-shadow var(--duration-press) var(--ease-woodcut),
+    background-color var(--duration-press) var(--ease-woodcut),
+    color var(--duration-press) var(--ease-woodcut);
+}
+
+.woodcut-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #1E2749;
+}
+
+.woodcut-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1E2749;
+}
+
+.woodcut-btn-primary {
+  background-color: #273469;
+  background-image: var(--cordel-paper-grain);
+  color: #FAFAFF;
+}
+
+.woodcut-btn-primary:hover {
+  background-color: #1E2749;
+}
+
+.woodcut-btn-secondary {
+  background-color: #FAFAFF;
+  background-image: var(--cordel-paper-grain);
+  color: #1E2749;
+}
+
+.woodcut-btn-secondary:hover {
+  background-color: #E4D9FF;
+}
+
+.woodcut-btn-on-dark {
+  border-color: #E4D9FF;
+  box-shadow: 4px 4px 0px #E4D9FF;
+  background-color: #FAFAFF;
+  background-image: var(--cordel-paper-grain);
+  color: #1E2749;
+}
+
+.woodcut-btn-on-dark:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #E4D9FF;
+  background-color: #E4D9FF;
+}
+
+.woodcut-btn-on-dark:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #E4D9FF;
+}
+
+.woodcut-btn-on-dark:focus-visible,
+.focus-on-dark:focus-visible {
+  outline: 3px solid #E4D9FF;
+  outline-offset: 3px;
+}
+
+@utility woodcut-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 44px;
+  padding: 0.5rem 0.875rem;
+  border: 1.5px solid #1E2749;
+  background-color: #FAFAFF;
+  background-image: var(--cordel-paper-grain);
+  color: #30343F;
+  box-shadow: 2px 2px 0px #1E2749;
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition:
+    transform var(--duration-press) var(--ease-woodcut),
+    box-shadow var(--duration-press) var(--ease-woodcut),
+    background-color var(--duration-press) var(--ease-woodcut),
+    color var(--duration-press) var(--ease-woodcut);
+}
+
+.woodcut-chip:hover:not(:disabled) {
+  background-color: #E4D9FF;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #1E2749;
+}
+
+.woodcut-chip[aria-pressed="true"],
+.woodcut-chip[data-selected="true"] {
+  background-color: #273469;
+  color: #FAFAFF;
+  border-color: #1E2749;
+  box-shadow: 3px 3px 0px #1E2749;
+}
+
+.woodcut-divider-rule {
+  height: 2px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    to right,
+    #1E2749 0px,
+    #1E2749 12px,
+    transparent 12px,
+    transparent 17px,
+    #8687B4 17px,
+    #8687B4 25px,
+    transparent 25px,
+    transparent 30px
+  );
+}
+
+/* ==========================================================================
+   7. Accessibility & Reduced Motion Guardrails
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

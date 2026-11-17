@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 540" fill="none" role="img" aria-labelledby="wyoming-cordel-title">
+  <title id="wyoming-cordel-title">Cody, Wyoming Absaroka Mountain Peaks and Acai Harvest in Brazilian Cordel Woodcut Style</title>
+  <defs>
+    <pattern id="cordel-hatch-indigo" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(34)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#1E2749" stroke-width="2.4" />
+      <line x1="5" y1="0" x2="5" y2="10" stroke="#30343F" stroke-width="1.2" />
+    </pattern>
+    <pattern id="cordel-hatch-grape" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#575E8F" stroke-width="1.8" />
+    </pattern>
+    <pattern id="cordel-sky-lines" width="1440" height="9" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="4.5" x2="1440" y2="4.5" stroke="#8687B4" stroke-width="1.15" stroke-dasharray="22 8 46 10" />
+    </pattern>
+  </defs>
+
+  <!-- Cotton paper backdrop + double Cordel print frame -->
+  <rect x="0" y="0" width="1440" height="540" fill="#FAFAFF" />
+  <rect x="14" y="14" width="1412" height="512" fill="none" stroke="#1E2749" stroke-width="3.5" />
+  <rect x="22" y="22" width="1396" height="496" fill="none" stroke="#8687B4" stroke-width="1.5" />
+
+  <!-- Carved horizontal woodcut sky gouge lines -->
+  <rect x="24" y="24" width="1392" height="315" fill="url(#cordel-sky-lines)" opacity="0.34" />
+
+  <!-- Rising Sun Disc Behind Central Absaroka Peak (aligned cleanly with Altitude Acai emblem) -->
+  <g id="cordel-sun">
+    <circle cx="720" cy="186" r="118" fill="#E4D9FF" stroke="#1E2749" stroke-width="4" />
+    <circle cx="720" cy="186" r="102" fill="none" stroke="#575E8F" stroke-width="2" stroke-dasharray="9 6" />
+    <circle cx="720" cy="186" r="82" fill="#FAFAFF" opacity="0.62" />
+
+    <!-- Radiating woodcut sunbeams -->
+    <g stroke="#1E2749" stroke-width="3" stroke-linecap="round">
+      <line x1="720" y1="30" x2="720" y2="62" />
+      <line x1="654" y1="38" x2="670" y2="74" />
+      <line x1="786" y1="38" x2="770" y2="74" />
+      <line x1="588" y1="62" x2="618" y2="94" />
+      <line x1="852" y1="62" x2="822" y2="94" />
+      <line x1="530" y1="100" x2="574" y2="124" />
+      <line x1="910" y1="100" x2="866" y2="124" />
+      <line x1="486" y1="146" x2="538" y2="162" />
+      <line x1="954" y1="146" x2="902" y2="162" />
+      <line x1="454" y1="196" x2="514" y2="196" />
+      <line x1="986" y1="196" x2="926" y2="196" />
+    </g>
+    <g stroke="#575E8F" stroke-width="1.6" stroke-linecap="round">
+      <line x1="687" y1="33" x2="695" y2="60" />
+      <line x1="753" y1="33" x2="745" y2="60" />
+      <line x1="620" y1="48" x2="644" y2="80" />
+      <line x1="820" y1="48" x2="796" y2="80" />
+      <line x1="558" y1="78" x2="592" y2="108" />
+      <line x1="882" y1="78" x2="848" y2="108" />
+    </g>
+  </g>
+
+  <!-- Woodcut Carved Clouds -->
+  <g id="cordel-clouds">
+    <path d="M90 156 C106 126 142 122 170 138 C188 108 238 106 264 134 C290 122 328 134 338 158 L338 168 L80 168 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.8" stroke-linejoin="round" />
+    <path d="M112 156 L320 156 M136 143 L296 143 M162 130 L248 130" stroke="#575E8F" stroke-width="1.6" stroke-dasharray="14 6" />
+
+    <path d="M1080 150 C1094 120 1134 114 1164 132 C1188 100 1244 102 1268 134 C1296 122 1334 132 1348 158 L1348 168 L1068 168 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.8" stroke-linejoin="round" />
+    <path d="M1098 156 L1328 156 M1122 143 L1304 143 M1172 130 L1254 130" stroke="#575E8F" stroke-width="1.6" stroke-dasharray="14 6" />
+  </g>
+
+  <!-- Far Wyoming Foothills Layer -->
+  <path d="M24 345 L140 278 L240 318 L345 232 L455 294 L555 245 L640 288 L790 264 L915 212 L1045 288 L1160 225 L1290 296 L1416 248 L1416 420 L24 420 Z" fill="#8687B4" stroke="#1E2749" stroke-width="2.6" stroke-linejoin="round" />
+  <path d="M345 232 L385 310 L240 318 Z M915 212 L960 300 L790 264 Z M1160 225 L1215 312 L1045 288 Z" fill="url(#cordel-hatch-grape)" opacity="0.68" />
+
+  <!-- Primary Absaroka / Cody Mountain Peaks -->
+  <g id="absaroka-peaks">
+    <!-- Left Peak -->
+    <path d="M24 428 L168 312 L272 238 L378 156 L478 268 L545 335 L545 430 L24 430 Z" fill="#575E8F" stroke="#1E2749" stroke-width="3.5" stroke-linejoin="round" />
+    <path d="M378 156 L478 268 L412 315 L368 258 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M378 156 L368 258 L305 330 L215 395 L24 428 L168 312 L272 238 Z" fill="url(#cordel-hatch-indigo)" opacity="0.88" />
+
+    <!-- Right Peak -->
+    <path d="M895 340 L995 256 L1086 164 L1196 248 L1315 304 L1416 365 L1416 432 L895 432 Z" fill="#575E8F" stroke="#1E2749" stroke-width="3.5" stroke-linejoin="round" />
+    <path d="M1086 164 L995 256 L925 325 L1035 318 L1084 252 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M1086 164 L1084 252 L1146 335 L1285 400 L1416 365 L1315 304 L1196 248 Z" fill="url(#cordel-hatch-indigo)" opacity="0.9" />
+
+    <!-- Central Dominant Peak (apex at y=114 framing sun halo) -->
+    <path d="M210 436 L445 320 L578 220 L720 112 L864 222 L1015 318 L1235 436 Z" fill="#1E2749" stroke="#1E2749" stroke-width="4" stroke-linejoin="round" />
+    <path d="M720 112 L864 222 L965 304 L836 336 L778 276 L732 232 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.6" stroke-linejoin="round" />
+    <path d="M720 112 L732 232 L682 292 L645 362 L768 358 L836 336 L778 276 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.2" stroke-linejoin="round" />
+    <!-- Carved ridge hatch lines on sunlit face -->
+    <g stroke="#575E8F" stroke-width="1.5" stroke-linecap="round">
+      <path d="M736 160 L788 214" />
+      <path d="M750 198 L818 258" />
+      <path d="M782 252 L855 308" />
+    </g>
+    <!-- Deep gouge cuts on left shadow face -->
+    <g stroke="#8687B4" stroke-width="2.4" stroke-linecap="round">
+      <path d="M708 134 L628 216 L536 290 L390 374" />
+      <path d="M685 178 L585 262 L475 344" />
+      <path d="M664 222 L568 308 L462 390" />
+      <path d="M635 274 L544 354 L430 415" />
+      <path d="M704 166 L672 246 L614 324" />
+      <path d="M588 232 L512 298 L416 358" />
+    </g>
+
+    <!-- Foreground Spur Ridge with Woodcut Crags -->
+    <path d="M468 438 L610 320 L688 238 L762 320 L924 438 Z" fill="#30343F" stroke="#1E2749" stroke-width="3.2" stroke-linejoin="round" />
+    <path d="M688 238 L762 320 L860 402 L730 398 L694 338 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.2" stroke-linejoin="round" />
+    <g stroke="#E4D9FF" stroke-width="2" stroke-linecap="round">
+      <path d="M674 260 L612 334 L535 410" />
+      <path d="M658 296 L602 368 L548 424" />
+      <path d="M634 342 L585 406" />
+      <path d="M620 374 L568 426" />
+    </g>
+  </g>
+
+  <!-- Wyoming Tiered Evergreen Pines -->
+  <g id="alpine-pines" fill="#1E2749" stroke="#FAFAFF" stroke-width="1.2" stroke-linejoin="round">
+    <path d="M144 352 L130 382 L138 382 L124 408 L134 408 L118 432 L170 432 L154 408 L164 408 L150 382 L158 382 Z" />
+    <path d="M188 370 L177 394 L184 394 L172 414 L180 414 L168 434 L208 434 L196 414 L204 414 L192 394 L199 394 Z" />
+    <path d="M1264 352 L1250 382 L1258 382 L1244 408 L1254 408 L1238 432 L1290 432 L1274 408 L1284 408 L1270 382 L1278 382 Z" />
+    <path d="M1220 370 L1209 394 L1216 394 L1204 414 L1212 414 L1200 434 L1240 434 L1228 414 L1236 414 L1224 394 L1231 394 Z" />
+  </g>
+
+  <!-- Carved Cordel Ground Ribbon -->
+  <path d="M24 430 Q360 406 720 428 Q1080 450 1416 426 L1416 518 L24 518 Z" fill="#1E2749" />
+  <path d="M24 438 Q360 414 720 436 Q1080 458 1416 434" stroke="#E4D9FF" stroke-width="2.2" fill="none" />
+  <path d="M24 446 Q360 422 720 444 Q1080 466 1416 442" stroke="#8687B4" stroke-width="1.3" stroke-dasharray="14 8" fill="none" />
+
+  <!-- Botanical Acai Palm Branches & Berry Clusters Framing Left & Right -->
+  <g id="acai-branches-left">
+    <path d="M52 504 C135 478 228 456 322 442" stroke="#E4D9FF" stroke-width="3.2" stroke-linecap="round" fill="none" />
+    <g fill="#FAFAFF" stroke="#1E2749" stroke-width="1.5" stroke-linejoin="round">
+      <path d="M98 492 C82 462 102 434 134 426 C122 454 112 476 98 492 Z" />
+      <path d="M142 480 C130 450 152 424 184 418 C172 444 158 466 142 480 Z" />
+      <path d="M188 468 C180 438 204 416 234 412 C220 436 206 456 188 468 Z" />
+      <path d="M236 458 C234 430 256 412 284 410 C270 430 254 446 236 458 Z" />
+    </g>
+    <g stroke="#575E8F" stroke-width="1.2">
+      <line x1="104" y1="482" x2="124" y2="438" />
+      <line x1="148" y1="472" x2="174" y2="430" />
+      <line x1="194" y1="460" x2="222" y2="424" />
+    </g>
+    <g id="berries-left">
+      <circle cx="152" cy="492" r="14" fill="#575E8F" stroke="#FAFAFF" stroke-width="2" />
+      <circle cx="156" cy="488" r="4" fill="#E4D9FF" />
+      <circle cx="178" cy="498" r="13" fill="#8687B4" stroke="#1E2749" stroke-width="2" />
+      <circle cx="182" cy="494" r="3.5" fill="#FAFAFF" />
+      <circle cx="204" cy="488" r="14" fill="#575E8F" stroke="#FAFAFF" stroke-width="2" />
+      <circle cx="208" cy="484" r="4" fill="#E4D9FF" />
+      <circle cx="230" cy="496" r="12" fill="#E4D9FF" stroke="#1E2749" stroke-width="2" />
+      <circle cx="233" cy="492" r="3" fill="#FAFAFF" />
+      <circle cx="254" cy="486" r="13" fill="#8687B4" stroke="#FAFAFF" stroke-width="2" />
+    </g>
+  </g>
+
+  <g id="acai-branches-right">
+    <path d="M1388 504 C1305 478 1212 456 1118 442" stroke="#E4D9FF" stroke-width="3.2" stroke-linecap="round" fill="none" />
+    <g fill="#FAFAFF" stroke="#1E2749" stroke-width="1.5" stroke-linejoin="round">
+      <path d="M1342 492 C1358 462 1338 434 1306 426 C1318 454 1328 476 1342 492 Z" />
+      <path d="M1298 480 C1310 450 1288 424 1256 418 C1268 444 1282 466 1298 480 Z" />
+      <path d="M1252 468 C1260 438 1236 416 1206 412 C1220 436 1234 456 1252 468 Z" />
+      <path d="M1204 458 C1206 430 1184 412 1156 410 C1170 430 1186 446 1204 458 Z" />
+    </g>
+    <g stroke="#575E8F" stroke-width="1.2">
+      <line x1="1336" y1="482" x2="1316" y2="438" />
+      <line x1="1292" y1="472" x2="1266" y2="430" />
+      <line x1="1246" y1="460" x2="1218" y2="424" />
+    </g>
+    <g id="berries-right">
+      <circle cx="1288" cy="492" r="14" fill="#575E8F" stroke="#FAFAFF" stroke-width="2" />
+      <circle cx="1284" cy="488" r="4" fill="#E4D9FF" />
+      <circle cx="1262" cy="498" r="13" fill="#8687B4" stroke="#1E2749" stroke-width="2" />
+      <circle cx="1258" cy="494" r="3.5" fill="#FAFAFF" />
+      <circle cx="1236" cy="488" r="14" fill="#575E8F" stroke="#FAFAFF" stroke-width="2" />
+      <circle cx="1232" cy="484" r="4" fill="#E4D9FF" />
+      <circle cx="1210" cy="496" r="12" fill="#E4D9FF" stroke="#1E2749" stroke-width="2" />
+      <circle cx="1207" cy="492" r="3" fill="#FAFAFF" />
+      <circle cx="1186" cy="486" r="13" fill="#8687B4" stroke="#FAFAFF" stroke-width="2" />
+    </g>
+  </g>
+
+  <!-- Central Cordel Diamond Crest -->
+  <g id="cordel-crest-bottom" transform="translate(720,482)">
+    <line x1="-260" y1="0" x2="-36" y2="0" stroke="#8687B4" stroke-width="1.8" stroke-dasharray="10 6" />
+    <line x1="36" y1="0" x2="260" y2="0" stroke="#8687B4" stroke-width="1.8" stroke-dasharray="10 6" />
+    <polygon points="0,-16 18,0 0,16 -18,0" fill="#E4D9FF" stroke="#FAFAFF" stroke-width="2" />
+    <polygon points="0,-8 9,0 0,8 -9,0" fill="#1E2749" />
+    <circle cx="-36" cy="0" r="4" fill="#E4D9FF" />
+    <circle cx="36" cy="0" r="4" fill="#E4D9FF" />
+  </g>
+
+  <!-- Printmaker Corner Registration Marks -->
+  <g stroke="#1E2749" stroke-width="3" fill="none">
+    <path d="M22 44 L44 44 L44 22" />
+    <path d="M1418 44 L1396 44 L1396 22" />
+  </g>
+</svg>

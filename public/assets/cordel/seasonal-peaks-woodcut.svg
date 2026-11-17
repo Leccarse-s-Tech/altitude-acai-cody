@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" fill="none" role="img" aria-labelledby="seasonal-peaks-title">
+  <title id="seasonal-peaks-title">Cody, Wyoming Seasonal Peaks Woodcut: Summer High Sun and Winter Snow-Carved Absaroka Ridges</title>
+  <defs>
+    <clipPath id="left-summer-half">
+      <rect x="16" y="16" width="584" height="328" />
+    </clipPath>
+    <clipPath id="right-winter-half">
+      <rect x="600" y="16" width="584" height="328" />
+    </clipPath>
+    <pattern id="summer-sky-lines" width="600" height="10" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="5" x2="600" y2="5" stroke="#8687B4" stroke-width="1" stroke-dasharray="16 10 34 8" />
+    </pattern>
+    <pattern id="winter-snow-hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#E4D9FF" stroke-width="1.3" opacity="0.35" />
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="360" fill="#FAFAFF" />
+
+  <!-- LEFT HALF: SUMMER / SPRING HIGH SUN OVER WYOMING PEAKS -->
+  <g clip-path="url(#left-summer-half)">
+    <rect x="16" y="16" width="584" height="328" fill="#FAFAFF" />
+    <rect x="16" y="16" width="584" height="220" fill="url(#summer-sky-lines)" opacity="0.32" />
+    <!-- Radiating Summer Sun -->
+    <circle cx="290" cy="136" r="76" fill="#E4D9FF" stroke="#1E2749" stroke-width="3.6" />
+    <circle cx="290" cy="136" r="54" fill="#FAFAFF" stroke="#575E8F" stroke-width="1.8" />
+    <g stroke="#1E2749" stroke-width="3" stroke-linecap="round">
+      <line x1="290" y1="24" x2="290" y2="48" />
+      <line x1="226" y1="38" x2="240" y2="60" />
+      <line x1="354" y1="38" x2="340" y2="60" />
+      <line x1="176" y1="74" x2="202" y2="90" />
+      <line x1="404" y1="74" x2="378" y2="90" />
+      <line x1="148" y1="126" x2="186" y2="130" />
+      <line x1="432" y1="126" x2="394" y2="130" />
+    </g>
+    <!-- Far Foothills -->
+    <path d="M16 254 L110 202 L210 236 L330 184 L455 232 L600 180 L600 344 L16 344 Z" fill="#8687B4" stroke="#1E2749" stroke-width="2.6" />
+    <!-- Summer Mountain Peaks -->
+    <path d="M16 296 L154 152 L274 252 L416 112 L534 218 L600 172 L600 344 L16 344 Z" fill="#575E8F" stroke="#1E2749" stroke-width="3.4" stroke-linejoin="round" />
+    <path d="M154 152 L274 252 L208 282 L148 212 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.2" />
+    <path d="M416 112 L534 218 L460 256 L412 184 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.2" />
+    <!-- Carved summer shadow gouges -->
+    <path d="M134 190 L86 244 M118 228 L68 274 M396 154 L344 212 M376 196 L316 256" stroke="#1E2749" stroke-width="2" stroke-linecap="round" />
+    <!-- Summer Ground & Botanical Acai Sprig -->
+    <path d="M16 294 Q280 266 600 294 L600 344 L16 344 Z" fill="#1E2749" />
+    <path d="M56 324 C104 310 156 306 208 312" stroke="#E4D9FF" stroke-width="2.2" fill="none" />
+    <g fill="#FAFAFF">
+      <path d="M88 314 C82 298 98 288 112 294 C104 304 96 310 88 314 Z" />
+      <path d="M132 308 C130 294 146 286 160 294 C150 302 142 306 132 308 Z" />
+    </g>
+    <g fill="#E4D9FF" stroke="#1E2749" stroke-width="1.5">
+      <circle cx="104" cy="322" r="7" />
+      <circle cx="122" cy="328" r="6" />
+      <circle cx="140" cy="320" r="7" />
+      <circle cx="486" cy="316" r="7" />
+      <circle cx="504" cy="324" r="6" />
+    </g>
+  </g>
+
+  <!-- RIGHT HALF: WINTER / FALL SNOW-CARVED PEAKS -->
+  <g clip-path="url(#right-winter-half)">
+    <rect x="600" y="16" width="584" height="328" fill="#1E2749" />
+    <rect x="600" y="16" width="584" height="220" fill="url(#winter-snow-hatch)" />
+
+    <path d="M920 72 A38 38 0 1 0 960 128 A29 29 0 1 1 920 72 Z" fill="#E4D9FF" stroke="#FAFAFF" stroke-width="2" />
+    <!-- Detailed 6-branch woodcut snowflakes -->
+    <g transform="translate(744, 88)" stroke="#FAFAFF" stroke-width="2" stroke-linecap="round">
+      <line x1="-20" y1="0" x2="20" y2="0" />
+      <line x1="0" y1="-20" x2="0" y2="20" />
+      <line x1="-14" y1="-14" x2="14" y2="14" />
+      <line x1="-14" y1="14" x2="14" y2="-14" />
+      <path d="M-14 -4 L-10 0 L-14 4 M14 -4 L10 0 L14 4 M-4 -14 L0 -10 L4 -14 M-4 14 L0 10 L4 14" fill="none" />
+      <circle cx="0" cy="0" r="3.5" fill="#1E2749" />
+    </g>
+    <g transform="translate(1078, 96)" stroke="#E4D9FF" stroke-width="1.8" stroke-linecap="round">
+      <line x1="-15" y1="0" x2="15" y2="0" />
+      <line x1="0" y1="-15" x2="0" y2="15" />
+      <line x1="-11" y1="-11" x2="11" y2="11" />
+      <line x1="-11" y1="11" x2="11" y2="-11" />
+    </g>
+
+    <!-- Winter Mountain Skyline Connecting Seamlessly at x=600 -->
+    <path d="M600 172 L724 104 L856 226 L984 128 L1120 236 L1184 202 L1184 344 L600 344 Z" fill="#30343F" stroke="#E4D9FF" stroke-width="3" stroke-linejoin="round" />
+    <path d="M724 104 L856 226 L776 244 L718 168 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2" />
+    <path d="M984 128 L1120 236 L1042 252 L982 184 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2" />
+    <!-- Winter Mountain Gouge Lines -->
+    <path d="M708 134 L658 194 M690 174 L636 236 M964 156 L910 218" stroke="#8687B4" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Tiered Winter Evergreens -->
+    <g fill="#FAFAFF" stroke="#1E2749" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M674 232 L662 256 L669 256 L657 278 L666 278 L654 298 L694 298 L682 278 L691 278 L679 256 L686 256 Z" />
+      <path d="M1086 228 L1072 254 L1080 254 L1068 278 L1076 278 L1064 298 L1108 298 L1096 278 L1104 278 L1092 254 L1100 254 Z" />
+      <path d="M1126 248 L1116 268 L1122 268 L1112 284 L1118 284 L1110 298 L1142 298 L1134 284 L1140 284 L1130 268 L1136 268 Z" />
+    </g>
+    <!-- Winter Snow Ground Band -->
+    <path d="M600 294 Q890 270 1184 294 L1184 344 L600 344 Z" fill="#E4D9FF" />
+    <path d="M600 308 Q890 284 1184 308" stroke="#575E8F" stroke-width="2" stroke-dasharray="14 6" fill="none" />
+  </g>
+
+  <!-- Center Carved Meridian Pillar -->
+  <line x1="600" y1="16" x2="600" y2="344" stroke="#1E2749" stroke-width="5" />
+  <circle cx="600" cy="180" r="18" fill="#FAFAFF" stroke="#1E2749" stroke-width="3.5" />
+  <polygon points="600,168 612,180 600,192 588,180" fill="#575E8F" />
+
+  <!-- Outer Double Cordel Frame -->
+  <rect x="12" y="12" width="1176" height="336" fill="none" stroke="#1E2749" stroke-width="3.5" />
+  <rect x="19" y="19" width="1162" height="322" fill="none" stroke="#8687B4" stroke-width="1.5" />
+</svg>
