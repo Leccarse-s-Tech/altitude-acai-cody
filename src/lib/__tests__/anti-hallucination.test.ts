@@ -234,10 +234,11 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(within(nav as HTMLElement).getByText('Hours')).toBeInTheDocument();
       expect(within(nav as HTMLElement).getByText('Visit Us')).toBeInTheDocument();
 
-      // Hero exact copy & CTAs
+      // Hero exact copy & CTAs (open editorial kicker — zero boxed pill badge, zero bottom mountain box)
       const hero = container.querySelector('#top') as HTMLElement;
       expect(hero).not.toBeNull();
       expect(hero.textContent).toContain('FRESH SUPERFOOD BOWLS');
+      expect(hero.querySelector('img[src*="wyoming-mountains-cordel.svg"]')).toBeNull();
       expect(within(hero).getByRole('heading', { level: 1 })).toHaveTextContent(
         'Handcrafted Açaí Bowls in Cody, Wyoming',
       );
@@ -256,13 +257,40 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(hero.textContent).not.toMatch(/altitudeacai@gmail\.com/i);
       expect(hero.textContent).not.toMatch(/12\s*oz|16\s*oz/i);
 
-      // Bowl Anatomy verbatim copy & layers
+      // Bowl Anatomy verbatim copy, full-bleed mountain backdrop & horizontal 5 layers
       const anatomy = container.querySelector('#whats-in-a-bowl') as HTMLElement;
+      expect(anatomy.querySelector('img[src*="wyoming-mountains-cordel.svg"]')).not.toBeNull();
       expect(anatomy.textContent).toContain("What's in an Açaí Bowl?");
       expect(anatomy.textContent).toContain(VERBATIM_WHATS_IN_A_BOWL_COPY);
       expect(anatomy.textContent).not.toMatch(/12\s*oz|16\s*oz/i);
       expect(anatomy.textContent).not.toMatch(/1302\s+Beck/i);
       expect(anatomy.textContent).not.toMatch(/Cody,\s*Wyoming/i);
+
+      // Founder Story spread has verbatim copy and ZERO redundant milestone mini-cards
+      const ourStory = container.querySelector('#our-story') as HTMLElement;
+      expect(ourStory).not.toBeNull();
+      expect(ourStory.textContent).toContain(VERBATIM_FOUNDER_STORY_COPY);
+      expect(ourStory.textContent).not.toContain('Launched the Altitude Açaí food truck');
+      expect(ourStory.textContent).not.toContain('Served bowls across Park County community gatherings');
+      expect(ourStory.textContent).not.toContain('Opened year-round storefront doors for local regulars');
+      expect(ourStory.textContent).not.toContain('Summer Events');
+      expect(ourStory.textContent).not.toContain('Brick & Mortar');
+
+      // Anti-AI guardrails: zero technical corner brackets & zero --- ◇ --- diamond dividers
+      const woodcutTexturesSource = fs.readFileSync(
+        path.join(SRC_DIR, 'components', 'ui', 'WoodcutTextures.tsx'),
+        'utf8',
+      );
+      expect(woodcutTexturesSource).not.toContain('WoodcutCornerMarks');
+      expect(woodcutTexturesSource).not.toContain('CordelDivider');
+      expect(container.innerHTML).not.toContain('M2 14V2H14');
+      expect(container.innerHTML).not.toContain('320,2 332,12 320,22 308,12');
+
+      // Widescreen expansion rule present in CSS and sections
+      const cssRaw = fs.readFileSync(path.join(SRC_DIR, 'index.css'), 'utf8');
+      expect(cssRaw).toContain('1440px');
+      expect(cssRaw).toContain('1600px');
+      expect(container.querySelectorAll('.widescreen-container').length).toBeGreaterThanOrEqual(6);
 
       // 3-Bowl Signature Preview on Home + CTA to /menu
       const preview = container.querySelector('#signature-bowls-preview') as HTMLElement;
@@ -291,10 +319,6 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(visitUs.textContent).toContain('Cody, Wyoming');
       expect(visitUs.textContent).toContain('307-527-0812');
       expect(visitUs.textContent).toContain('altitudeacai@gmail.com');
-      expect(visitUs.textContent).toContain(VERBATIM_FOUNDER_STORY_COPY ? '' : '');
-      expect(container.querySelector('#our-story')!.textContent).toContain(
-        VERBATIM_FOUNDER_STORY_COPY,
-      );
 
       // Only 1 Get Directions link inside #visit-us (zero duplicate CTA inside section)
       expect(within(visitUs).getAllByRole('link', { name: /Get Directions/i })).toHaveLength(1);
