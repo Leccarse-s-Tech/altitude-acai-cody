@@ -3,7 +3,6 @@ import {
   ArrowCounterClockwise,
   Check,
   Info,
-  Sparkle,
   WarningCircle,
   X,
 } from '@phosphor-icons/react';
@@ -265,37 +264,36 @@ export function CreateYourOwnSimulator({
     <section
       id="build-your-own"
       aria-labelledby="create-your-own-heading"
-      className="surface-periwinkle-print relative overflow-hidden border-t-2 border-[#1E2749] py-16 sm:py-20"
+      className="surface-periwinkle-print relative overflow-hidden border-t border-[#1E2749]/30 py-20 sm:py-24"
     >
       <CottonPaperGrain variant="periwinkle" opacity={0.05} />
       <WoodgrainOverlay variant="periwinkle" opacity={0.09} />
       <CordelBackgroundArtwork placement="menu-create-your-own" variant="periwinkle" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl">
-          <h2
-            id="create-your-own-heading"
-            className="font-display text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.1] font-extrabold tracking-tight text-[#1E2749]"
-          >
-            {createYourOwn.title}
-          </h2>
-          <p className="mt-4 w-full max-w-prose text-base leading-relaxed text-[#30343F] sm:text-lg">
-            {createYourOwn.intro}
-          </p>
-
-          <div className="mt-5">
-            <span className="inline-flex max-w-full items-center gap-2 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] px-3.5 py-2 font-mono text-xs font-bold text-[#1E2749] shadow-[3px_3px_0px_#1E2749]">
-              <Sparkle size={15} weight="bold" className="shrink-0" aria-hidden="true" />
-              <span>{createYourOwn.officialRule}</span>
-            </span>
+      <div className="widescreen-container relative z-10">
+        {/* Widescreen Editorial Header */}
+        <div className="flex flex-col justify-between gap-4 border-b border-[#1E2749]/30 pb-8 lg:flex-row lg:items-end">
+          <div className="max-w-2xl">
+            <h2
+              id="create-your-own-heading"
+              className="font-display text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.08] font-extrabold tracking-tight text-[#1E2749]"
+            >
+              {createYourOwn.title}
+            </h2>
+            <p className="mt-3 w-full max-w-[54ch] text-base leading-relaxed text-[#30343F] sm:text-lg">
+              {createYourOwn.intro}
+            </p>
           </div>
+
+          <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#273469] sm:text-sm">
+            {createYourOwn.officialRule}
+          </p>
         </div>
 
-        {/* Interactive Workbench */}
-        <div className="mt-8 grid grid-cols-1 items-start gap-8 sm:mt-10 lg:grid-cols-12 lg:gap-10">
-          {/* Left Controls: 3 Ingredient Categories */}
-          <div className="min-w-0 space-y-6 lg:col-span-7">
+        {/* Interactive Widescreen Workbench */}
+        <div className="mt-10 grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Left Open Editorial Ingredient Ledgers */}
+          <div className="min-w-0 space-y-8 lg:col-span-7">
             <AnimatePresence>
               {loadedInspiration && (
                 <motion.div
@@ -303,7 +301,7 @@ export function CreateYourOwnSimulator({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, ease: WOODCUT_EASE }}
-                  className="flex items-start justify-between gap-3 rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] p-4 shadow-[3px_3px_0px_#1E2749]"
+                  className="flex items-start justify-between gap-3 border-l-4 border-[#273469] bg-[#FAFAFF]/90 p-4"
                 >
                   <div className="flex min-w-0 items-start gap-3">
                     <Info
@@ -326,7 +324,7 @@ export function CreateYourOwnSimulator({
                     type="button"
                     aria-label="Dismiss signature preset notice"
                     onClick={() => setLoadedInspiration(null)}
-                    className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-sm border border-[#1E2749] bg-[#E4D9FF] text-[#1E2749] hover:bg-[#273469] hover:text-[#FAFAFF]"
+                    className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center border border-[#1E2749] bg-[#E4D9FF] text-[#1E2749] hover:bg-[#273469] hover:text-[#FAFAFF]"
                   >
                     <X size={18} weight="bold" aria-hidden="true" />
                   </button>
@@ -338,7 +336,7 @@ export function CreateYourOwnSimulator({
               {limitNotice && (
                 <div
                   role="status"
-                  className="flex items-center justify-between gap-3 rounded-sm border-2 border-[#1E2749] bg-[#1E2749] px-4 py-3 text-sm font-medium text-[#FAFAFF] shadow-[3px_3px_0px_#E4D9FF]"
+                  className="flex items-center justify-between gap-3 border-l-4 border-[#E4D9FF] bg-[#1E2749] px-4 py-3 text-sm font-medium text-[#FAFAFF]"
                 >
                   <span className="flex min-w-0 items-center gap-2.5">
                     <WarningCircle
@@ -353,7 +351,7 @@ export function CreateYourOwnSimulator({
                     type="button"
                     aria-label="Dismiss limit notification"
                     onClick={() => setLimitNotice(null)}
-                    className="focus-on-dark inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-sm border border-[#E4D9FF]/60 text-[#E4D9FF] hover:bg-[#273469]"
+                    className="focus-on-dark inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center border border-[#E4D9FF]/60 text-[#E4D9FF] hover:bg-[#273469]"
                   >
                     <X size={16} weight="bold" aria-hidden="true" />
                   </button>
@@ -362,22 +360,22 @@ export function CreateYourOwnSimulator({
             </div>
 
             {/* Step 1: Fruits (Pick up to 3) */}
-            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-4 sm:p-6">
-              <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="border-b border-[#1E2749]/25 pb-7">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-[#1E2749]">
+                  <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
                     1. {createYourOwn.categories.fruits.title}
                   </h3>
                   <p className="mt-0.5 text-sm text-[#575E8F]">
                     {createYourOwn.categories.fruits.ruleText}
                   </p>
                 </div>
-                <span className="rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF] px-3 py-1 font-mono text-xs font-bold text-[#1E2749]">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#273469]">
                   {selectedFruits.length} of {FRUITS_MAX} selected
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2.5">
                 {FRUITS_LIST.map((fruit) => {
                   const isSelected = selectedFruits.includes(fruit);
                   return (
@@ -394,25 +392,25 @@ export function CreateYourOwnSimulator({
                   );
                 })}
               </div>
-            </CarvedWoodblockFrame>
+            </div>
 
             {/* Step 2: Toppings — Granola Base Included (Pick up to 2) */}
-            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-4 sm:p-6">
-              <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="border-b border-[#1E2749]/25 pb-7">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-[#1E2749]">
+                  <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
                     2. {createYourOwn.categories.toppings.title}
                   </h3>
                   <p className="mt-0.5 text-sm text-[#575E8F]">
                     {createYourOwn.categories.toppings.ruleText}
                   </p>
                 </div>
-                <span className="rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF] px-3 py-1 font-mono text-xs font-bold text-[#1E2749]">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#273469]">
                   {selectedToppings.length} of {TOPPINGS_MAX} selected
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2.5">
                 {TOPPINGS_LIST.map((topping) => {
                   const isSelected = selectedToppings.includes(topping);
                   return (
@@ -429,25 +427,25 @@ export function CreateYourOwnSimulator({
                   );
                 })}
               </div>
-            </CarvedWoodblockFrame>
+            </div>
 
             {/* Step 3: Sauces (Pick 1) */}
-            <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="p-4 sm:p-6">
-              <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-[#1E2749]">
+                  <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
                     3. {createYourOwn.categories.sauces.title}
                   </h3>
                   <p className="mt-0.5 text-sm text-[#575E8F]">
                     {createYourOwn.categories.sauces.ruleText}
                   </p>
                 </div>
-                <span className="rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF] px-3 py-1 font-mono text-xs font-bold text-[#1E2749]">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#273469]">
                   {selectedSauce ? 1 : 0} of {SAUCES_MAX} selected
                 </span>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2.5">
                 {SAUCES_LIST.map((sauce) => {
                   const isSelected = selectedSauce === sauce;
                   return (
@@ -464,17 +462,13 @@ export function CreateYourOwnSimulator({
                   );
                 })}
               </div>
-            </CarvedWoodblockFrame>
+            </div>
           </div>
 
-          {/* Right Column: Clean Live Visual Bowl Preview (No Boxed Artwork, No Duplicate CTAs) */}
+          {/* Right Column: Live Bowl Preview Woodblock Ledger */}
           <div className="min-w-0 lg:sticky lg:top-24 lg:col-span-5">
-            <CarvedWoodblockFrame
-              variant="light"
-              showCornerMarks={true}
-              className="p-4 shadow-[6px_6px_0px_#1E2749] sm:p-6"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#1E2749]/15 pb-3.5">
+            <CarvedWoodblockFrame variant="light" className="p-5 sm:p-7">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1E2749]/20 pb-3.5">
                 <h3 className="font-display text-xl font-extrabold text-[#1E2749]">
                   {createYourOwn.previewPanel.title}
                 </h3>
@@ -483,7 +477,7 @@ export function CreateYourOwnSimulator({
                   type="button"
                   onClick={handleResetSelections}
                   disabled={!hasAnySelection && !loadedInspiration}
-                  className="inline-flex min-h-[44px] items-center gap-1.5 rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF] px-3 py-2 font-mono text-xs font-bold text-[#1E2749] transition-colors duration-150 hover:bg-[#273469] hover:text-[#FAFAFF] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex min-h-[44px] items-center gap-1.5 border border-[#1E2749] bg-[#E4D9FF] px-3 py-2 font-mono text-xs font-bold text-[#1E2749] transition-colors duration-150 hover:bg-[#273469] hover:text-[#FAFAFF] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <ArrowCounterClockwise size={15} weight="bold" aria-hidden="true" />
                   <span>{createYourOwn.previewPanel.resetButtonLabel}</span>
@@ -491,7 +485,7 @@ export function CreateYourOwnSimulator({
               </div>
 
               {/* Dynamic SVG Layered Bowl Preview */}
-              <div className="mt-4 rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/35 p-3">
+              <div className="mt-4 border border-[#1E2749]/25 bg-[#E4D9FF]/30 p-3">
                 <LiveBowlSvgPreview
                   fruits={selectedFruits}
                   toppings={selectedToppings}
@@ -499,61 +493,39 @@ export function CreateYourOwnSimulator({
                 />
               </div>
 
-              {/* Layer Summary */}
+              {/* Open Layer Summary */}
               <div className="mt-5 space-y-3 text-sm">
                 {!hasAnySelection ? (
                   <p className="py-2 text-sm text-[#575E8F]">
                     {createYourOwn.previewPanel.emptyState}
                   </p>
                 ) : (
-                  <div className="space-y-2.5">
+                  <div className="space-y-2.5 border-t border-[#1E2749]/15 pt-3">
                     {selectedFruits.length > 0 && (
-                      <div>
-                        <p className="font-mono text-xs font-bold text-[#575E8F]">
-                          Fruits ({selectedFruits.length}/{FRUITS_MAX})
-                        </p>
-                        <div className="mt-1 flex flex-wrap gap-1.5">
-                          {selectedFruits.map((fruit) => (
-                            <span
-                              key={fruit}
-                              className="inline-flex items-center rounded-sm border border-[#1E2749] bg-[#E4D9FF] px-2.5 py-1 text-xs font-semibold text-[#1E2749]"
-                            >
-                              {fruit}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                      <p className="text-sm text-[#1E2749]">
+                        <span className="font-mono text-xs font-bold uppercase text-[#575E8F]">
+                          Fruits ({selectedFruits.length}/{FRUITS_MAX}):{' '}
+                        </span>
+                        <span className="font-semibold">{selectedFruits.join(' · ')}</span>
+                      </p>
                     )}
 
                     {selectedToppings.length > 0 && (
-                      <div>
-                        <p className="font-mono text-xs font-bold text-[#575E8F]">
-                          Toppings ({selectedToppings.length}/{TOPPINGS_MAX})
-                        </p>
-                        <div className="mt-1 flex flex-wrap gap-1.5">
-                          {selectedToppings.map((topping) => (
-                            <span
-                              key={topping}
-                              className="inline-flex items-center rounded-sm border border-[#1E2749] bg-[#E4D9FF] px-2.5 py-1 text-xs font-semibold text-[#1E2749]"
-                            >
-                              {topping}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                      <p className="text-sm text-[#1E2749]">
+                        <span className="font-mono text-xs font-bold uppercase text-[#575E8F]">
+                          Toppings ({selectedToppings.length}/{TOPPINGS_MAX}):{' '}
+                        </span>
+                        <span className="font-semibold">{selectedToppings.join(' · ')}</span>
+                      </p>
                     )}
 
                     {selectedSauce && (
-                      <div>
-                        <p className="font-mono text-xs font-bold text-[#575E8F]">
-                          Sauce (1/{SAUCES_MAX})
-                        </p>
-                        <div className="mt-1 flex flex-wrap gap-1.5">
-                          <span className="inline-flex items-center rounded-sm border border-[#1E2749] bg-[#273469] px-2.5 py-1 text-xs font-semibold text-[#FAFAFF]">
-                            {selectedSauce}
-                          </span>
-                        </div>
-                      </div>
+                      <p className="text-sm text-[#1E2749]">
+                        <span className="font-mono text-xs font-bold uppercase text-[#575E8F]">
+                          Sauce (1/{SAUCES_MAX}):{' '}
+                        </span>
+                        <span className="font-semibold">{selectedSauce}</span>
+                      </p>
                     )}
                   </div>
                 )}

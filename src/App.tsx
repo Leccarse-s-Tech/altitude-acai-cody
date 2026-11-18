@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { MotionConfig } from 'motion/react';
 import { Footer } from './components/layout/Footer';
 import { Navbar } from './components/layout/Navbar';
+import { WoodcutCarvedFilterDefs } from './components/ui/WoodcutTextures';
 import { editorialCopy } from './data/editorial-copy';
 import { usePathname } from './lib/router';
 import { HomePage } from './pages/HomePage';
@@ -27,6 +28,7 @@ export function App() {
   if (isNotFound) {
     return (
       <MotionConfig reducedMotion="user">
+        <WoodcutCarvedFilterDefs />
         <NotFoundPage />
       </MotionConfig>
     );
@@ -34,6 +36,7 @@ export function App() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <WoodcutCarvedFilterDefs />
       <div className="min-h-[100dvh] bg-[#FAFAFF] text-[#30343F]">
         <a
           href="#main-content"

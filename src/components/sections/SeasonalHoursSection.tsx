@@ -24,7 +24,6 @@ import {
 import { CordelBackgroundArtwork } from '../ui/CordelBackgroundArtwork';
 import {
   CarvedWoodblockFrame,
-  CordelDivider,
   CottonPaperGrain,
   WoodgrainOverlay,
 } from '../ui/WoodcutTextures';
@@ -100,34 +99,44 @@ export function SeasonalHoursSection() {
     <section
       id="hours"
       aria-labelledby="seasonal-hours-heading"
-      className="surface-periwinkle-print relative overflow-hidden border-t-2 border-[#1E2749] py-16 sm:py-20 lg:py-24"
+      className="surface-cotton-paper relative overflow-hidden py-20 sm:py-24 lg:py-28"
     >
-      <CottonPaperGrain variant="periwinkle" opacity={0.045} />
-      <WoodgrainOverlay variant="periwinkle" opacity={0.08} />
-      <CordelBackgroundArtwork placement="hours-ambient" variant="periwinkle" />
+      <CottonPaperGrain variant="light" opacity={0.045} />
+      <WoodgrainOverlay variant="light" opacity={0.08} />
+      <CordelBackgroundArtwork placement="hours-ambient" variant="light" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header + Clean Live Clock Status Widget */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end">
+      {/* Subtle Full-Width Cody Peaks Horizon Silhouette Along Lower Background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-56 overflow-hidden opacity-[0.11] select-none sm:h-72"
+      >
+        <img
+          src={assetUrl('assets/cordel/seasonal-peaks-woodcut.svg')}
+          alt=""
+          className="h-full w-full object-cover object-bottom"
+          width={1200}
+          height={360}
+        />
+      </div>
+
+      <div className="widescreen-container relative z-10">
+        {/* Header + Clean Live Clock Status Ledger */}
+        <div className="grid grid-cols-1 gap-8 border-b border-[#1E2749]/25 pb-10 lg:grid-cols-12 lg:items-end">
           <div className="min-w-0 lg:col-span-7">
             <h2
               id="seasonal-hours-heading"
-              className="font-display text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.1] font-extrabold tracking-tight text-[#1E2749]"
+              className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.06] font-extrabold tracking-tight text-[#1E2749]"
             >
               {seasonalHours.title}
             </h2>
 
-            <p className="mt-4 w-full max-w-prose text-base leading-relaxed text-[#30343F] sm:text-lg">
+            <p className="mt-4 w-full max-w-[54ch] text-base leading-relaxed text-[#30343F] sm:text-lg">
               {seasonalHours.intro}
             </p>
           </div>
 
           <div data-testid="live-clock-widget" className="min-w-0 lg:col-span-5">
-            <CarvedWoodblockFrame
-              variant="dark"
-              showCornerMarks={true}
-              className="p-4 sm:p-6"
-            >
+            <CarvedWoodblockFrame variant="dark" className="p-5 sm:p-6">
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <p className="font-display text-2xl font-extrabold text-[#FAFAFF] sm:text-3xl">
                   {liveStatus.codyTimeLabel}
@@ -135,11 +144,11 @@ export function SeasonalHoursSection() {
                 <p className="text-sm font-medium text-[#E4D9FF]">{liveStatus.codyDateLabel}</p>
               </div>
 
-              <div className="mt-4 rounded-sm border-2 border-[#E4D9FF] bg-[#1E2749] px-3.5 py-3 sm:px-4">
+              <div className="mt-4 border-t border-[#E4D9FF]/30 pt-3.5">
                 <div className="flex items-center gap-2.5">
                   <span
                     aria-hidden="true"
-                    className={`h-3 w-3 shrink-0 rounded-full border border-[#1E2749] ${
+                    className={`h-2.5 w-2.5 shrink-0 rounded-full ${
                       liveStatus.isOpen ? 'bg-[#E4D9FF]' : 'bg-[#8687B4]'
                     }`}
                   />
@@ -152,22 +161,9 @@ export function SeasonalHoursSection() {
           </div>
         </div>
 
-        {/* Cordel Seasonal Peaks Woodcut Engraving */}
-        <div className="mt-8 sm:mt-10">
-          <CarvedWoodblockFrame variant="light" showCornerMarks={false}>
-            <img
-              src={assetUrl('assets/cordel/seasonal-peaks-woodcut.svg')}
-              alt="Seasonal mountain woodcut contrasting summer sun with wavy clouds and winter snow ridges"
-              className="block h-auto w-full"
-              width={1200}
-              height={360}
-            />
-          </CarvedWoodblockFrame>
-        </div>
-
         {/* Equal-Height Two-Column Season Selector + Weekly Hours Ledger */}
-        <div className="mt-8 grid grid-cols-1 gap-8 sm:mt-10 lg:grid-cols-12 lg:items-stretch">
-          {/* Left Column: Season Tabs + Stretched Season Description Card */}
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
+          {/* Left Column: Season Tabs + Stretched Season Summary Panel */}
           <div className="flex min-w-0 flex-col gap-5 lg:col-span-5 lg:h-full">
             <div
               role="tablist"
@@ -188,10 +184,10 @@ export function SeasonalHoursSection() {
                     aria-controls={`season-panel-${seasonKey}`}
                     id={`season-tab-${seasonKey}`}
                     onClick={() => setSelectedSeason(seasonKey)}
-                    className={`flex min-h-[52px] flex-col items-start justify-center rounded-sm border-2 px-3 py-2.5 text-left transition-all duration-200 sm:px-4 ${
+                    className={`flex min-h-[52px] flex-col items-start justify-center border px-3.5 py-2.5 text-left transition-all duration-200 sm:px-4 ${
                       isSelected
-                        ? 'border-[#1E2749] bg-[#273469] text-[#FAFAFF] shadow-[3px_3px_0px_#1E2749]'
-                        : 'border-[#1E2749] bg-[#FAFAFF] text-[#1E2749] hover:bg-[#E4D9FF]'
+                        ? 'border-[#1E2749] bg-[#273469] text-[#FAFAFF] shadow-[0_8px_18px_-10px_rgba(30,39,73,0.55)]'
+                        : 'border-[#1E2749]/45 bg-[#FAFAFF] text-[#1E2749] hover:border-[#1E2749] hover:bg-[#E4D9FF]'
                     }`}
                   >
                     <span className="flex w-full items-center justify-between gap-1.5 font-display text-sm font-bold sm:text-base">
@@ -201,7 +197,7 @@ export function SeasonalHoursSection() {
                       </span>
                       {isCurrent && (
                         <span
-                          className={`rounded-sm px-1.5 py-0.5 font-mono text-[10px] font-bold ${
+                          className={`px-1.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider ${
                             isSelected
                               ? 'bg-[#E4D9FF] text-[#1E2749]'
                               : 'bg-[#273469] text-[#FAFAFF]'
@@ -218,29 +214,28 @@ export function SeasonalHoursSection() {
 
             <div data-testid="season-summary-card" className="flex flex-1 flex-col">
               <CarvedWoodblockFrame
-                variant="light"
-                showCornerMarks={false}
-                className="flex-1 p-4 sm:p-6"
-                contentClassName="flex h-full flex-col justify-between gap-5"
+                variant="periwinkle"
+                className="flex-1 p-5 sm:p-7"
+                contentClassName="flex h-full flex-col justify-between gap-6"
               >
                 <div>
-                  <div className="flex flex-wrap items-center gap-2.5">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2.5 border-b border-[#1E2749]/20 pb-3">
                     <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
                       {displayedSchedule.label}
                     </h3>
                     {isViewingActiveSeason && (
-                      <span className="inline-block rounded-sm bg-[#273469] px-2.5 py-0.5 font-mono text-xs font-semibold text-[#FAFAFF]">
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#273469]">
                         {seasonalHours.status.activeSeasonBadge}
                       </span>
                     )}
                   </div>
 
-                  <p className="mt-3 w-full max-w-prose text-base leading-relaxed text-[#30343F]">
+                  <p className="mt-4 w-full max-w-[46ch] text-base leading-relaxed text-[#30343F]">
                     {displayedSchedule.summaryNote}
                   </p>
                 </div>
 
-                <div className="rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/55 p-4 shadow-[3px_3px_0px_#1E2749]">
+                <div className="border-t border-[#1E2749]/25 pt-5">
                   <p className="text-sm font-medium leading-relaxed text-[#1E2749]">
                     {seasonalHours.springNotice}
                   </p>
@@ -258,7 +253,7 @@ export function SeasonalHoursSection() {
             </div>
           </div>
 
-          {/* Right Column: Stretched Weekly Hours Card */}
+          {/* Right Column: Stretched Weekly Hours Ledger */}
           <div
             role="tabpanel"
             id={`season-panel-${selectedSeason}`}
@@ -277,18 +272,17 @@ export function SeasonalHoursSection() {
               >
                 <CarvedWoodblockFrame
                   variant="light"
-                  showCornerMarks={true}
-                  className="flex-1 p-4 sm:p-6"
+                  className="flex-1 p-5 sm:p-7"
                   contentClassName="flex h-full flex-col justify-between"
                 >
                   <div>
-                    <div className="border-b-2 border-[#1E2749]/15 pb-3.5">
-                      <h3 className="font-display text-xl font-extrabold text-[#1E2749]">
+                    <div className="border-b border-[#1E2749]/25 pb-3.5">
+                      <h3 className="font-display text-xl font-extrabold text-[#1E2749] sm:text-2xl">
                         Weekly Hours · {displayedSchedule.label}
                       </h3>
                     </div>
 
-                    <ul className="mt-4 divide-y-2 divide-[#1E2749]/10">
+                    <ul className="mt-4 divide-y divide-[#1E2749]/15">
                       {displayedSchedule.orderedDays.map((dayItem) => {
                         const isTodayRow =
                           isViewingActiveSeason && dayItem.day === liveStatus.codyWeekday;
@@ -296,9 +290,9 @@ export function SeasonalHoursSection() {
                         return (
                           <li
                             key={dayItem.day}
-                            className={`flex flex-col justify-between gap-2 rounded-sm px-3 py-3 sm:flex-row sm:items-center sm:px-3.5 ${
+                            className={`flex flex-col justify-between gap-2 px-3 py-3 sm:flex-row sm:items-center sm:px-4 ${
                               isTodayRow
-                                ? 'border-2 border-[#1E2749] bg-[#E4D9FF] shadow-[2px_2px_0px_#1E2749]'
+                                ? 'border-l-4 border-[#273469] bg-[#E4D9FF]/65'
                                 : ''
                             }`}
                           >
@@ -307,23 +301,23 @@ export function SeasonalHoursSection() {
                                 {dayItem.day}
                               </span>
                               {isTodayRow && (
-                                <span className="rounded-sm bg-[#273469] px-2 py-0.5 font-mono text-xs font-bold text-[#FAFAFF]">
-                                  {seasonalHours.status.todayBadge}
+                                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#273469]">
+                                  · {seasonalHours.status.todayBadge}
                                 </span>
                               )}
                             </div>
 
                             <div className="sm:text-right">
                               {dayItem.isClosed ? (
-                                <span className="inline-block rounded-sm border border-[#1E2749]/40 bg-[#FAFAFF] px-2.5 py-1 font-mono text-xs font-bold text-[#575E8F]">
+                                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#575E8F]">
                                   {seasonalHours.status.closedDayLabel}
                                 </span>
                               ) : (
-                                <div className="flex flex-wrap gap-1.5 sm:justify-end">
+                                <div className="flex flex-wrap gap-3 sm:justify-end">
                                   {dayItem.shifts.map((shift) => (
                                     <span
                                       key={shift.label}
-                                      className="inline-block rounded-sm border border-[#1E2749] bg-[#FAFAFF] px-2.5 py-1 font-mono text-xs font-bold text-[#1E2749]"
+                                      className="font-mono text-sm font-bold text-[#1E2749]"
                                     >
                                       {shift.label}
                                     </span>
@@ -338,7 +332,7 @@ export function SeasonalHoursSection() {
                   </div>
 
                   {/* Expandable Official Storefront Notice Flyers */}
-                  <div className="mt-6 border-t-2 border-[#1E2749]/15 pt-4">
+                  <div className="mt-6 border-t border-[#1E2749]/20 pt-4">
                     <button
                       type="button"
                       aria-expanded={showPosters}
@@ -367,9 +361,9 @@ export function SeasonalHoursSection() {
                           {OFFICIAL_POSTERS.map((poster) => (
                             <figure
                               key={poster.id}
-                              className="overflow-hidden rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] shadow-[3px_3px_0px_#1E2749]"
+                              className="overflow-hidden border border-[#1E2749] bg-[#FAFAFF]"
                             >
-                              <div className="aspect-[3/4] overflow-hidden border-b-2 border-[#1E2749] bg-[#E4D9FF]/30">
+                              <div className="aspect-[3/4] overflow-hidden border-b border-[#1E2749] bg-[#E4D9FF]/30">
                                 <img
                                   src={assetUrl(poster.imagePath)}
                                   alt={poster.imageAlt}
@@ -396,21 +390,15 @@ export function SeasonalHoursSection() {
           </div>
         </div>
 
-        <CordelDivider variant="light" className="my-12 sm:my-14" />
-
-        {/* Single Institutional Food Truck & Local Events Banner (Zero Hardcoded Dates/Tournaments) */}
-        <CarvedWoodblockFrame
-          variant="dark"
-          showCornerMarks={true}
-          className="p-5 sm:p-8"
-        >
+        {/* Single Institutional Food Truck & Local Events Horizontal Editorial Strip */}
+        <div className="mt-12 border-y border-[#1E2749]/35 bg-[#E4D9FF]/55 px-5 py-7 backdrop-blur-[2px] sm:px-8 sm:py-9">
           <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12">
             <div className="min-w-0 lg:col-span-7">
-              <h3 className="font-display flex items-center gap-3 text-2xl font-extrabold text-[#FAFAFF] sm:text-3xl">
-                <Truck size={28} weight="bold" className="shrink-0 text-[#E4D9FF]" aria-hidden="true" />
+              <h3 className="font-display flex items-center gap-3 text-2xl font-extrabold text-[#1E2749] sm:text-3xl">
+                <Truck size={28} weight="bold" className="shrink-0 text-[#273469]" aria-hidden="true" />
                 <span>{seasonalHours.foodTruckBanner.title}</span>
               </h3>
-              <p className="mt-3 w-full max-w-prose text-base leading-relaxed text-[#E4D9FF]">
+              <p className="mt-2.5 w-full max-w-[60ch] text-base leading-relaxed text-[#30343F]">
                 {seasonalHours.foodTruckBanner.description}
               </p>
             </div>
@@ -421,7 +409,7 @@ export function SeasonalHoursSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={locationAndContact.channels.instagram.ariaLabel}
-                className="woodcut-btn woodcut-btn-on-dark text-sm"
+                className="woodcut-btn woodcut-btn-primary text-sm"
               >
                 <InstagramLogo size={19} weight="bold" aria-hidden="true" />
                 <span>{seasonalHours.foodTruckBanner.instagramLabel}</span>
@@ -432,14 +420,14 @@ export function SeasonalHoursSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={locationAndContact.channels.facebook.ariaLabel}
-                className="focus-on-dark inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm border-2 border-[#E4D9FF] bg-[#1E2749] px-5 py-2.5 font-display text-sm font-bold text-[#FAFAFF] shadow-[4px_4px_0px_#E4D9FF] transition-transform duration-150 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:bg-[#575E8F]"
+                className="woodcut-btn woodcut-btn-secondary text-sm"
               >
                 <FacebookLogo size={19} weight="bold" aria-hidden="true" />
                 <span>{seasonalHours.foodTruckBanner.facebookLabel}</span>
               </a>
             </div>
           </div>
-        </CarvedWoodblockFrame>
+        </div>
       </div>
     </section>
   );

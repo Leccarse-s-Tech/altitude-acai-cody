@@ -107,10 +107,6 @@ export interface EditorialCopy {
   readonly founderStory: {
     readonly title: string;
     readonly officialParagraph: typeof VERBATIM_FOUNDER_STORY_COPY;
-    readonly milestones: readonly {
-      readonly label: string;
-      readonly detail: string;
-    }[];
   };
   readonly seasonalHours: {
     readonly title: string;
@@ -303,20 +299,6 @@ export const editorialCopy: EditorialCopy = {
   founderStory: {
     title: 'How Altitude Açaí Started',
     officialParagraph: VERBATIM_FOUNDER_STORY_COPY,
-    milestones: [
-      {
-        label: '2024',
-        detail: 'Launched the Altitude Açaí food truck',
-      },
-      {
-        label: 'Summer Events',
-        detail: 'Served bowls across Park County community gatherings',
-      },
-      {
-        label: 'Brick & Mortar',
-        detail: 'Opened year-round storefront doors for local regulars',
-      },
-    ],
   },
   seasonalHours: {
     title: 'Seasonal Hours',

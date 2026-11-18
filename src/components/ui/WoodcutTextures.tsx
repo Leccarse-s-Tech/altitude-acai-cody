@@ -13,6 +13,34 @@ export interface CottonPaperGrainProps {
 }
 
 /**
+ * Shared SVG filter definitions for hand-carved woodcut borders (`#woodcut-carved-edge`).
+ */
+export function WoodcutCarvedFilterDefs() {
+  return (
+    <svg aria-hidden="true" focusable="false" className="pointer-events-none fixed h-0 w-0 opacity-0">
+      <defs>
+        <filter id="woodcut-carved-edge" x="-4%" y="-4%" width="108%" height="108%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.038"
+            numOctaves="2"
+            seed="17"
+            result="gougeNoise"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="gougeNoise"
+            scale="1.8"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+
+/**
  * Renders an inline SVG `<feTurbulence>` tactile paper-grain overlay so no
  * section appears flat or sterile. Uses a unique React ID per instance.
  */
@@ -123,64 +151,21 @@ export function WoodgrainOverlay({
   );
 }
 
-export interface WoodcutCornerMarksProps {
-  variant?: CordelSurfaceVariant;
-  className?: string;
-}
-
-/**
- * Printmaker corner registration notches echoing the hand-drawn corner curls
- * of the official Altitude Acai crest.
- */
-export function WoodcutCornerMarks({
-  variant = 'light',
-  className = '',
-}: WoodcutCornerMarksProps) {
-  const stroke = variant === 'dark' ? '#E4D9FF' : '#1E2749';
-  const accent = variant === 'dark' ? '#8687B4' : '#575E8F';
-
-  return (
-    <div
-      aria-hidden="true"
-      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
-    >
-      <svg className="absolute top-2 left-2 h-5 w-5" viewBox="0 0 24 24" fill="none">
-        <path d="M2 14V2H14" stroke={stroke} strokeWidth="2.2" strokeLinecap="square" />
-        <path d="M6 10V6H10" stroke={accent} strokeWidth="1.4" strokeLinecap="square" />
-      </svg>
-      <svg className="absolute top-2 right-2 h-5 w-5" viewBox="0 0 24 24" fill="none">
-        <path d="M22 14V2H10" stroke={stroke} strokeWidth="2.2" strokeLinecap="square" />
-        <path d="M18 10V6H14" stroke={accent} strokeWidth="1.4" strokeLinecap="square" />
-      </svg>
-      <svg className="absolute bottom-2 left-2 h-5 w-5" viewBox="0 0 24 24" fill="none">
-        <path d="M2 10V22H14" stroke={stroke} strokeWidth="2.2" strokeLinecap="square" />
-        <path d="M6 14V18H10" stroke={accent} strokeWidth="1.4" strokeLinecap="square" />
-      </svg>
-      <svg className="absolute right-2 bottom-2 h-5 w-5" viewBox="0 0 24 24" fill="none">
-        <path d="M22 10V22H10" stroke={stroke} strokeWidth="2.2" strokeLinecap="square" />
-        <path d="M18 14V18H14" stroke={accent} strokeWidth="1.4" strokeLinecap="square" />
-      </svg>
-    </div>
-  );
-}
-
 export interface CarvedWoodblockFrameProps {
   children: ReactNode;
   variant?: CordelSurfaceVariant;
-  showCornerMarks?: boolean;
   showWoodgrain?: boolean;
   className?: string;
   contentClassName?: string;
 }
 
 /**
- * Tactile woodcut card/plate container combining cotton-paper grain, carved
- * double border rule, optional corner marks, and hard ink block shadow.
+ * Artisanal woodblock print container combining cotton-paper grain and an
+ * imperfect carved edge border — ZERO technical corner brackets (`┌ ┐ └ ┘`).
  */
 export function CarvedWoodblockFrame({
   children,
   variant = 'light',
-  showCornerMarks = true,
   showWoodgrain = false,
   className = '',
   contentClassName = 'h-full',
@@ -192,68 +177,33 @@ export function CarvedWoodblockFrame({
         ? 'woodcut-card-periwinkle'
         : 'woodcut-card';
 
+  const borderStroke = variant === 'dark' ? '#E4D9FF' : '#1E2749';
+
   return (
     <div className={`relative overflow-hidden ${surfaceClass} ${className}`}>
       <CottonPaperGrain variant={variant} opacity={0.045} />
       {showWoodgrain && <WoodgrainOverlay variant={variant} opacity={0.1} />}
-      {showCornerMarks && <WoodcutCornerMarks variant={variant} />}
-      <div className={`relative z-10 ${contentClassName}`}>{children}</div>
-    </div>
-  );
-}
-
-export interface CordelDividerProps {
-  variant?: CordelSurfaceVariant;
-  className?: string;
-}
-
-/**
- * Carved woodcut horizontal divider with central mountain-berry diamond seal
- * and alternating printmaker dashes.
- */
-export function CordelDivider({
-  variant = 'light',
-  className = '',
-}: CordelDividerProps) {
-  const linePrimary = variant === 'dark' ? '#E4D9FF' : '#1E2749';
-  const lineSecondary = variant === 'dark' ? '#8687B4' : '#575E8F';
-  const centerFill = variant === 'dark' ? '#FAFAFF' : '#E4D9FF';
-  const centerCore = variant === 'dark' ? '#273469' : '#1E2749';
-
-  return (
-    <div
-      aria-hidden="true"
-      className={`flex w-full items-center justify-center py-2 select-none ${className}`}
-    >
-      <svg className="h-6 w-full max-w-2xl" viewBox="0 0 640 24" fill="none">
-        <line
-          x1="12"
-          y1="12"
-          x2="278"
-          y2="12"
-          stroke={linePrimary}
-          strokeWidth="2"
-          strokeDasharray="14 6 6 6"
+      {/* Subtle hand-carved inner woodblock print rule using SVG turbulence */}
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        preserveAspectRatio="none"
+        viewBox="0 0 100 100"
+        className="woodcut-carved-border pointer-events-none absolute inset-[5px] h-[calc(100%-10px)] w-[calc(100%-10px)] select-none"
+      >
+        <rect
+          x="0.5"
+          y="0.5"
+          width="99"
+          height="99"
+          fill="none"
+          stroke={borderStroke}
+          strokeOpacity={variant === 'dark' ? '0.28' : '0.2'}
+          strokeWidth="0.5"
+          vectorEffect="non-scaling-stroke"
         />
-        <line
-          x1="362"
-          y1="12"
-          x2="628"
-          y2="12"
-          stroke={linePrimary}
-          strokeWidth="2"
-          strokeDasharray="14 6 6 6"
-        />
-        <circle cx="294" cy="12" r="3.5" fill={lineSecondary} />
-        <circle cx="346" cy="12" r="3.5" fill={lineSecondary} />
-        <polygon
-          points="320,2 332,12 320,22 308,12"
-          fill={centerFill}
-          stroke={linePrimary}
-          strokeWidth="2"
-        />
-        <polygon points="320,7 325,12 320,17 315,12" fill={centerCore} />
       </svg>
+      <div className={`relative z-10 ${contentClassName}`}>{children}</div>
     </div>
   );
 }

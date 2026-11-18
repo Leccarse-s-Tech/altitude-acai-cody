@@ -1,15 +1,10 @@
-import { ArrowRight, Sparkle } from '@phosphor-icons/react';
+import { ArrowRight } from '@phosphor-icons/react';
 import { motion, useReducedMotion } from 'motion/react';
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
 import { assetUrl } from '../../lib/router';
 import { CordelBackgroundArtwork } from '../ui/CordelBackgroundArtwork';
-import {
-  CarvedWoodblockFrame,
-  CordelDivider,
-  CottonPaperGrain,
-  WoodgrainOverlay,
-} from '../ui/WoodcutTextures';
+import { CottonPaperGrain, WoodgrainOverlay } from '../ui/WoodcutTextures';
 import type { BowlBuilderPreset } from './CreateYourOwnSimulator';
 
 export interface SignatureBowlsSectionProps {
@@ -106,155 +101,33 @@ const BOWL_CONFIG_BY_ID: Record<string, SignatureBowlConfig> = {
 export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionProps) {
   const prefersReducedMotion = useReducedMotion();
   const { menuPage } = editorialCopy;
-
   const bowls = brandData.menu.signatureBowls;
-  const mountainMan = bowls.find((b) => b.id === 'mountain-man') ?? bowls[0];
-  const squatchBowl = bowls.find((b) => b.id === 'squatch-protein-bowl') ?? bowls[5];
-  const galleryBowls = bowls.filter(
-    (b) => b.id !== 'mountain-man' && b.id !== 'squatch-protein-bowl',
-  );
 
   return (
     <section
       id="signature-bowls"
       aria-labelledby="signature-bowls-heading"
-      className="surface-cotton-paper relative overflow-hidden py-16 sm:py-20"
+      className="surface-cotton-paper relative overflow-hidden py-16 sm:py-20 lg:py-24"
     >
       <CottonPaperGrain variant="light" opacity={0.045} />
       <WoodgrainOverlay variant="light" opacity={0.08} />
       <CordelBackgroundArtwork placement="menu-signatures" variant="light" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
+      <div className="widescreen-container relative z-10">
+        <div className="border-b border-[#1E2749]/30 pb-6">
           <h2
             id="signature-bowls-heading"
-            className="font-display text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.1] font-extrabold tracking-tight text-[#1E2749]"
+            className="font-display text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.08] font-extrabold tracking-tight text-[#1E2749]"
           >
             {menuPage.signatureSectionTitle}
           </h2>
         </div>
 
-        <CordelDivider variant="light" className="my-8 sm:my-10" />
-
-        {/* Top Asymmetric Duo: Mountain Man (7 cols) + SQUATch Protein Bowl (5 cols) */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12 lg:gap-8">
-          <motion.article
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.4, ease: WOODCUT_EASE }}
-            className="min-w-0 md:col-span-7"
-          >
-            <CarvedWoodblockFrame
-              variant="periwinkle"
-              showCornerMarks={true}
-              className="h-full p-4 sm:p-6"
-            >
-              <div className="grid h-full grid-cols-1 items-center gap-5 sm:grid-cols-12 sm:gap-6">
-                <div className="sm:col-span-6">
-                  <div className="aspect-square overflow-hidden rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] shadow-[4px_4px_0px_#1E2749]">
-                    <img
-                      src={assetUrl(BOWL_CONFIG_BY_ID[mountainMan.id].imagePath)}
-                      alt={BOWL_CONFIG_BY_ID[mountainMan.id].imageAlt}
-                      className="h-full w-full object-cover"
-                      width={520}
-                      height={520}
-                    />
-                  </div>
-                </div>
-
-                <div className="flex h-full min-w-0 flex-col justify-between sm:col-span-6">
-                  <div>
-                    <span className="inline-flex items-center gap-1.5 rounded-sm border border-[#1E2749] bg-[#FAFAFF] px-2.5 py-1 font-mono text-xs font-bold text-[#1E2749]">
-                      <Sparkle size={13} weight="bold" aria-hidden="true" />
-                      House Favorite
-                    </span>
-                    <h3 className="font-display mt-3 text-2xl font-extrabold text-[#1E2749] sm:text-3xl">
-                      {mountainMan.name}
-                    </h3>
-                    <ul className="mt-3 flex flex-wrap gap-1.5">
-                      {mountainMan.ingredients.map((ingredient) => (
-                        <li
-                          key={ingredient}
-                          className="rounded-sm border border-[#1E2749] bg-[#FAFAFF] px-2.5 py-1 text-xs font-semibold text-[#1E2749]"
-                        >
-                          {ingredient}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => onPreviewBowl(BOWL_CONFIG_BY_ID[mountainMan.id].preset)}
-                    className="woodcut-btn woodcut-btn-primary mt-6 w-full text-xs sm:text-sm"
-                  >
-                    <span>Preview in Bowl Builder</span>
-                    <ArrowRight size={17} weight="bold" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            </CarvedWoodblockFrame>
-          </motion.article>
-
-          <motion.article
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.45, delay: 0.06, ease: WOODCUT_EASE }}
-            className="min-w-0 md:col-span-5"
-          >
-            <CarvedWoodblockFrame
-              variant="dark"
-              showCornerMarks={true}
-              className="h-full p-4 sm:p-6"
-            >
-              <div className="flex h-full flex-col justify-between gap-5">
-                <div>
-                  <div className="aspect-[16/10] overflow-hidden rounded-sm border-2 border-[#E4D9FF] bg-[#FAFAFF]">
-                    <img
-                      src={assetUrl(BOWL_CONFIG_BY_ID[squatchBowl.id].imagePath)}
-                      alt={BOWL_CONFIG_BY_ID[squatchBowl.id].imageAlt}
-                      className="h-full w-full object-cover"
-                      width={520}
-                      height={325}
-                    />
-                  </div>
-
-                  <h3 className="font-display mt-4 text-2xl font-extrabold text-[#FAFAFF]">
-                    {squatchBowl.name}
-                  </h3>
-
-                  <ul className="mt-3 flex flex-wrap gap-1.5">
-                    {squatchBowl.ingredients.map((ingredient) => (
-                      <li
-                        key={ingredient}
-                        className="rounded-sm border border-[#1E2749] bg-[#E4D9FF] px-2.5 py-1 text-xs font-semibold text-[#1E2749]"
-                      >
-                        {ingredient}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => onPreviewBowl(BOWL_CONFIG_BY_ID[squatchBowl.id].preset)}
-                  className="woodcut-btn woodcut-btn-on-dark w-full text-xs sm:text-sm"
-                >
-                  <span>Preview in Bowl Builder</span>
-                  <ArrowRight size={17} weight="bold" aria-hidden="true" />
-                </button>
-              </div>
-            </CarvedWoodblockFrame>
-          </motion.article>
-        </div>
-
-        {/* Remaining 4 Signature Bowls */}
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-8 lg:gap-8">
-          {galleryBowls.map((bowl, index) => {
+        {/* Fine-Dining / Cordel Broadside Printed Menu Grid (No Repetitive Square Card Boxes) */}
+        <div className="mt-10 grid grid-cols-1 gap-x-12 gap-y-12 md:grid-cols-2 lg:gap-x-16 lg:gap-y-14">
+          {bowls.map((bowl, index) => {
             const config = BOWL_CONFIG_BY_ID[bowl.id];
-            const imageFirstOnDesktop = index % 2 === 0;
+            const isMountainMan = bowl.id === 'mountain-man';
 
             return (
               <motion.article
@@ -263,67 +136,80 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.12 }}
                 transition={{ duration: 0.36, delay: index * 0.04, ease: WOODCUT_EASE }}
-                className="min-w-0"
+                className="min-w-0 border-b border-[#1E2749]/20 pb-8"
               >
-                <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="h-full p-4 sm:p-5">
-                  <div className="grid h-full grid-cols-1 items-center gap-5 sm:grid-cols-12">
+                <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-12">
+                  {/* Overlapping Editorial Bowl Plate */}
+                  <div className={`relative sm:col-span-5 ${index % 2 === 1 ? 'sm:order-2' : ''}`}>
                     <div
-                      className={`sm:col-span-5 ${
-                        imageFirstOnDesktop ? 'sm:order-1' : 'sm:order-2'
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute -inset-1.5 bg-[#E4D9FF] ${
+                        index % 2 === 0 ? '-rotate-2' : 'rotate-2'
                       }`}
-                    >
-                      <div className="aspect-square overflow-hidden rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/30 shadow-[3px_3px_0px_#1E2749]">
-                        <img
-                          src={assetUrl(config.imagePath)}
-                          alt={config.imageAlt}
-                          className="h-full w-full object-cover"
-                          width={380}
-                          height={380}
-                        />
+                    />
+                    <div className="relative aspect-square overflow-hidden border border-[#1E2749] bg-[#FAFAFF] p-1 shadow-[0_14px_28px_-14px_rgba(30,39,73,0.4)]">
+                      <img
+                        src={assetUrl(config.imagePath)}
+                        alt={config.imageAlt}
+                        className="h-full w-full object-cover"
+                        width={420}
+                        height={420}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Open Typography Menu Ledger Entry */}
+                  <div
+                    className={`flex min-w-0 flex-col justify-between sm:col-span-7 ${
+                      index % 2 === 1 ? 'sm:order-1' : ''
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-mono text-xs font-bold text-[#575E8F]">
+                          0{index + 1}
+                        </span>
+                        <span className="editorial-menu-leader" aria-hidden="true" />
+                        {isMountainMan && (
+                          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#273469]">
+                            House Favorite
+                          </span>
+                        )}
                       </div>
+
+                      <h3 className="font-display mt-2 text-2xl font-extrabold tracking-tight text-[#1E2749] sm:text-3xl">
+                        {bowl.name}
+                      </h3>
+
+                      <p className="mt-3 text-base leading-relaxed font-medium text-[#30343F]">
+                        {bowl.ingredients.join(' · ')}
+                      </p>
                     </div>
 
-                    <div
-                      className={`flex h-full min-w-0 flex-col justify-between sm:col-span-7 ${
-                        imageFirstOnDesktop ? 'sm:order-2' : 'sm:order-1'
-                      }`}
-                    >
-                      <div>
-                        <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
-                          {bowl.name}
-                        </h3>
-                        <ul className="mt-3 flex flex-wrap gap-1.5">
-                          {bowl.ingredients.map((ingredient) => (
-                            <li
-                              key={ingredient}
-                              className="rounded-sm border border-[#1E2749] bg-[#E4D9FF] px-2.5 py-1 text-xs font-semibold text-[#1E2749]"
-                            >
-                              {ingredient}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
+                    <div className="mt-5">
                       <button
                         type="button"
                         onClick={() => onPreviewBowl(config.preset)}
-                        className="woodcut-btn woodcut-btn-secondary mt-5 w-full text-xs sm:text-sm"
+                        className="woodcut-btn woodcut-btn-secondary w-full justify-between text-xs sm:w-auto sm:text-sm"
                       >
                         <span>Preview in Bowl Builder</span>
                         <ArrowRight size={16} weight="bold" aria-hidden="true" />
                       </button>
                     </div>
                   </div>
-                </CarvedWoodblockFrame>
+                </div>
               </motion.article>
             );
           })}
         </div>
 
-        {/* Verified Specialty Drink Line */}
-        <div className="mt-8 rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF]/75 px-4 py-4 shadow-[4px_4px_0px_#1E2749] sm:px-5">
-          <p className="font-mono text-xs font-bold text-[#1E2749]">
-            Also on the menu: {brandData.menu.specialtyDrinks.join(' · ')}
+        {/* Verified Specialty Drink Typographic Line */}
+        <div className="mt-10 border-l-2 border-[#273469] pl-4">
+          <p className="font-mono text-xs font-bold uppercase tracking-wider text-[#575E8F]">
+            Also on the menu
+          </p>
+          <p className="mt-1 font-display text-lg font-bold text-[#1E2749]">
+            {brandData.menu.specialtyDrinks.join(' · ')}
           </p>
         </div>
       </div>

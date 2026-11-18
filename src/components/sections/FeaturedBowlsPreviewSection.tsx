@@ -4,12 +4,7 @@ import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
 import { AppLink, assetUrl } from '../../lib/router';
 import { CordelBackgroundArtwork } from '../ui/CordelBackgroundArtwork';
-import {
-  CarvedWoodblockFrame,
-  CordelDivider,
-  CottonPaperGrain,
-  WoodgrainOverlay,
-} from '../ui/WoodcutTextures';
+import { CottonPaperGrain, WoodgrainOverlay } from '../ui/WoodcutTextures';
 
 const WOODCUT_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -40,29 +35,38 @@ export function FeaturedBowlsPreviewSection() {
     <section
       id="signature-bowls-preview"
       aria-labelledby="featured-bowls-heading"
-      className="surface-cotton-paper relative overflow-hidden py-16 sm:py-20 lg:py-24"
+      className="surface-periwinkle-print relative overflow-hidden py-20 sm:py-24 lg:py-28"
     >
-      <CottonPaperGrain variant="light" opacity={0.045} />
-      <WoodgrainOverlay variant="light" opacity={0.08} />
-      <CordelBackgroundArtwork placement="featured-botanicals" variant="light" />
+      <CottonPaperGrain variant="periwinkle" opacity={0.05} />
+      <WoodgrainOverlay variant="periwinkle" opacity={0.08} />
+      <CordelBackgroundArtwork placement="featured-botanicals" variant="periwinkle" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
-          <h2
-            id="featured-bowls-heading"
-            className="font-display text-[clamp(1.75rem,4.5vw,3rem)] leading-[1.1] font-extrabold tracking-tight text-[#1E2749]"
+      <div className="widescreen-container relative z-10">
+        {/* Horizontal Editorial Header Bar */}
+        <div className="flex flex-col justify-between gap-6 border-b border-[#1E2749]/35 pb-8 lg:flex-row lg:items-end">
+          <div className="max-w-2xl">
+            <h2
+              id="featured-bowls-heading"
+              className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.06] font-extrabold tracking-tight text-[#1E2749]"
+            >
+              {featuredPreview.title}
+            </h2>
+            <p className="mt-3 w-full max-w-[52ch] text-base leading-relaxed text-[#30343F] sm:text-lg">
+              {featuredPreview.intro}
+            </p>
+          </div>
+
+          <AppLink
+            to={featuredPreview.ctaTo}
+            className="woodcut-btn woodcut-btn-primary w-full shrink-0 text-center text-sm sm:w-auto sm:text-base"
           >
-            {featuredPreview.title}
-          </h2>
-          <p className="mt-4 w-full max-w-prose text-base leading-relaxed text-[#30343F] sm:text-lg">
-            {featuredPreview.intro}
-          </p>
+            <span>{featuredPreview.ctaLabel}</span>
+            <ArrowRight size={19} weight="bold" aria-hidden="true" />
+          </AppLink>
         </div>
 
-        <CordelDivider variant="light" className="my-8 sm:my-10" />
-
-        {/* Asymmetric 3-Bowl Preview Showcase (1 lead wide card + 2 stacked/paired cards) */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+        {/* Widescreen Editorial Collage Trio (Open Paper Typography + Asymmetric Photos, Zero Boxy Grids) */}
+        <div className="mt-12 grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           {featuredBowls.map((bowl, index) => {
             const media = BOWL_IMAGE_MAP[bowl.id];
             const isLead = index === 0;
@@ -73,66 +77,60 @@ export function FeaturedBowlsPreviewSection() {
                 initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.38, delay: index * 0.05, ease: WOODCUT_EASE }}
-                className={isLead ? 'lg:col-span-6' : 'lg:col-span-3'}
+                transition={{ duration: 0.38, delay: index * 0.06, ease: WOODCUT_EASE }}
+                className={
+                  isLead
+                    ? 'lg:col-span-6'
+                    : index === 1
+                      ? 'lg:col-span-3 lg:pt-8'
+                      : 'lg:col-span-3'
+                }
               >
-                <CarvedWoodblockFrame
-                  variant={isLead ? 'periwinkle' : 'light'}
-                  showCornerMarks={isLead}
-                  className="h-full p-4 sm:p-6"
+                <div
+                  className={
+                    isLead
+                      ? 'grid grid-cols-1 items-center gap-7 sm:grid-cols-12'
+                      : 'flex flex-col gap-5'
+                  }
                 >
-                  <div
-                    className={
-                      isLead
-                        ? 'grid h-full grid-cols-1 items-center gap-5 sm:grid-cols-12'
-                        : 'flex h-full flex-col gap-4'
-                    }
-                  >
-                    <div className={isLead ? 'sm:col-span-6' : ''}>
-                      <div className="aspect-square overflow-hidden rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] shadow-[3px_3px_0px_#1E2749]">
-                        <img
-                          src={assetUrl(media.src)}
-                          alt={media.alt}
-                          className="h-full w-full object-cover"
-                          width={460}
-                          height={460}
-                        />
-                      </div>
-                    </div>
-
-                    <div className={isLead ? 'sm:col-span-6' : ''}>
-                      <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
-                        {bowl.name}
-                      </h3>
-                      <ul className="mt-3 flex flex-wrap gap-1.5">
-                        {bowl.ingredients.map((ingredient) => (
-                          <li
-                            key={ingredient}
-                            className={`rounded-sm border border-[#1E2749] px-2.5 py-1 text-xs font-semibold text-[#1E2749] ${
-                              isLead ? 'bg-[#FAFAFF]' : 'bg-[#E4D9FF]'
-                            }`}
-                          >
-                            {ingredient}
-                          </li>
-                        ))}
-                      </ul>
+                  {/* Editorial Photo Plate (Zero Heavy Bordered Card Wrapper) */}
+                  <div className={isLead ? 'relative sm:col-span-7' : 'relative'}>
+                    <div
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute -inset-2 bg-[#273469]/12 ${
+                        index % 2 === 0 ? '-rotate-2' : 'rotate-2'
+                      }`}
+                    />
+                    <div className="relative aspect-[4/3] overflow-hidden border border-[#1E2749] bg-[#FAFAFF] p-1.5 shadow-[0_18px_36px_-18px_rgba(30,39,73,0.45)] sm:aspect-square">
+                      <img
+                        src={assetUrl(media.src)}
+                        alt={media.alt}
+                        className="h-full w-full object-cover"
+                        width={460}
+                        height={460}
+                      />
                     </div>
                   </div>
-                </CarvedWoodblockFrame>
+
+                  {/* Open Editorial Typography + Engraved Rule */}
+                  <div className={isLead ? 'min-w-0 sm:col-span-5' : 'min-w-0'}>
+                    <span className="font-mono text-xs font-bold tracking-widest text-[#575E8F]">
+                      0{index + 1}
+                    </span>
+                    <h3 className="font-display mt-1 text-2xl font-extrabold tracking-tight text-[#1E2749] xl:text-3xl">
+                      {bowl.name}
+                    </h3>
+
+                    <div className="my-3 h-px w-16 bg-[#1E2749]/45" aria-hidden="true" />
+
+                    <p className="text-sm leading-relaxed font-medium text-[#30343F] sm:text-base">
+                      {bowl.ingredients.join(' · ')}
+                    </p>
+                  </div>
+                </div>
               </motion.article>
             );
           })}
-        </div>
-
-        {/* Single Primary Route CTA to /menu */}
-        <div className="mt-10 flex justify-start sm:justify-center">
-          <AppLink
-            to={featuredPreview.ctaTo}
-            className="woodcut-btn woodcut-btn-primary w-full text-center text-sm sm:w-auto sm:text-base"
-          >
-            <span>{featuredPreview.ctaLabel}</span>
-            <ArrowRight size={19} weight="bold" aria-hidden="true" />
-          </AppLink>
         </div>
       </div>
     </section>
