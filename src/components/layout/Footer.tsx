@@ -8,19 +8,18 @@ import {
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
 import { AppLink, assetUrl } from '../../lib/router';
-import { CordelDivider, CottonPaperGrain, WoodgrainOverlay } from '../ui/WoodcutTextures';
+import { CottonPaperGrain, WoodgrainOverlay } from '../ui/WoodcutTextures';
 
 export function Footer() {
   const { footer, navigation, locationAndContact } = editorialCopy;
   const directionsUrl = brandData.location.googleMapsDirectionsUrl;
 
   return (
-    <footer className="surface-woodblock-indigo relative overflow-hidden border-t-2 border-[#E4D9FF]/40 pt-14 pb-12 text-[#FAFAFF]">
+    <footer className="surface-woodblock-indigo relative overflow-hidden border-t-2 border-[#E4D9FF]/40 pt-16 pb-12 text-[#FAFAFF]">
       <CottonPaperGrain variant="dark" opacity={0.045} />
       <WoodgrainOverlay variant="dark" opacity={0.08} />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <CordelDivider variant="dark" className="mb-10" />
+      <div className="widescreen-container relative z-10">
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           {/* Brand Crest & Mission */}

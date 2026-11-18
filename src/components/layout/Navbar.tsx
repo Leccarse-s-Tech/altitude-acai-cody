@@ -40,17 +40,17 @@ export function Navbar() {
     <header className="surface-woodblock-indigo sticky top-0 z-50 border-b-2 border-[#E4D9FF]/35">
       <CottonPaperGrain variant="dark" opacity={0.04} />
 
-      <div className="relative z-10 mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-2 px-3 sm:gap-4 sm:px-6 lg:px-8">
+      <div className="widescreen-container relative z-10 flex h-[72px] items-center justify-between gap-2 sm:gap-4">
         {/* Brand Crest & Wordmark */}
         <AppLink
           to="/"
           className="focus-on-dark inline-flex min-h-[44px] min-w-0 shrink-0 items-center gap-2 rounded-sm pr-1 sm:gap-3 sm:pr-2"
         >
-          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-sm border-2 border-[#E4D9FF] bg-[#FAFAFF] shadow-[2px_2px_0px_#E4D9FF] sm:h-11 sm:w-11">
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#E4D9FF] bg-[#FAFAFF] sm:h-11 sm:w-11">
             <img
               src={assetUrl('assets/brand/logo-official.webp')}
               alt={editorialCopy.hero.logoAlt}
-              className="h-full w-full object-cover"
+              className="h-full w-full rounded-full object-cover"
               width={44}
               height={44}
             />
@@ -143,7 +143,7 @@ export function Navbar() {
             className="surface-twilight-plate relative z-20 border-t-2 border-[#E4D9FF]/40 px-4 pt-4 pb-6 lg:hidden"
           >
             <CottonPaperGrain variant="dark" opacity={0.045} />
-            <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-3">
+            <div className="widescreen-container relative z-10 flex flex-col gap-3">
               <div className="flex flex-wrap items-center justify-between gap-2 rounded-sm border border-[#E4D9FF]/45 bg-[#1E2749] px-3.5 py-2.5 text-sm text-[#FAFAFF]">
                 <span className="inline-flex items-center gap-2 font-medium">
                   <span
