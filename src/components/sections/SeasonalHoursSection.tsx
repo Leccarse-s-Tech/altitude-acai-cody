@@ -83,7 +83,7 @@ export function SeasonalHoursSection() {
 
       <div className="widescreen-container relative z-10">
         {/* Header + Clean Live Clock Status Ledger */}
-        <div className="grid grid-cols-1 gap-8 border-b border-[#1E2749]/25 pb-10 lg:grid-cols-12 lg:items-end">
+        <div className="scroll-reveal grid grid-cols-1 gap-8 border-b border-[#1E2749]/25 pb-10 lg:grid-cols-12 lg:items-end">
           <div className="min-w-0 lg:col-span-7">
             <h2
               id="seasonal-hours-heading"
@@ -299,7 +299,7 @@ export function SeasonalHoursSection() {
         </div>
 
         {/* Single Institutional Food Truck & Local Events Horizontal Editorial Strip */}
-        <div className="mt-12 border-y border-[#1E2749]/35 bg-[#E4D9FF]/55 px-5 py-7 backdrop-blur-[2px] sm:px-8 sm:py-9">
+        <div className="scroll-reveal mt-12 border-y border-[#1E2749]/35 bg-[#E4D9FF]/55 px-5 py-7 backdrop-blur-[2px] sm:px-8 sm:py-9">
           <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-12">
             <div className="min-w-0 lg:col-span-7">
               <h3 className="font-display flex items-center gap-3 text-2xl font-extrabold text-[#1E2749] sm:text-3xl">

@@ -63,7 +63,7 @@ export function BowlAnatomySection() {
 
       <div className="widescreen-container relative z-10">
         {/* Top Widescreen Split Header & Verbatim Copy (Zero Kicker Subtitle) */}
-        <div className="grid grid-cols-1 items-end gap-8 border-b border-[#E4D9FF]/25 pb-10 lg:grid-cols-12 lg:gap-12">
+        <div className="scroll-reveal grid grid-cols-1 items-end gap-8 border-b border-[#E4D9FF]/25 pb-10 lg:grid-cols-12 lg:gap-12">
           <div className="min-w-0 lg:col-span-5">
             <h2
               id="bowl-anatomy-heading"
@@ -86,7 +86,7 @@ export function BowlAnatomySection() {
           aria-label="Interactive bowl layers from bottom to top"
           className="mt-10 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4 xl:gap-6"
         >
-          {ANATOMY_LAYERS.map((layer) => {
+          {ANATOMY_LAYERS.map((layer, index) => {
             const isSelected = layer.id === activeLayerId;
             return (
               <button
@@ -94,7 +94,8 @@ export function BowlAnatomySection() {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => setActiveLayerId(layer.id)}
-                className={`focus-on-dark flex min-h-[76px] items-center justify-center border-b-2 px-4 py-4 text-center transition-all duration-200 sm:px-5 ${
+                style={{ ['--layer-stagger' as string]: `${index * 65}ms` }}
+                className={`bowl-layer-anim focus-on-dark flex min-h-[76px] items-center justify-center border-b-2 px-4 py-4 text-center transition-all duration-200 sm:px-5 ${
                   isSelected
                     ? 'border-[#FAFAFF] bg-[#FAFAFF] text-[#1E2749] shadow-[0_14px_30px_-14px_rgba(228,217,255,0.45)]'
                     : 'border-[#E4D9FF]/45 bg-[#1E2749]/65 text-[#FAFAFF] backdrop-blur-[2px] hover:border-[#E4D9FF] hover:bg-[#273469]/85'

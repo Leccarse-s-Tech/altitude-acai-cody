@@ -6,6 +6,7 @@ import { FloatingTextUsButton } from './components/ui/FloatingTextUsButton';
 import { WoodcutCarvedFilterDefs } from './components/ui/WoodcutTextures';
 import { editorialCopy } from './data/editorial-copy';
 import { usePathname } from './lib/router';
+import { useScrollDrivenMotion } from './lib/useScrollDrivenMotion';
 import { HomePage } from './pages/HomePage';
 import { MenuPage } from './pages/MenuPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -15,6 +16,8 @@ export function App() {
   const isHome = pathname === '/';
   const isMenu = pathname === '/menu';
   const isNotFound = !isHome && !isMenu;
+
+  useScrollDrivenMotion(pathname);
 
   useEffect(() => {
     if (isMenu) {

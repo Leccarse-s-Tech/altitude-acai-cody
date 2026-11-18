@@ -153,6 +153,7 @@
     background-color: #FAFAFF;
     color: #30343F;
     font-family: var(--font-body);
+    overflow-x: clip;
   }
 
   body {
@@ -164,7 +165,6 @@
     font-family: var(--font-body);
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: clip;
   }
 
   h1, h2, h3, h4, p, li, figcaption {
@@ -423,19 +423,57 @@
 }
 
 /* ==========================================================================
-   7. Accessibility & Reduced Motion Guardrails
+   7. Scroll-Driven Animations & Strict Reduced-Motion Fallback
    ========================================================================== */
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+.cordel-parallax {
+  transform: translate3d(0, var(--cordel-parallax-y, 0px), 0)
+    rotate(var(--cordel-parallax-rot, 0deg));
+  transition: transform 140ms linear;
+  will-change: transform;
+}
 
-  *,
-  *::before,
-  *::after {
+.scroll-reveal,
+.bowl-layer-anim {
+  opacity: 1;
+}
+
+html.scroll-motion-ready .scroll-reveal:not([data-scroll-revealed="true"]) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+html.scroll-motion-ready .scroll-reveal[data-scroll-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 520ms var(--ease-woodcut),
+    transform 520ms var(--ease-woodcut);
+}
+
+html.scroll-motion-ready .bowl-layer-anim:not([data-scroll-revealed="true"]) {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+html.scroll-motion-ready .bowl-layer-anim[data-scroll-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 420ms var(--ease-woodcut) var(--layer-stagger, 0ms),
+    transform 420ms var(--ease-woodcut) var(--layer-stagger, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .scroll-reveal, .cordel-parallax, .bowl-layer-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
 }

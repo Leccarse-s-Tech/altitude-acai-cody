@@ -693,9 +693,17 @@ export function CordelBackgroundArtwork({
       data-cordel-background={placement}
       className="pointer-events-none absolute inset-0 z-0 overflow-hidden select-none"
     >
-      {items.map((item) => (
-        <div key={item.id} className={`pointer-events-none absolute z-0 ${item.className}`}>
-          {item.node}
+      {items.map((item, idx) => (
+        <div
+          key={item.id}
+          className={`pointer-events-none absolute z-0 ${item.className}`}
+        >
+          <div
+            data-parallax-dir={idx % 2 === 0 ? '1' : '-1'}
+            className="cordel-parallax h-full w-full"
+          >
+            {item.node}
+          </div>
         </div>
       ))}
     </div>

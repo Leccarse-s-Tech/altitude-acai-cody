@@ -43,7 +43,7 @@ export function FeaturedBowlsPreviewSection() {
 
       <div className="widescreen-container relative z-10">
         {/* Horizontal Editorial Header Bar */}
-        <div className="flex flex-col justify-between gap-6 border-b border-[#1E2749]/35 pb-8 lg:flex-row lg:items-end">
+        <div className="scroll-reveal flex flex-col justify-between gap-6 border-b border-[#1E2749]/35 pb-8 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
             <h2
               id="featured-bowls-heading"

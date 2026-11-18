@@ -46,7 +46,7 @@ export function LocationContactSection() {
       </div>
 
       <div className="widescreen-container relative z-10">
-        <div className="border-b border-[#1E2749]/30 pb-8">
+        <div className="scroll-reveal border-b border-[#1E2749]/30 pb-8">
           <div className="max-w-2xl">
             <h2
               id="visit-us-heading"
@@ -60,7 +60,7 @@ export function LocationContactSection() {
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="scroll-reveal mt-10 grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Left: Embedded Interactive Google Map + Address Landmark */}
           <div className="min-w-0 lg:col-span-7">
             <CarvedWoodblockFrame
