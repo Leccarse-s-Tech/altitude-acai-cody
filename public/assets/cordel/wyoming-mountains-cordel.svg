@@ -1,10 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 540" fill="none" role="img" aria-labelledby="wyoming-cordel-title">
   <title id="wyoming-cordel-title">Cody, Wyoming Absaroka Mountain Peaks, Natural Sun with Organic Clouds, Pines, and Acai Flora in Cordel Woodcut Style</title>
 
-  <!-- Cotton paper backdrop + double Cordel print frame -->
+  <!-- Organic Cotton Paper Backdrop (Frameless Full-Bleed Panoramic Print) -->
   <rect x="0" y="0" width="1440" height="540" fill="#FAFAFF" />
-  <rect x="14" y="14" width="1412" height="512" fill="none" stroke="#1E2749" stroke-width="3.5" />
-  <rect x="22" y="22" width="1396" height="496" fill="none" stroke="#8687B4" stroke-width="1.5" />
 
   <!-- Organic wavy curved woodcut sky gouges (peaceful horizontal striations, zero radial lines) -->
   <g id="cordel-organic-sky" stroke="#8687B4" stroke-linecap="round" fill="none" opacity="0.55">
@@ -172,19 +170,4 @@
     </g>
   </g>
 
-  <!-- Central Cordel Diamond Crest -->
-  <g id="cordel-crest-bottom" transform="translate(720,482)">
-    <line x1="-260" y1="0" x2="-36" y2="0" stroke="#8687B4" stroke-width="1.8" stroke-dasharray="10 6" />
-    <line x1="36" y1="0" x2="260" y2="0" stroke="#8687B4" stroke-width="1.8" stroke-dasharray="10 6" />
-    <polygon points="0,-16 18,0 0,16 -18,0" fill="#E4D9FF" stroke="#FAFAFF" stroke-width="2" />
-    <polygon points="0,-8 9,0 0,8 -9,0" fill="#1E2749" />
-    <circle cx="-36" cy="0" r="4" fill="#E4D9FF" />
-    <circle cx="36" cy="0" r="4" fill="#E4D9FF" />
-  </g>
-
-  <!-- Printmaker Corner Registration Marks -->
-  <g stroke="#1E2749" stroke-width="3" fill="none">
-    <path d="M22 44 L44 44 L44 22" />
-    <path d="M1418 44 L1396 44 L1396 22" />
-  </g>
 </svg>

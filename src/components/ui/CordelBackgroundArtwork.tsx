@@ -4,6 +4,7 @@ export type CordelBackgroundPlacement =
   | 'hero'
   | 'anatomy-fruits'
   | 'featured-botanicals'
+  | 'story-branches'
   | 'hours-ambient'
   | 'visit-ambient'
   | 'menu-header'
@@ -358,6 +359,42 @@ function AcaiBowlMotif({ tone }: { tone: PaletteTone }) {
   );
 }
 
+function AcaiBranchMotif({ tone }: { tone: PaletteTone }) {
+  return (
+    <svg viewBox="0 0 160 150" className="h-full w-full" fill="none">
+      <path d="M18 126 Q72 86 138 24" stroke={tone.ink} strokeWidth="3.2" strokeLinecap="round" />
+      <path d="M56 96 Q76 112 96 124" stroke={tone.ink} strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M88 70 Q114 82 132 104" stroke={tone.ink} strokeWidth="2.2" strokeLinecap="round" />
+      <path
+        d="M44 82 C26 64 26 42 46 34 C58 54 58 68 44 82 Z"
+        fill={tone.fillLight}
+        stroke={tone.ink}
+        strokeWidth="2.4"
+      />
+      <path
+        d="M78 58 C62 38 68 18 88 14 C96 32 92 48 78 58 Z"
+        fill={tone.mid}
+        stroke={tone.ink}
+        strokeWidth="2.4"
+      />
+      <path
+        d="M114 38 C118 16 136 8 150 18 C142 36 128 42 114 38 Z"
+        fill={tone.fillLight}
+        stroke={tone.ink}
+        strokeWidth="2.4"
+      />
+      <g fill={tone.fillSoft} stroke={tone.ink} strokeWidth="2.2">
+        <circle cx="94" cy="116" r="9" />
+        <circle cx="108" cy="126" r="8.5" />
+        <circle cx="82" cy="128" r="8.5" />
+        <circle cx="128" cy="96" r="9" />
+        <circle cx="140" cy="108" r="8.5" />
+        <circle cx="118" cy="108" r="8" />
+      </g>
+    </svg>
+  );
+}
+
 interface ScatteredItem {
   id: string;
   className: string;
@@ -373,22 +410,37 @@ function buildPlacements(
       return [
         {
           id: 'hero-strawberry',
-          className: 'top-8 right-[4%] h-24 w-24 rotate-[14deg] opacity-[0.11] sm:h-28 sm:w-28',
+          className: 'top-10 right-[2%] h-28 w-28 rotate-[14deg] opacity-[0.16] sm:h-36 sm:w-36',
           node: <StrawberryMotif tone={tone} />,
         },
         {
           id: 'hero-blueberries',
-          className: 'bottom-[34%] left-[2%] h-24 w-24 -rotate-[12deg] opacity-[0.10] sm:h-28 sm:w-28',
+          className: 'bottom-12 left-[1.5%] h-28 w-28 -rotate-[12deg] opacity-[0.15] sm:h-36 sm:w-36',
           node: <BlueberryMotif tone={tone} />,
         },
         {
           id: 'hero-honey',
-          className: 'top-[42%] right-[1%] hidden h-28 w-32 rotate-[9deg] opacity-[0.10] md:block',
+          className: 'top-[46%] right-[1%] hidden h-32 w-36 rotate-[9deg] opacity-[0.16] md:block xl:h-40 xl:w-44',
           node: <HoneyDipperMotif tone={tone} />,
         },
         {
+          id: 'hero-branch-left',
+          className: 'top-16 left-[1%] hidden h-36 w-36 -rotate-[16deg] opacity-[0.14] lg:block',
+          node: <AcaiBranchMotif tone={tone} />,
+        },
+        {
+          id: 'hero-bowl-bottom-right',
+          className: 'bottom-6 right-[3%] h-28 w-36 -rotate-[7deg] opacity-[0.15] sm:h-32 sm:w-40',
+          node: <AcaiBowlMotif tone={tone} />,
+        },
+        {
+          id: 'hero-coconut-mid',
+          className: 'bottom-[24%] left-[26%] hidden h-24 w-32 rotate-[11deg] opacity-[0.13] lg:block',
+          node: <CoconutMotif tone={tone} />,
+        },
+        {
           id: 'hero-almond',
-          className: 'top-20 left-[38%] hidden h-20 w-24 -rotate-[8deg] opacity-[0.09] lg:block',
+          className: 'top-20 left-[38%] hidden h-24 w-28 -rotate-[8deg] opacity-[0.13] xl:block',
           node: <AlmondMotif tone={tone} />,
         },
       ];
@@ -397,27 +449,27 @@ function buildPlacements(
       return [
         {
           id: 'anat-pineapple',
-          className: 'top-6 right-[3%] h-32 w-28 rotate-[12deg] opacity-[0.14]',
+          className: 'top-8 right-[2%] h-32 w-28 rotate-[12deg] opacity-[0.16] xl:h-40 xl:w-36',
           node: <PineappleMotif tone={tone} />,
         },
         {
           id: 'anat-mango',
-          className: 'top-[38%] left-[2%] h-28 w-28 -rotate-[11deg] opacity-[0.13]',
+          className: 'top-[38%] left-[1.5%] h-28 w-28 -rotate-[11deg] opacity-[0.16]',
           node: <MangoMotif tone={tone} />,
         },
         {
           id: 'anat-blackberry',
-          className: 'bottom-10 right-[6%] h-24 w-24 -rotate-[9deg] opacity-[0.14]',
+          className: 'bottom-8 right-[4%] h-28 w-28 -rotate-[9deg] opacity-[0.16]',
           node: <BlackberryMotif tone={tone} />,
         },
         {
           id: 'anat-oats',
-          className: 'bottom-8 left-[18%] hidden h-22 w-28 rotate-[10deg] opacity-[0.12] sm:block',
+          className: 'bottom-8 left-[3%] hidden h-24 w-32 rotate-[10deg] opacity-[0.15] sm:block',
           node: <OatsMotif tone={tone} />,
         },
         {
           id: 'anat-raspberry',
-          className: 'top-14 left-[48%] hidden h-22 w-22 -rotate-[6deg] opacity-[0.12] lg:block',
+          className: 'top-12 left-[46%] hidden h-24 w-24 -rotate-[6deg] opacity-[0.14] lg:block',
           node: <RaspberryMotif tone={tone} />,
         },
       ];
@@ -426,23 +478,57 @@ function buildPlacements(
       return [
         {
           id: 'feat-bowl',
-          className: 'top-6 right-[3%] h-28 w-36 rotate-[11deg] opacity-[0.12]',
+          className: 'top-8 right-[2%] h-32 w-40 rotate-[11deg] opacity-[0.16]',
           node: <AcaiBowlMotif tone={tone} />,
         },
         {
+          id: 'feat-strawberry-left',
+          className: 'top-16 left-[1.5%] h-28 w-28 -rotate-[14deg] opacity-[0.16]',
+          node: <StrawberryMotif tone={tone} />,
+        },
+        {
           id: 'feat-banana',
-          className: 'bottom-8 left-[2%] h-24 w-28 -rotate-[12deg] opacity-[0.11]',
+          className: 'bottom-10 left-[2%] h-28 w-32 -rotate-[12deg] opacity-[0.16]',
           node: <BananaMotif tone={tone} />,
         },
         {
-          id: 'feat-seeds',
-          className: 'top-[46%] left-[3%] hidden h-20 w-24 rotate-[14deg] opacity-[0.10] md:block',
-          node: <SeedsMotif tone={tone} />,
+          id: 'feat-pineapple',
+          className: 'top-[46%] right-[1.5%] hidden h-36 w-32 rotate-[8deg] opacity-[0.15] lg:block',
+          node: <PineappleMotif tone={tone} />,
         },
         {
-          id: 'feat-coconut',
-          className: 'bottom-10 right-[12%] h-20 w-28 -rotate-[7deg] opacity-[0.11]',
-          node: <CoconutMotif tone={tone} />,
+          id: 'feat-mango-bottom',
+          className: 'bottom-8 right-[8%] h-28 w-32 -rotate-[9deg] opacity-[0.15]',
+          node: <MangoMotif tone={tone} />,
+        },
+        {
+          id: 'feat-blueberry-mid',
+          className: 'top-[54%] left-[24%] hidden h-24 w-24 rotate-[14deg] opacity-[0.13] xl:block',
+          node: <BlueberryMotif tone={tone} />,
+        },
+      ];
+
+    case 'story-branches':
+      return [
+        {
+          id: 'story-branch-right',
+          className: 'top-6 right-[2%] h-40 w-40 rotate-[10deg] opacity-[0.18]',
+          node: <AcaiBranchMotif tone={tone} />,
+        },
+        {
+          id: 'story-branch-left',
+          className: 'bottom-6 left-[1.5%] h-36 w-36 -rotate-[14deg] opacity-[0.17]',
+          node: <AcaiBranchMotif tone={tone} />,
+        },
+        {
+          id: 'story-blueberries',
+          className: 'top-14 left-[20%] hidden h-24 w-24 rotate-[12deg] opacity-[0.14] lg:block',
+          node: <BlueberryMotif tone={tone} />,
+        },
+        {
+          id: 'story-honey',
+          className: 'bottom-10 right-[26%] hidden h-28 w-32 -rotate-[8deg] opacity-[0.14] xl:block',
+          node: <HoneyDipperMotif tone={tone} />,
         },
       ];
 
@@ -450,23 +536,28 @@ function buildPlacements(
       return [
         {
           id: 'hrs-blueberries',
-          className: 'top-10 right-[4%] h-24 w-24 rotate-[13deg] opacity-[0.12]',
+          className: 'top-10 right-[2%] h-28 w-28 rotate-[13deg] opacity-[0.16]',
           node: <BlueberryMotif tone={tone} />,
         },
         {
           id: 'hrs-honey',
-          className: 'top-[44%] left-[2%] hidden h-28 w-32 -rotate-[10deg] opacity-[0.11] lg:block',
+          className: 'top-[38%] left-[1.5%] hidden h-32 w-36 -rotate-[10deg] opacity-[0.15] lg:block',
           node: <HoneyDipperMotif tone={tone} />,
         },
         {
           id: 'hrs-strawberry',
-          className: 'bottom-8 right-[5%] h-24 w-24 -rotate-[12deg] opacity-[0.12]',
+          className: 'bottom-12 right-[3%] h-28 w-28 -rotate-[12deg] opacity-[0.16]',
           node: <StrawberryMotif tone={tone} />,
         },
         {
           id: 'hrs-almonds',
-          className: 'bottom-12 left-[6%] h-20 w-24 rotate-[9deg] opacity-[0.11]',
+          className: 'bottom-16 left-[2.5%] h-24 w-28 rotate-[9deg] opacity-[0.15]',
           node: <AlmondMotif tone={tone} />,
+        },
+        {
+          id: 'hrs-banana-right',
+          className: 'top-[54%] right-[1.5%] hidden h-28 w-32 rotate-[16deg] opacity-[0.14] xl:block',
+          node: <BananaMotif tone={tone} />,
         },
       ];
 
@@ -474,22 +565,22 @@ function buildPlacements(
       return [
         {
           id: 'vis-bowl',
-          className: 'top-8 right-[4%] h-28 w-34 -rotate-[11deg] opacity-[0.14]',
+          className: 'top-8 right-[2%] h-32 w-40 -rotate-[11deg] opacity-[0.16]',
           node: <AcaiBowlMotif tone={tone} />,
         },
         {
           id: 'vis-mango',
-          className: 'top-[48%] left-[1%] hidden h-24 w-26 rotate-[12deg] opacity-[0.12] md:block',
+          className: 'top-[46%] left-[1.5%] hidden h-28 w-32 rotate-[12deg] opacity-[0.15] md:block',
           node: <MangoMotif tone={tone} />,
         },
         {
           id: 'vis-raspberry',
-          className: 'bottom-10 left-[4%] h-22 w-22 rotate-[14deg] opacity-[0.13]',
+          className: 'bottom-10 left-[3%] h-24 w-24 rotate-[14deg] opacity-[0.16]',
           node: <RaspberryMotif tone={tone} />,
         },
         {
           id: 'vis-seeds',
-          className: 'bottom-8 right-[14%] h-20 w-24 -rotate-[8deg] opacity-[0.13]',
+          className: 'bottom-8 right-[6%] h-24 w-28 -rotate-[8deg] opacity-[0.15]',
           node: <SeedsMotif tone={tone} />,
         },
       ];
@@ -498,18 +589,23 @@ function buildPlacements(
       return [
         {
           id: 'mh-pineapple',
-          className: 'top-4 right-[4%] h-32 w-28 rotate-[14deg] opacity-[0.15]',
+          className: 'top-4 right-[3%] h-36 w-32 rotate-[14deg] opacity-[0.18]',
           node: <PineappleMotif tone={tone} />,
         },
         {
           id: 'mh-blueberries',
-          className: 'bottom-4 right-[22%] hidden h-22 w-22 -rotate-[10deg] opacity-[0.13] sm:block',
+          className: 'bottom-4 right-[20%] hidden h-24 w-24 -rotate-[10deg] opacity-[0.16] sm:block',
           node: <BlueberryMotif tone={tone} />,
         },
         {
           id: 'mh-honey',
-          className: 'bottom-2 left-[62%] hidden h-24 w-28 rotate-[7deg] opacity-[0.12] lg:block',
+          className: 'bottom-2 left-[60%] hidden h-28 w-32 rotate-[7deg] opacity-[0.15] lg:block',
           node: <HoneyDipperMotif tone={tone} />,
+        },
+        {
+          id: 'mh-branch-left',
+          className: 'top-4 left-[1%] hidden h-32 w-32 -rotate-[14deg] opacity-[0.14] xl:block',
+          node: <AcaiBranchMotif tone={tone} />,
         },
       ];
 
@@ -517,22 +613,22 @@ function buildPlacements(
       return [
         {
           id: 'ms-strawberry',
-          className: 'top-12 right-[3%] h-24 w-24 rotate-[12deg] opacity-[0.11]',
+          className: 'top-10 right-[2%] h-28 w-28 rotate-[12deg] opacity-[0.15]',
           node: <StrawberryMotif tone={tone} />,
         },
         {
           id: 'ms-blackberry',
-          className: 'top-[42%] left-[2%] h-24 w-24 -rotate-[11deg] opacity-[0.10]',
+          className: 'top-[42%] left-[1.5%] h-28 w-28 -rotate-[11deg] opacity-[0.14]',
           node: <BlackberryMotif tone={tone} />,
         },
         {
           id: 'ms-coconut',
-          className: 'bottom-12 right-[6%] h-22 w-28 -rotate-[9deg] opacity-[0.11]',
+          className: 'bottom-12 right-[3%] h-24 w-32 -rotate-[9deg] opacity-[0.15]',
           node: <CoconutMotif tone={tone} />,
         },
         {
           id: 'ms-oats',
-          className: 'bottom-16 left-[10%] hidden h-20 w-26 rotate-[10deg] opacity-[0.10] md:block',
+          className: 'bottom-16 left-[4%] hidden h-24 w-28 rotate-[10deg] opacity-[0.14] md:block',
           node: <OatsMotif tone={tone} />,
         },
       ];
@@ -542,37 +638,37 @@ function buildPlacements(
       return [
         {
           id: 'cyo-banana',
-          className: 'top-8 right-[4%] h-26 w-30 rotate-[13deg] opacity-[0.14]',
+          className: 'top-8 right-[2%] h-28 w-32 rotate-[13deg] opacity-[0.17]',
           node: <BananaMotif tone={tone} />,
         },
         {
           id: 'cyo-strawberry',
-          className: 'top-24 left-[2%] h-22 w-22 -rotate-[12deg] opacity-[0.13]',
+          className: 'top-20 left-[1.5%] h-24 w-24 -rotate-[12deg] opacity-[0.16]',
           node: <StrawberryMotif tone={tone} />,
         },
         {
           id: 'cyo-honey',
-          className: 'top-[45%] right-[2%] hidden h-28 w-32 -rotate-[9deg] opacity-[0.13] lg:block',
+          className: 'top-[45%] right-[1.5%] hidden h-32 w-36 -rotate-[9deg] opacity-[0.16] lg:block',
           node: <HoneyDipperMotif tone={tone} />,
         },
         {
           id: 'cyo-mango',
-          className: 'top-[54%] left-[4%] hidden h-24 w-26 rotate-[11deg] opacity-[0.12] md:block',
+          className: 'top-[54%] left-[2%] hidden h-28 w-32 rotate-[11deg] opacity-[0.15] md:block',
           node: <MangoMotif tone={tone} />,
         },
         {
           id: 'cyo-bowl',
-          className: 'bottom-8 right-[10%] h-26 w-32 rotate-[8deg] opacity-[0.13]',
+          className: 'bottom-8 right-[6%] h-28 w-36 rotate-[8deg] opacity-[0.16]',
           node: <AcaiBowlMotif tone={tone} />,
         },
         {
           id: 'cyo-seeds',
-          className: 'bottom-12 left-[14%] h-20 w-24 -rotate-[10deg] opacity-[0.13]',
+          className: 'bottom-12 left-[6%] h-24 w-28 -rotate-[10deg] opacity-[0.16]',
           node: <SeedsMotif tone={tone} />,
         },
         {
           id: 'cyo-almonds',
-          className: 'bottom-28 right-[42%] hidden h-20 w-22 rotate-[15deg] opacity-[0.11] xl:block',
+          className: 'bottom-28 right-[42%] hidden h-24 w-28 rotate-[15deg] opacity-[0.14] xl:block',
           node: <AlmondMotif tone={tone} />,
         },
       ];

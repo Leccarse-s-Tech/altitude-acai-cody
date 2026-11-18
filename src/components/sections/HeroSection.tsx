@@ -1,14 +1,10 @@
-import { ArrowRight, MapPin, Mountains } from '@phosphor-icons/react';
+import { ArrowRight, MapPin } from '@phosphor-icons/react';
 import { motion, useReducedMotion } from 'motion/react';
 import brandData from '../../data/verified-brand-data.json';
 import { editorialCopy } from '../../data/editorial-copy';
 import { AppLink, assetUrl } from '../../lib/router';
 import { CordelBackgroundArtwork } from '../ui/CordelBackgroundArtwork';
-import {
-  CarvedWoodblockFrame,
-  CottonPaperGrain,
-  WoodgrainOverlay,
-} from '../ui/WoodcutTextures';
+import { CottonPaperGrain, WoodgrainOverlay } from '../ui/WoodcutTextures';
 
 const WOODCUT_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -21,41 +17,40 @@ export function HeroSection() {
     <section
       id="top"
       aria-labelledby="hero-heading"
-      className="surface-cotton-paper relative flex min-h-[100dvh] flex-col justify-between overflow-hidden pt-12 pb-0 sm:pt-16 lg:pt-20"
+      className="surface-cotton-paper relative flex min-h-[min(92dvh,860px)] items-center overflow-hidden border-b border-[#1E2749]/20 py-14 sm:py-16 lg:py-20"
     >
       <CottonPaperGrain variant="light" opacity={0.045} />
       <WoodgrainOverlay variant="light" opacity={0.09} />
       <CordelBackgroundArtwork placement="hero" variant="light" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
-          {/* Left Editorial Stack */}
+      <div className="widescreen-container relative z-10">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+          {/* Left Editorial Stack (Open Typography — Zero Boxed Monospace Pill Badges) */}
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.45, ease: WOODCUT_EASE }}
-            className="min-w-0 lg:col-span-6"
+            className="min-w-0 lg:col-span-5"
           >
-            {/* Eyebrow Badge */}
-            <div className="inline-flex max-w-full items-center gap-2 rounded-sm border-2 border-[#1E2749] bg-[#E4D9FF] px-3 py-1.5 shadow-[3px_3px_0px_#1E2749]">
-              <Mountains size={16} weight="bold" className="shrink-0 text-[#1E2749]" aria-hidden="true" />
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-[#1E2749] sm:text-xs">
+            <div className="flex items-center gap-3">
+              <span className="h-[2px] w-8 bg-[#273469]" aria-hidden="true" />
+              <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-[#575E8F] sm:text-sm">
                 {hero.badge}
-              </span>
+              </p>
             </div>
 
             <h1
               id="hero-heading"
-              className="font-display mt-5 text-[clamp(1.85rem,6vw,3.65rem)] leading-[1.07] font-extrabold tracking-[-0.025em] text-[#1E2749]"
+              className="font-display mt-5 text-[clamp(2.1rem,5.2vw,4.35rem)] leading-[1.03] font-extrabold tracking-[-0.03em] text-[#1E2749]"
             >
               {hero.headline}
             </h1>
 
-            <p className="mt-5 w-full max-w-prose text-base leading-relaxed text-[#30343F] sm:text-lg">
+            <p className="mt-6 w-full max-w-[46ch] text-base leading-relaxed text-[#30343F] sm:text-xl sm:leading-relaxed">
               {hero.subhead}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4">
+            <div className="mt-9 flex flex-wrap items-center gap-4">
               <AppLink
                 to={hero.primaryCta.to}
                 aria-label={hero.primaryCta.ariaLabel}
@@ -78,22 +73,18 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right Asymmetric Cordel Print + Official Bowl Spread Composition */}
+          {/* Right Widescreen Editorial Collage Bleed (Cordel Mountain Print + Real Bowls) */}
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.52, delay: 0.08, ease: WOODCUT_EASE }}
-            className="relative min-w-0 lg:col-span-6"
+            className="relative min-w-0 lg:col-span-7 lg:-mr-6 xl:-mr-10"
           >
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-12 sm:items-end sm:gap-5">
-              {/* Primary Cordel Woodcut Mountain Landscape */}
-              <div className="relative sm:col-span-8">
-                <CarvedWoodblockFrame
-                  variant="light"
-                  showCornerMarks={true}
-                  className="shadow-[5px_5px_0px_#1E2749] sm:shadow-[6px_6px_0px_#1E2749]"
-                >
-                  <div className="aspect-[4/3] w-full overflow-hidden bg-[#E4D9FF]">
+            <div className="relative grid grid-cols-1 gap-5 sm:grid-cols-12 sm:items-center sm:gap-6">
+              {/* Primary Cordel Mountain Woodblock Engraving */}
+              <div className="relative z-10 sm:col-span-8">
+                <figure className="relative overflow-hidden border border-[#1E2749] bg-[#E4D9FF] p-2 shadow-[0_20px_44px_-22px_rgba(30,39,73,0.45)] sm:p-2.5">
+                  <div className="aspect-[16/11] w-full overflow-hidden">
                     <img
                       src={assetUrl('assets/brand/hero-cordel-landscape.webp')}
                       alt="Woodcut print illustration of Wyoming Absaroka mountains with natural sun, organic clouds, pines, and açaí flora"
@@ -102,27 +93,25 @@ export function HeroSection() {
                       height={687}
                     />
                   </div>
-                </CarvedWoodblockFrame>
+                </figure>
 
-                {/* Official Crest Medallion (inset safely on < 640px so zero 320px overflow) */}
-                <div className="absolute top-3 left-3 z-20 h-16 w-16 overflow-hidden rounded-sm border-2 border-[#1E2749] bg-[#FAFAFF] p-1 shadow-[3px_3px_0px_#1E2749] sm:-top-4 sm:-left-4 sm:h-24 sm:w-24 sm:shadow-[4px_4px_0px_#1E2749]">
-                  <img
-                    src={assetUrl('assets/brand/logo-official.webp')}
-                    alt={hero.logoAlt}
-                    className="h-full w-full object-cover"
-                    width={96}
-                    height={96}
-                  />
+                {/* Overlapping Official Crest Medallion (Safe inset on mobile, clean editorial overlap on tablet/desktop) */}
+                <div className="mt-3 inline-flex items-center gap-3 sm:absolute sm:-bottom-5 sm:left-4 sm:z-30 sm:mt-0 sm:block">
+                  <div className="h-16 w-16 overflow-hidden rounded-full border-2 border-[#1E2749] bg-[#FAFAFF] p-1 shadow-[0_10px_22px_-8px_rgba(30,39,73,0.4)] sm:h-24 sm:w-24">
+                    <img
+                      src={assetUrl('assets/brand/logo-official.webp')}
+                      alt={hero.logoAlt}
+                      className="h-full w-full rounded-full object-cover"
+                      width={96}
+                      height={96}
+                    />
+                  </div>
                 </div>
               </div>
 
-              {/* Official Bowl Overhead Spread Plate (zero redundant caption or address) */}
-              <div className="sm:col-span-4 sm:-ml-6 sm:mb-4">
-                <CarvedWoodblockFrame
-                  variant="periwinkle"
-                  showCornerMarks={false}
-                  className="shadow-[4px_4px_0px_#1E2749] sm:shadow-[5px_5px_0px_#1E2749]"
-                >
+              {/* Overlapping Asymmetric Real Bowl Duo (Extending Toward Right Lateral Margin) */}
+              <div className="relative z-20 flex flex-col gap-5 sm:col-span-4 sm:-ml-10">
+                <figure className="overflow-hidden border border-[#1E2749] bg-[#FAFAFF] p-1.5 shadow-[0_18px_36px_-16px_rgba(30,39,73,0.45)] sm:rotate-[1.5deg]">
                   <div className="aspect-[4/5] w-full overflow-hidden">
                     <img
                       src={assetUrl('assets/bowls/official-overhead-spread.webp')}
@@ -132,24 +121,23 @@ export function HeroSection() {
                       height={600}
                     />
                   </div>
-                </CarvedWoodblockFrame>
+                </figure>
+
+                <figure className="hidden overflow-hidden border border-[#1E2749] bg-[#E4D9FF] p-1.5 shadow-[0_14px_28px_-14px_rgba(30,39,73,0.4)] sm:ml-6 sm:block sm:-rotate-[2deg]">
+                  <div className="aspect-[16/10] w-full overflow-hidden">
+                    <img
+                      src={assetUrl('assets/bowls/official-berry-pollen-bowl.webp')}
+                      alt="Handcrafted açaí bowl topped with raspberries, blackberries, bee pollen, and honey drizzle"
+                      className="h-full w-full object-cover"
+                      width={480}
+                      height={300}
+                    />
+                  </div>
+                </figure>
               </div>
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* Wyoming Mountains Cordel Engraving Band Anchoring Bottom Edge */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-6 sm:px-6 lg:px-8">
-        <CarvedWoodblockFrame variant="light" showCornerMarks={false} className="shadow-[4px_4px_0px_#1E2749]">
-          <img
-            src={assetUrl('assets/cordel/wyoming-mountains-cordel.svg')}
-            alt="Absaroka Mountain Peaks, Natural Sun with Organic Clouds, Pines, and Açaí Flora in Cordel Woodcut Style"
-            className="block h-auto w-full"
-            width={1440}
-            height={540}
-          />
-        </CarvedWoodblockFrame>
       </div>
     </section>
   );
