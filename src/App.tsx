@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { MotionConfig } from 'motion/react';
 import { Footer } from './components/layout/Footer';
 import { Navbar } from './components/layout/Navbar';
+import { FloatingTextUsButton } from './components/ui/FloatingTextUsButton';
 import { WoodcutCarvedFilterDefs } from './components/ui/WoodcutTextures';
 import { editorialCopy } from './data/editorial-copy';
 import { usePathname } from './lib/router';
@@ -52,6 +53,7 @@ export function App() {
         </main>
 
         <Footer />
+        <FloatingTextUsButton />
       </div>
     </MotionConfig>
   );
