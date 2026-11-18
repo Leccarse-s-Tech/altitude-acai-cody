@@ -165,19 +165,16 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                     }`}
                   >
                     <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-mono text-xs font-bold text-[#575E8F]">
-                          0{index + 1}
-                        </span>
-                        <span className="editorial-menu-leader" aria-hidden="true" />
-                        {isMountainMan && (
+                      {isMountainMan && (
+                        <div className="mb-1.5 flex items-center gap-3">
                           <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#273469]">
                             House Favorite
                           </span>
-                        )}
-                      </div>
+                          <span className="editorial-menu-leader" aria-hidden="true" />
+                        </div>
+                      )}
 
-                      <h3 className="font-display mt-2 text-2xl font-extrabold tracking-tight text-[#1E2749] sm:text-3xl">
+                      <h3 className="font-display text-2xl font-extrabold tracking-tight text-[#1E2749] sm:text-3xl">
                         {bowl.name}
                       </h3>
 

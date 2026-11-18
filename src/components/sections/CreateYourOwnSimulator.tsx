@@ -364,7 +364,7 @@ export function CreateYourOwnSimulator({
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <div>
                   <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
-                    1. {createYourOwn.categories.fruits.title}
+                    {createYourOwn.categories.fruits.title}
                   </h3>
                   <p className="mt-0.5 text-sm text-[#575E8F]">
                     {createYourOwn.categories.fruits.ruleText}
@@ -399,7 +399,7 @@ export function CreateYourOwnSimulator({
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <div>
                   <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
-                    2. {createYourOwn.categories.toppings.title}
+                    {createYourOwn.categories.toppings.title}
                   </h3>
                   <p className="mt-0.5 text-sm text-[#575E8F]">
                     {createYourOwn.categories.toppings.ruleText}
@@ -434,7 +434,7 @@ export function CreateYourOwnSimulator({
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <div>
                   <h3 className="font-display text-2xl font-extrabold text-[#1E2749]">
-                    3. {createYourOwn.categories.sauces.title}
+                    {createYourOwn.categories.sauces.title}
                   </h3>
                   <p className="mt-0.5 text-sm text-[#575E8F]">
                     {createYourOwn.categories.sauces.ruleText}

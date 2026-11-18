@@ -1,7 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import {
-  CaretDown,
-  CaretUp,
   FacebookLogo,
   Flower,
   InstagramLogo,
@@ -37,47 +35,11 @@ const SEASON_ICONS: Record<SeasonKey, ReactNode> = {
   spring: <Flower size={18} weight="bold" aria-hidden="true" />,
 };
 
-interface OfficialPosterItem {
-  id: string;
-  title: string;
-  subtitle: string;
-  imagePath: string;
-  imageAlt: string;
-}
-
-const OFFICIAL_POSTERS: readonly OfficialPosterItem[] = [
-  {
-    id: 'winter-hours',
-    title: 'Official Winter Schedule Poster',
-    subtitle: 'Wednesday–Saturday 8:00 AM - 2:00 PM · Closed Sun–Tue',
-    imagePath: 'assets/brand/official-winter-hours-poster.webp',
-    imageAlt:
-      'Official Altitude Açaí Winter Hours poster listing Wednesday through Saturday 8:00 AM to 2:00 PM',
-  },
-  {
-    id: 'veterans-day',
-    title: brandData.specialHolidayNotices[0].title,
-    subtitle: `${brandData.specialHolidayNotices[0].date} · ${brandData.specialHolidayNotices[0].hours}`,
-    imagePath: 'assets/brand/official-veterans-notice.webp',
-    imageAlt:
-      'Official Altitude Açaí Veterans Day appreciation poster offering a complimentary bowl to veterans and active duty military',
-  },
-  {
-    id: 'thanksgiving-break',
-    title: brandData.specialHolidayNotices[1].title,
-    subtitle: `${brandData.specialHolidayNotices[1].status} · ${brandData.specialHolidayNotices[1].reopening}`,
-    imagePath: 'assets/brand/official-thanksgiving-notice.webp',
-    imageAlt:
-      'Official Altitude Açaí Thanksgiving Break notice showing holiday closure dates and reopening schedule',
-  },
-];
-
 export function SeasonalHoursSection() {
   const [liveStatus, setLiveStatus] = useState<LiveStoreStatus>(() => getLiveStoreStatus());
   const [selectedSeason, setSelectedSeason] = useState<SeasonKey>(
     () => getLiveStoreStatus().currentSeason,
   );
-  const [showPosters, setShowPosters] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -253,7 +215,7 @@ export function SeasonalHoursSection() {
             </div>
           </div>
 
-          {/* Right Column: Stretched Weekly Hours Ledger */}
+          {/* Right Column: Stretched Weekly Hours Ledger (Clean — Zero Posters Dropdown) */}
           <div
             role="tabpanel"
             id={`season-panel-${selectedSeason}`}
@@ -329,60 +291,6 @@ export function SeasonalHoursSection() {
                         );
                       })}
                     </ul>
-                  </div>
-
-                  {/* Expandable Official Storefront Notice Flyers */}
-                  <div className="mt-6 border-t border-[#1E2749]/20 pt-4">
-                    <button
-                      type="button"
-                      aria-expanded={showPosters}
-                      aria-controls="official-shop-posters-panel"
-                      onClick={() => setShowPosters((prev) => !prev)}
-                      className="woodcut-btn woodcut-btn-secondary w-full justify-between text-xs sm:text-sm"
-                    >
-                      <span>Shop Posters & Notices</span>
-                      {showPosters ? (
-                        <CaretUp size={18} weight="bold" aria-hidden="true" />
-                      ) : (
-                        <CaretDown size={18} weight="bold" aria-hidden="true" />
-                      )}
-                    </button>
-
-                    <AnimatePresence>
-                      {showPosters && (
-                        <motion.div
-                          id="official-shop-posters-panel"
-                          initial={prefersReducedMotion ? false : { opacity: 0, y: -6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.22, ease: WOODCUT_EASE }}
-                          className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3"
-                        >
-                          {OFFICIAL_POSTERS.map((poster) => (
-                            <figure
-                              key={poster.id}
-                              className="overflow-hidden border border-[#1E2749] bg-[#FAFAFF]"
-                            >
-                              <div className="aspect-[3/4] overflow-hidden border-b border-[#1E2749] bg-[#E4D9FF]/30">
-                                <img
-                                  src={assetUrl(poster.imagePath)}
-                                  alt={poster.imageAlt}
-                                  className="h-full w-full object-cover"
-                                  width={360}
-                                  height={480}
-                                />
-                              </div>
-                              <figcaption className="p-3">
-                                <p className="font-display text-sm font-bold text-[#1E2749]">
-                                  {poster.title}
-                                </p>
-                                <p className="mt-1 text-xs text-[#575E8F]">{poster.subtitle}</p>
-                              </figcaption>
-                            </figure>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
                   </div>
                 </CarvedWoodblockFrame>
               </motion.div>

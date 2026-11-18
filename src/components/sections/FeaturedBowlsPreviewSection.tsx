@@ -112,12 +112,9 @@ export function FeaturedBowlsPreviewSection() {
                     </div>
                   </div>
 
-                  {/* Open Editorial Typography + Engraved Rule */}
+                  {/* Open Editorial Typography + Engraved Rule (Zero Numbering) */}
                   <div className={isLead ? 'min-w-0 sm:col-span-5' : 'min-w-0'}>
-                    <span className="font-mono text-xs font-bold tracking-widest text-[#575E8F]">
-                      0{index + 1}
-                    </span>
-                    <h3 className="font-display mt-1 text-2xl font-extrabold tracking-tight text-[#1E2749] xl:text-3xl">
+                    <h3 className="font-display text-2xl font-extrabold tracking-tight text-[#1E2749] xl:text-3xl">
                       {bowl.name}
                     </h3>
 
