@@ -435,10 +435,10 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       const main = container.querySelector('main') as HTMLElement;
       const mainText = main.textContent ?? '';
 
-      // Single occurrence of sizes & base rule across <main>
+      // Sizes displayed cleanly once without redundant Base/Granola header rule
       expect(mainText.match(/12 oz Bowl/g) ?? []).toHaveLength(1);
       expect(mainText.match(/16 oz Bowl/g) ?? []).toHaveLength(1);
-      expect(mainText.match(/All bowls start with Açaí Base and Granola/g) ?? []).toHaveLength(1);
+      expect(mainText).not.toContain('All bowls start with Açaí Base and Granola');
 
       // Scattered Cordel background layers across /menu sections (no single horizontal row strip)
       expect(container.querySelectorAll('[data-cordel-background]').length).toBeGreaterThanOrEqual(3);
@@ -450,9 +450,10 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(mainText).not.toMatch(/307-527-0812/);
       expect(mainText).not.toMatch(/\$|¢/);
 
-      // All 6 Signature Bowls rendered WITHOUT numbers 01..06
+      // All 6 Signature Bowls rendered WITHOUT numbers 01..06 or "House Favorite" badge
       const signatureSection = container.querySelector('#signature-bowls') as HTMLElement;
       expect(signatureSection.textContent).not.toMatch(/\b(01|02|03|04|05|06)\b/);
+      expect(signatureSection.textContent).not.toMatch(/House Favorite/i);
       for (const name of [
         'Mountain Man',
         'Montana Mama',
@@ -464,9 +465,15 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
         expect(signatureSection.textContent).toContain(name);
       }
 
-      // Create Your Own limits (3 Fruits, 2 Toppings, 1 Sauce) WITHOUT numbered headings (1. / 2. / 3.)
+      // Create Your Own limits without duplicated rules, subtexts, pills, or repetitive summary block
       const buildSection = container.querySelector('#build-your-own') as HTMLElement;
       expect(buildSection.textContent).not.toMatch(/1\.\s*Fruits|2\.\s*Toppings|3\.\s*Sauces/i);
+      expect(buildSection.textContent).not.toMatch(/Pick up to: 3 Fruits/i);
+      expect(buildSection.textContent).not.toContain('Pick up to 3');
+      expect(buildSection.textContent).not.toContain('Granola Base Included — Pick up to 2');
+      expect(buildSection.textContent).not.toContain('Pick 1');
+      expect(buildSection.textContent).not.toMatch(/\bof [123] selected\b/i);
+
       const cyoFab = container.querySelector('[data-testid="floating-text-us-fab"]');
       expect(cyoFab).not.toBeNull();
       expect(cyoFab).toHaveAttribute('href', 'sms:+13075270812');
@@ -477,13 +484,13 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       for (const fruit of ['Strawberries', 'Blueberries', 'Blackberries', 'Mango']) {
         fireEvent.click(builder.getByRole('button', { name: fruit }));
       }
-      expect(builder.getByText('3 of 3 selected')).toBeInTheDocument();
+      expect(builder.getByTestId('fruits-counter')).toHaveTextContent('3/3');
       expect(builder.getByRole('button', { name: 'Mango' })).toHaveAttribute('aria-pressed', 'false');
 
       for (const topping of ['Hemp Hearts', 'Coconut Shavings', 'Slivered Almonds']) {
         fireEvent.click(builder.getByRole('button', { name: topping }));
       }
-      expect(builder.getByText('2 of 2 selected')).toBeInTheDocument();
+      expect(builder.getByTestId('toppings-counter')).toHaveTextContent('2/2');
       expect(builder.getByRole('button', { name: 'Slivered Almonds' })).toHaveAttribute(
         'aria-pressed',
         'false',
@@ -491,12 +498,15 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
 
       fireEvent.click(builder.getByRole('button', { name: 'Honey' }));
       fireEvent.click(builder.getByRole('button', { name: 'Nutella' }));
-      expect(builder.getByText('1 of 1 selected')).toBeInTheDocument();
+      expect(builder.getByTestId('sauces-counter')).toHaveTextContent('1/1');
       expect(builder.getByRole('button', { name: 'Honey' })).toHaveAttribute('aria-pressed', 'true');
       expect(builder.getByRole('button', { name: 'Nutella' })).toHaveAttribute(
         'aria-pressed',
         'false',
       );
+
+      // Clean "Your Bowl Mix" panel contains zero repetitive Fruits (3/3) / Toppings (2/2) / Sauce (1/1) footer copy
+      expect(buildSection.textContent).not.toMatch(/Fruits\s*\(3\/3\)|Toppings\s*\(2\/2\)|Sauce\s*\(1\/1\)/i);
 
       // Previewing a signature bowl populates builder cleanly
       const previewButtons = within(signatureSection).getAllByRole('button', {
@@ -505,6 +515,49 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(previewButtons).toHaveLength(6);
       fireEvent.click(previewButtons[0]);
       expect(buildSection.textContent).toContain('Previewing Inspiration: Mountain Man');
+    });
+  });
+
+  describe('Scroll-Driven Events & Strict prefers-reduced-motion Fallback', () => {
+    it('defines CSS reduced-motion static overrides and skips motion registration when reduced motion is enabled', () => {
+      const cssContent = fs.readFileSync(path.join(SRC_DIR, 'index.css'), 'utf8');
+      expect(cssContent).toContain('@media (prefers-reduced-motion: reduce)');
+      expect(cssContent).toContain('.scroll-reveal, .cordel-parallax, .bowl-layer-anim');
+      expect(cssContent).toContain('opacity: 1 !important;');
+      expect(cssContent).toContain('transform: none !important;');
+      expect(cssContent).toContain('filter: none !important;');
+
+      const originalMatchMedia = window.matchMedia;
+      try {
+        Object.defineProperty(window, 'matchMedia', {
+          writable: true,
+          value: (query: string) => ({
+            matches: query.includes('prefers-reduced-motion: reduce'),
+            media: query,
+            onchange: null,
+            addListener: () => {},
+            removeListener: () => {},
+            addEventListener: () => {},
+            removeEventListener: () => {},
+            dispatchEvent: () => false,
+          }),
+        });
+
+        const { container } = renderRoute('/');
+        expect(document.documentElement.classList.contains('scroll-motion-ready')).toBe(false);
+        const reveals = container.querySelectorAll('.scroll-reveal, .bowl-layer-anim');
+        expect(reveals.length).toBeGreaterThanOrEqual(5);
+        for (const node of reveals) {
+          expect(node.getAttribute('data-scroll-revealed')).toBe('true');
+        }
+        const parallaxNodes = container.querySelectorAll('.cordel-parallax');
+        expect(parallaxNodes.length).toBeGreaterThanOrEqual(10);
+      } finally {
+        Object.defineProperty(window, 'matchMedia', {
+          writable: true,
+          value: originalMatchMedia,
+        });
+      }
     });
   });
 
