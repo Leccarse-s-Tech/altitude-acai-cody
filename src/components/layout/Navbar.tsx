@@ -41,22 +41,20 @@ export function Navbar() {
       <CottonPaperGrain variant="dark" opacity={0.04} />
 
       <div className="widescreen-container relative z-10 flex h-[72px] items-center justify-between gap-2 sm:gap-4">
-        {/* Brand Crest & Wordmark */}
+        {/* Official Brand Logo Crest Only (contains "ALTITUDE AÇAÍ" inside artwork) */}
         <AppLink
           to="/"
-          className="focus-on-dark inline-flex min-h-[44px] min-w-0 shrink-0 items-center gap-2 rounded-sm pr-1 sm:gap-3 sm:pr-2"
+          aria-label="Altitude Açaí Home"
+          className="focus-on-dark inline-flex min-h-[44px] shrink-0 items-center rounded-full"
         >
-          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#E4D9FF] bg-[#FAFAFF] sm:h-11 sm:w-11">
+          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#E4D9FF] bg-[#FAFAFF] sm:h-12 sm:w-12">
             <img
               src={assetUrl('assets/brand/logo-official.webp')}
               alt={editorialCopy.hero.logoAlt}
               className="h-full w-full rounded-full object-cover"
-              width={44}
-              height={44}
+              width={48}
+              height={48}
             />
-          </span>
-          <span className="font-display text-base font-extrabold tracking-tight whitespace-nowrap text-[#FAFAFF] sm:text-xl">
-            {editorialCopy.navigation.brandLabel}
           </span>
         </AppLink>
 

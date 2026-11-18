@@ -25,23 +25,16 @@ export function HeroSection() {
 
       <div className="widescreen-container relative z-10">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-          {/* Left Editorial Stack (Open Typography — Zero Boxed Monospace Pill Badges) */}
+          {/* Left Editorial Stack (Direct H1 — Zero Eyebrow Kickers) */}
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.45, ease: WOODCUT_EASE }}
             className="min-w-0 lg:col-span-5"
           >
-            <div className="flex items-center gap-3">
-              <span className="h-[2px] w-8 bg-[#273469]" aria-hidden="true" />
-              <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-[#575E8F] sm:text-sm">
-                {hero.badge}
-              </p>
-            </div>
-
             <h1
               id="hero-heading"
-              className="font-display mt-5 text-[clamp(2.1rem,5.2vw,4.35rem)] leading-[1.03] font-extrabold tracking-[-0.03em] text-[#1E2749]"
+              className="font-display text-[clamp(2.1rem,5.2vw,4.35rem)] leading-[1.03] font-extrabold tracking-[-0.03em] text-[#1E2749]"
             >
               {hero.headline}
             </h1>
