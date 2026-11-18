@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" fill="none" role="img" aria-labelledby="seasonal-peaks-title">
+  <title id="seasonal-peaks-title">Cody, Wyoming Seasonal Peaks Woodcut: Natural Summer Sun with Organic Clouds and Winter Snow-Carved Absaroka Ridges</title>
+  <defs>
+    <clipPath id="left-summer-half">
+      <rect x="0" y="0" width="600" height="360" />
+    </clipPath>
+    <clipPath id="right-winter-half">
+      <rect x="600" y="0" width="600" height="360" />
+    </clipPath>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="360" fill="none" />
+
+  <!-- LEFT HALF: SUMMER / SPRING NATURAL SUN, WAVY CLOUDS & WYOMING PEAKS -->
+  <g clip-path="url(#left-summer-half)">
+    <rect x="0" y="0" width="600" height="360" fill="#FAFAFF" />
+
+    <!-- Organic curved horizontal Cordel sky hatching (zero radial lines) -->
+    <g id="summer-organic-sky" stroke="#8687B4" stroke-linecap="round" fill="none" opacity="0.52">
+      <path d="M20 40 Q140 32 280 42 T592 38" stroke-width="1.4" />
+      <path d="M20 62 Q170 72 340 58 T592 64" stroke-width="1.3" stroke-dasharray="36 12 64 14" />
+      <path d="M20 86 Q150 76 310 88 T592 82" stroke-width="1.35" />
+      <path d="M20 112 Q180 122 360 108 T592 114" stroke-width="1.25" stroke-dasharray="44 16" />
+      <path d="M20 138 Q130 128 290 140 T592 134" stroke-width="1.3" />
+      <path d="M20 166 Q165 174 345 162 T592 168" stroke-width="1.2" stroke-dasharray="28 10 52 14" />
+    </g>
+
+    <!-- Rustic Natural Summer Sun Disc (simple hand-carved circle) -->
+    <g id="summer-natural-sun">
+      <path d="M196 106 A68 68 0 0 1 286 78" stroke="#575E8F" stroke-width="1.7" stroke-dasharray="14 8" stroke-linecap="round" />
+      <path d="M312 104 A68 68 0 0 1 320 148" stroke="#8687B4" stroke-width="1.5" stroke-dasharray="12 8" stroke-linecap="round" />
+      <circle cx="256" cy="134" r="52" fill="#FAFAFF" stroke="#1E2749" stroke-width="3.2" />
+      <circle cx="256" cy="134" r="45" fill="#E4D9FF" opacity="0.28" />
+    </g>
+
+    <!-- Horizontal Organic Wavy Clouds Integrated with Sun Disc -->
+    <g id="summer-clouds">
+      <path d="M26 84 C58 72 96 76 128 64 C162 52 198 58 220 74 C236 82 232 90 212 90 C152 88 86 94 36 90 C22 89 18 87 26 84 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.4" stroke-linejoin="round" />
+      <path d="M46 84 C98 78 152 82 204 84" stroke="#575E8F" stroke-width="1.4" stroke-linecap="round" />
+
+      <path d="M150 154 C178 140 214 142 242 152 C264 142 294 148 310 160 C322 168 314 174 294 174 C248 172 194 174 156 168 C142 166 140 158 150 154 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.3" stroke-linejoin="round" />
+      <path d="M168 164 C212 158 256 162 296 166" stroke="#30343F" stroke-width="1.35" stroke-linecap="round" />
+
+      <path d="M352 74 C394 64 438 66 476 52 C516 38 558 46 588 64 C598 70 594 82 572 82 C504 78 416 88 358 84 C340 82 338 78 352 74 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.4" stroke-linejoin="round" />
+      <path d="M376 76 C444 70 508 74 568 74" stroke="#30343F" stroke-width="1.4" stroke-linecap="round" />
+    </g>
+
+    <!-- Far Foothills -->
+    <path d="M16 254 L110 202 L210 236 L330 184 L455 232 L600 180 L600 344 L16 344 Z" fill="#8687B4" stroke="#1E2749" stroke-width="2.6" />
+    <!-- Summer Mountain Peaks -->
+    <path d="M16 296 L154 152 L274 252 L416 112 L534 218 L600 172 L600 344 L16 344 Z" fill="#575E8F" stroke="#1E2749" stroke-width="3.4" stroke-linejoin="round" />
+    <path d="M154 152 L274 252 L208 282 L148 212 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.2" />
+    <path d="M416 112 L534 218 L460 256 L412 184 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2.2" />
+    <!-- Curved organic mountain woodcut gouges -->
+    <g stroke="#1E2749" stroke-width="2" stroke-linecap="round" fill="none">
+      <path d="M138 184 Q110 218 80 250" />
+      <path d="M124 222 Q98 252 64 278" />
+      <path d="M400 144 Q370 184 336 220" />
+      <path d="M382 186 Q348 224 310 262" />
+    </g>
+
+    <!-- Summer Pines & Botanical Acai / Blueberry Base Flora -->
+    <g id="summer-flora-pines" fill="#1E2749" stroke="#FAFAFF" stroke-width="1.2" stroke-linejoin="round">
+      <path d="M48 232 L36 256 L43 256 L31 278 L40 278 L28 298 L68 298 L56 278 L65 278 L53 256 L60 256 Z" />
+      <path d="M548 236 L536 258 L543 258 L532 278 L540 278 L530 298 L566 298 L556 278 L564 278 L553 258 L560 258 Z" />
+    </g>
+    <path d="M0 294 Q280 266 600 294 L600 360 L0 360 Z" fill="#1E2749" />
+    <path d="M44 326 C96 310 158 304 220 312" stroke="#E4D9FF" stroke-width="2.2" fill="none" />
+    <g fill="#FAFAFF" stroke="#1E2749" stroke-width="1.2">
+      <path d="M84 316 C78 298 96 286 112 294 C104 304 94 312 84 316 Z" />
+      <path d="M132 308 C130 292 148 284 164 292 C154 302 144 306 132 308 Z" />
+      <path d="M178 310 C180 294 198 288 212 296 C202 304 190 308 178 310 Z" />
+    </g>
+    <g id="summer-berries" fill="#E4D9FF" stroke="#1E2749" stroke-width="1.5">
+      <circle cx="96" cy="324" r="7.5" />
+      <circle cx="116" cy="330" r="6.5" />
+      <circle cx="136" cy="322" r="7.5" />
+      <circle cx="486" cy="316" r="7.5" />
+      <circle cx="506" cy="324" r="6.5" />
+      <circle cx="524" cy="314" r="7" />
+    </g>
+  </g>
+
+  <!-- RIGHT HALF: WINTER / FALL SNOW-CARVED PEAKS WITH ORGANIC HATCHING -->
+  <g clip-path="url(#right-winter-half)">
+    <rect x="600" y="0" width="600" height="360" fill="#1E2749" />
+
+    <!-- Organic curved snow-sky woodcut striations -->
+    <g stroke="#E4D9FF" stroke-linecap="round" fill="none" opacity="0.28">
+      <path d="M604 42 Q740 34 890 44 T1180 40" stroke-width="1.3" />
+      <path d="M604 68 Q780 78 960 64 T1180 70" stroke-width="1.2" stroke-dasharray="36 14" />
+      <path d="M604 98 Q750 88 920 100 T1180 94" stroke-width="1.25" />
+      <path d="M604 128 Q790 138 970 124 T1180 130" stroke-width="1.15" stroke-dasharray="42 16" />
+    </g>
+
+    <path d="M920 72 A38 38 0 1 0 960 128 A29 29 0 1 1 920 72 Z" fill="#E4D9FF" stroke="#FAFAFF" stroke-width="2" />
+    <!-- Detailed 6-branch woodcut snowflakes -->
+    <g transform="translate(712, 66)" stroke="#FAFAFF" stroke-width="2" stroke-linecap="round">
+      <line x1="-20" y1="0" x2="20" y2="0" />
+      <line x1="0" y1="-20" x2="0" y2="20" />
+      <line x1="-14" y1="-14" x2="14" y2="14" />
+      <line x1="-14" y1="14" x2="14" y2="-14" />
+      <path d="M-14 -4 L-10 0 L-14 4 M14 -4 L10 0 L14 4 M-4 -14 L0 -10 L4 -14 M-4 14 L0 10 L4 14" fill="none" />
+      <circle cx="0" cy="0" r="3.5" fill="#1E2749" />
+    </g>
+    <g transform="translate(1078, 96)" stroke="#E4D9FF" stroke-width="1.8" stroke-linecap="round">
+      <line x1="-15" y1="0" x2="15" y2="0" />
+      <line x1="0" y1="-15" x2="0" y2="15" />
+      <line x1="-11" y1="-11" x2="11" y2="11" />
+      <line x1="-11" y1="11" x2="11" y2="-11" />
+    </g>
+
+    <!-- Winter Mountain Skyline Connecting Seamlessly at x=600 -->
+    <path d="M600 172 L724 104 L856 226 L984 128 L1120 236 L1184 202 L1184 344 L600 344 Z" fill="#30343F" stroke="#E4D9FF" stroke-width="3" stroke-linejoin="round" />
+    <path d="M724 104 L856 226 L776 244 L718 168 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2" />
+    <path d="M984 128 L1120 236 L1042 252 L982 184 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="2" />
+    <!-- Curved organic Winter Mountain Gouge Lines -->
+    <g stroke="#8687B4" stroke-width="2" stroke-linecap="round" fill="none">
+      <path d="M708 134 Q680 166 656 196" />
+      <path d="M690 174 Q664 208 636 238" />
+      <path d="M964 156 Q936 188 908 220" />
+    </g>
+
+    <!-- Tiered Winter Evergreens -->
+    <g id="winter-flora-pines" fill="#FAFAFF" stroke="#1E2749" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M674 232 L662 256 L669 256 L657 278 L666 278 L654 298 L694 298 L682 278 L691 278 L679 256 L686 256 Z" />
+      <path d="M1086 228 L1072 254 L1080 254 L1068 278 L1076 278 L1064 298 L1108 298 L1096 278 L1104 278 L1092 254 L1100 254 Z" />
+      <path d="M1126 248 L1116 268 L1122 268 L1112 284 L1118 284 L1110 298 L1142 298 L1134 284 L1140 284 L1130 268 L1136 268 Z" />
+    </g>
+    <!-- Winter Snow Ground Band + Berry Cluster -->
+    <path d="M600 294 Q890 270 1200 294 L1200 360 L600 360 Z" fill="#E4D9FF" />
+    <path d="M600 308 Q890 284 1200 308" stroke="#575E8F" stroke-width="2" stroke-dasharray="14 6" fill="none" />
+    <g fill="#273469" stroke="#1E2749" stroke-width="1.4">
+      <circle cx="1078" cy="322" r="6.5" />
+      <circle cx="1096" cy="328" r="6" />
+      <circle cx="1114" cy="320" r="7" />
+    </g>
+  </g>
+
+</svg>

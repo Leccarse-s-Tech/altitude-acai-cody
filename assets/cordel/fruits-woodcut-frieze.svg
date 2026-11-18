@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" fill="none" role="img" aria-labelledby="fruits-frieze-title">
+  <title id="fruits-frieze-title">Woodcut Botanical Frieze of Fresh Fruits: Strawberry, Banana, Blueberry, Blackberry, Raspberry, Pineapple, and Mango</title>
+  <defs>
+    <pattern id="fruit-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <line x1="0" y1="0" x2="0" y2="7" stroke="#1E2749" stroke-width="1.6" />
+    </pattern>
+    <pattern id="fruit-cross" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#575E8F" stroke-width="1.4" />
+    </pattern>
+  </defs>
+
+  <!-- Transparent cotton canvas for frameless background integration -->
+  <g id="frieze-specimens">
+
+  <!-- 1. STRAWBERRIES (x ~ 105) -->
+  <g id="woodcut-strawberry" transform="translate(105, 130)">
+    <!-- Serrated triple leaf cluster -->
+    <path d="M-32 -40 C-22 -64 -4 -66 2 -48 C14 -66 36 -60 34 -38 C18 -36 10 -30 0 -30 C-10 -30 -20 -36 -32 -40 Z" fill="#575E8F" stroke="#1E2749" stroke-width="2.6" stroke-linejoin="round" />
+    <path d="M-16 -46 L-10 -34 M14 -48 L8 -34 M0 -48 L0 -68" stroke="#FAFAFF" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M0 -48 L2 -68" stroke="#1E2749" stroke-width="3" stroke-linecap="round" />
+    <!-- Primary strawberry silhouette -->
+    <path d="M-36 -28 C-42 8 -20 46 0 54 C20 46 42 8 36 -28 C22 -36 -22 -36 -36 -28 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="3.2" stroke-linejoin="round" />
+    <!-- Woodcut shadow hatching -->
+    <path d="M4 -32 C28 -30 36 -8 32 10 C25 32 10 46 0 52 C14 28 18 -4 4 -32 Z" fill="url(#fruit-hatch)" opacity="0.72" />
+    <!-- Seed dimples -->
+    <g fill="#1E2749">
+      <ellipse cx="-18" cy="-12" rx="2.2" ry="3.4" />
+      <ellipse cx="0" cy="-14" rx="2.2" ry="3.4" />
+      <ellipse cx="17" cy="-10" rx="2.2" ry="3.4" />
+      <ellipse cx="-22" cy="8" rx="2.2" ry="3.4" />
+      <ellipse cx="-6" cy="6" rx="2.2" ry="3.4" />
+      <ellipse cx="10" cy="8" rx="2.2" ry="3.4" />
+      <ellipse cx="22" cy="8" rx="2" ry="3" />
+      <ellipse cx="-12" cy="26" rx="2" ry="3.2" />
+      <ellipse cx="4" cy="28" rx="2" ry="3.2" />
+      <ellipse cx="-3" cy="40" rx="1.8" ry="2.8" />
+    </g>
+    <!-- Halved strawberry heart cross-section -->
+    <path d="M24 38 C36 22 56 26 58 44 C56 58 38 66 28 58 C22 52 20 44 24 38 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.5" />
+    <path d="M35 38 C40 34 48 36 47 44 C46 51 38 54 34 49 Z" fill="#8687B4" />
+    <path d="M28 42 L34 44 M46 32 L44 38 M52 46 L46 46" stroke="#1E2749" stroke-width="1.3" stroke-linecap="round" />
+  </g>
+
+  <!-- 2. BANANAS (x ~ 265) -->
+  <g id="woodcut-banana" transform="translate(265, 132)">
+    <path d="M-54 14 C-32 42 26 42 54 -14 C58 -22 62 -36 56 -42 C50 -46 42 -36 38 -28 C16 12 -22 14 -48 -4 C-56 -8 -60 4 -54 14 Z" fill="#E4D9FF" stroke="#1E2749" stroke-width="3.2" stroke-linejoin="round" />
+    <path d="M-48 8 C-16 28 24 22 48 -24" stroke="#575E8F" stroke-width="2" fill="none" />
+    <path d="M-40 20 C-8 34 26 24 44 -6" stroke="#1E2749" stroke-width="1.5" stroke-dasharray="6 4" fill="none" />
+    <path d="M-52 8 L-58 10" stroke="#1E2749" stroke-width="3.5" stroke-linecap="round" />
+    <!-- Two tilted coin slices with Y-carpel markings -->
+    <ellipse cx="-14" cy="-34" rx="20" ry="15" transform="rotate(-14 -14 -34)" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.8" />
+    <ellipse cx="-14" cy="-34" rx="13" ry="9" transform="rotate(-14 -14 -34)" fill="#E4D9FF" stroke="#575E8F" stroke-width="1.3" />
+    <path d="M-14 -34 L-14 -40 M-14 -34 L-19 -30 M-14 -34 L-9 -30" stroke="#30343F" stroke-width="1.8" stroke-linecap="round" />
+    <ellipse cx="16" cy="-46" rx="18" ry="13" transform="rotate(10 16 -46)" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.6" />
+    <path d="M16 -46 L16 -51 M16 -46 L12 -43 M16 -46 L20 -43" stroke="#30343F" stroke-width="1.6" stroke-linecap="round" />
+  </g>
+
+  <!-- 3. BLUEBERRIES (x ~ 425) -->
+  <g id="woodcut-blueberries" transform="translate(425, 136)">
+    <!-- Veined botanical leaves -->
+    <path d="M-50 -22 C-38 -56 -4 -58 12 -36 C-8 -28 -26 -20 -50 -22 Z" fill="#575E8F" stroke="#1E2749" stroke-width="2.5" />
+    <path d="M-40 -26 L-6 -40" stroke="#E4D9FF" stroke-width="1.4" />
+    <path d="M20 -44 C42 -58 64 -44 58 -20 C42 -26 28 -32 20 -44 Z" fill="#8687B4" stroke="#1E2749" stroke-width="2.4" />
+    <path d="M26 -40 L52 -24" stroke="#1E2749" stroke-width="1.3" />
+    <!-- Plump berries -->
+    <circle cx="-18" cy="-14" r="22" fill="#8687B4" stroke="#1E2749" stroke-width="3" />
+    <circle cx="24" cy="-8" r="24" fill="#575E8F" stroke="#1E2749" stroke-width="3" />
+    <circle cx="29" cy="-18" r="7" fill="#1E2749" stroke="#FAFAFF" stroke-width="1.5" />
+    <circle cx="-2" cy="22" r="27" fill="#E4D9FF" stroke="#1E2749" stroke-width="3.2" />
+    <path d="M-2 -5 A27 27 0 0 1 25 22 A27 27 0 0 1 -2 49 C12 36 14 10 -2 -5 Z" fill="url(#fruit-hatch)" opacity="0.65" />
+    <!-- 5-point crown blossom -->
+    <circle cx="-8" cy="8" r="8" fill="#575E8F" stroke="#1E2749" stroke-width="2" />
+    <path d="M-12 5 L-8 8 L-4 5 M-11 11 L-8 8 L-5 11 M-8 3 L-8 8" stroke="#FAFAFF" stroke-width="1.5" stroke-linecap="round" />
+  </g>
+
+  <!-- 4. BLACKBERRIES (x ~ 588) -->
+  <g id="woodcut-blackberry" transform="translate(588, 134)">
+    <path d="M-46 -18 C-40 -54 -10 -62 12 -40 C-8 -30 -24 -20 -46 -18 Z" fill="#575E8F" stroke="#1E2749" stroke-width="2.5" />
+    <path d="M-38 -22 L2 -40" stroke="#E4D9FF" stroke-width="1.3" />
+    <path d="M12 -46 C36 -60 58 -40 48 -14 C32 -22 20 -32 12 -46 Z" fill="#8687B4" stroke="#1E2749" stroke-width="2.4" />
+    <path d="M18 -40 L42 -18" stroke="#1E2749" stroke-width="1.3" />
+    <g fill="#1E2749" stroke="#FAFAFF" stroke-width="1.6">
+      <circle cx="0" cy="-24" r="11" />
+      <circle cx="-14" cy="-16" r="11" />
+      <circle cx="14" cy="-16" r="11" />
+      <circle cx="-20" cy="0" r="11.5" />
+      <circle cx="0" cy="-4" r="12" />
+      <circle cx="20" cy="0" r="11.5" />
+      <circle cx="-16" cy="18" r="11" />
+      <circle cx="4" cy="16" r="11.5" />
+      <circle cx="18" cy="18" r="10.5" />
+      <circle cx="-6" cy="34" r="10.5" />
+      <circle cx="10" cy="34" r="10" />
+      <circle cx="2" cy="46" r="9" />
+    </g>
+    <g stroke="#E4D9FF" stroke-width="1.8" stroke-linecap="round">
+      <path d="M-17 -20 A6 6 0 0 1 -11 -21" />
+      <path d="M-4 -8 A6 6 0 0 1 3 -9" />
+      <path d="M-23 -3 A6 6 0 0 1 -17 -5" />
+      <path d="M1 12 A6 6 0 0 1 7 11" />
+      <path d="M-9 30 A5 5 0 0 1 -3 29" />
+    </g>
+  </g>
+
+  <!-- 5. RASPBERRIES (x ~ 746) -->
+  <g id="woodcut-raspberry" transform="translate(746, 134)">
+    <path d="M-38 -36 C-26 -62 0 -64 12 -44 C-4 -36 -18 -34 -38 -36 Z" fill="#8687B4" stroke="#1E2749" stroke-width="2.4" />
+    <path d="M-30 -40 L4 -46" stroke="#1E2749" stroke-width="1.3" />
+    <path d="M-2 -34 L-4 -58" stroke="#1E2749" stroke-width="2.8" stroke-linecap="round" />
+    <g fill="#E4D9FF" stroke="#1E2749" stroke-width="2.2">
+      <circle cx="-14" cy="-16" r="10" />
+      <circle cx="4" cy="-18" r="10" />
+      <circle cx="20" cy="-12" r="9.5" />
+      <circle cx="-20" cy="2" r="10.5" />
+      <circle cx="-2" cy="0" r="11" />
+      <circle cx="16" cy="4" r="10.5" />
+      <circle cx="-14" cy="20" r="10" />
+      <circle cx="4" cy="20" r="10.5" />
+      <circle cx="18" cy="20" r="9" />
+      <circle cx="-4" cy="36" r="9.5" />
+      <circle cx="10" cy="35" r="8.5" />
+    </g>
+    <!-- Drupelet shading dots -->
+    <g fill="#575E8F">
+      <circle cx="-14" cy="-16" r="3" />
+      <circle cx="-2" cy="0" r="3.2" />
+      <circle cx="4" cy="20" r="3" />
+      <circle cx="16" cy="4" r="3" />
+    </g>
+    <!-- Tilted raspberry showing hollow center -->
+    <g transform="translate(36, 28) rotate(22)">
+      <ellipse cx="0" cy="0" rx="18" ry="20" fill="#575E8F" stroke="#1E2749" stroke-width="2.6" />
+      <ellipse cx="0" cy="-10" rx="8" ry="5" fill="#1E2749" />
+      <circle cx="-9" cy="4" r="5.5" fill="#E4D9FF" stroke="#1E2749" stroke-width="1.6" />
+      <circle cx="0" cy="10" r="5.5" fill="#E4D9FF" stroke="#1E2749" stroke-width="1.6" />
+      <circle cx="9" cy="4" r="5.5" fill="#E4D9FF" stroke="#1E2749" stroke-width="1.6" />
+    </g>
+  </g>
+
+  <!-- 6. PINEAPPLE (x ~ 914) -->
+  <g id="woodcut-pineapple" transform="translate(914, 140)">
+    <g fill="#575E8F" stroke="#1E2749" stroke-width="2.4" stroke-linejoin="round">
+      <path d="M-8 -30 L-22 -84 L2 -48 Z" />
+      <path d="M-2 -34 L4 -94 L14 -36 Z" />
+      <path d="M8 -30 L34 -82 L22 -28 Z" />
+      <path d="M-18 -24 L-38 -64 L-6 -32 Z" />
+      <path d="M18 -24 L46 -58 L26 -18 Z" />
+    </g>
+    <ellipse cx="2" cy="12" rx="34" ry="44" fill="#E4D9FF" stroke="#1E2749" stroke-width="3.2" />
+    <ellipse cx="2" cy="12" rx="32" ry="42" fill="url(#fruit-cross)" opacity="0.25" />
+    <g stroke="#1E2749" stroke-width="2">
+      <path d="M-24 -12 L28 36 M-30 6 L16 50 M-10 -28 L34 14" />
+      <path d="M28 -12 L-24 36 M32 6 L-14 50 M12 -28 L-32 14" />
+    </g>
+    <!-- Eye pips inside scales -->
+    <g fill="#1E2749">
+      <circle cx="2" cy="0" r="2.2" />
+      <circle cx="-12" cy="12" r="2.2" />
+      <circle cx="16" cy="12" r="2.2" />
+      <circle cx="2" cy="24" r="2.2" />
+    </g>
+    <!-- Fresh cut pineapple wedge -->
+    <path d="M-46 52 L-10 18 L10 54 Z" fill="#FAFAFF" stroke="#1E2749" stroke-width="2.6" stroke-linejoin="round" />
+    <line x1="-22" y1="30" x2="-12" y2="52" stroke="#575E8F" stroke-width="1.6" />
+    <line x1="-32" y1="40" x2="-24" y2="52" stroke="#575E8F" stroke-width="1.6" />
+  </g>
+
+  <!-- 7. MANGO (x ~ 1085) -->
+  <g id="woodcut-mango" transform="translate(1085, 134)">
+    <path d="M-42 -10 C-44 -48 -4 -58 24 -36 C44 -20 42 18 20 32 C-4 48 -40 24 -42 -10 Z" fill="#8687B4" stroke="#1E2749" stroke-width="2.8" />
+    <ellipse cx="14" cy="14" rx="42" ry="30" transform="rotate(-24 14 14)" fill="#E4D9FF" stroke="#1E2749" stroke-width="3.2" />
+    <g transform="rotate(-24 14 14)" stroke="#1E2749" stroke-width="2.2">
+      <line x1="-20" y1="4" x2="48" y2="4" />
+      <line x1="-24" y1="16" x2="52" y2="16" />
+      <line x1="-18" y1="28" x2="46" y2="28" />
+      <line x1="-4" y1="-12" x2="-4" y2="40" />
+      <line x1="12" y1="-14" x2="12" y2="42" />
+      <line x1="28" y1="-12" x2="28" y2="40" />
+    </g>
+    <path d="M-12 -46 C-34 -64 -54 -48 -42 -26 C-28 -32 -18 -40 -12 -46 Z" fill="#575E8F" stroke="#1E2749" stroke-width="2.4" />
+    <path d="M-38 -32 L-16 -44" stroke="#E4D9FF" stroke-width="1.4" />
+  </g>
+
+  </g>
+</svg>
