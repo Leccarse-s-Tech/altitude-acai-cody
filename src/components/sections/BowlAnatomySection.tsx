@@ -11,10 +11,7 @@ const WOODCUT_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 interface AnatomyLayerDetail {
   id: BowlLayerId;
-  order: number;
   name: string;
-  role: string;
-  description: string;
   ingredients: readonly string[];
 }
 
@@ -29,10 +26,7 @@ const LAYER_INGREDIENTS: Record<BowlLayerId, readonly string[]> = {
 const ANATOMY_LAYERS: readonly AnatomyLayerDetail[] =
   brandData.bowlAnatomy.layersBottomToTop.map((layer) => ({
     id: layer.id as BowlLayerId,
-    order: layer.order,
     name: layer.name,
-    role: layer.role,
-    description: layer.description,
     ingredients: LAYER_INGREDIENTS[layer.id as BowlLayerId],
   }));
 
@@ -68,15 +62,12 @@ export function BowlAnatomySection() {
       <CordelBackgroundArtwork placement="anatomy-fruits" variant="dark" />
 
       <div className="widescreen-container relative z-10">
-        {/* Top Widescreen Split Header & Verbatim Copy */}
+        {/* Top Widescreen Split Header & Verbatim Copy (Zero Kicker Subtitle) */}
         <div className="grid grid-cols-1 items-end gap-8 border-b border-[#E4D9FF]/25 pb-10 lg:grid-cols-12 lg:gap-12">
           <div className="min-w-0 lg:col-span-5">
-            <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-[#E4D9FF]">
-              {editorialCopy.whatsInABowl.layerOrderNote} · 5 Layers
-            </p>
             <h2
               id="bowl-anatomy-heading"
-              className="font-display mt-3 text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.06] font-extrabold tracking-tight text-[#FAFAFF]"
+              className="font-display text-[clamp(2rem,4.5vw,3.4rem)] leading-[1.06] font-extrabold tracking-tight text-[#FAFAFF]"
             >
               {editorialCopy.whatsInABowl.title}
             </h2>
@@ -89,7 +80,7 @@ export function BowlAnatomySection() {
           </div>
         </div>
 
-        {/* End-to-End Horizontal 5-Layer Widescreen Bar */}
+        {/* End-to-End Horizontal 5-Layer Widescreen Selector (Zero Numbers or Technical Tags) */}
         <div
           role="group"
           aria-label="Interactive bowl layers from bottom to top"
@@ -103,51 +94,29 @@ export function BowlAnatomySection() {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => setActiveLayerId(layer.id)}
-                className={`focus-on-dark group relative flex min-h-[112px] flex-col justify-between border-b-2 px-4 py-4 text-left transition-all duration-200 sm:px-5 ${
+                className={`focus-on-dark flex min-h-[76px] items-center justify-center border-b-2 px-4 py-4 text-center transition-all duration-200 sm:px-5 ${
                   isSelected
                     ? 'border-[#FAFAFF] bg-[#FAFAFF] text-[#1E2749] shadow-[0_14px_30px_-14px_rgba(228,217,255,0.45)]'
                     : 'border-[#E4D9FF]/45 bg-[#1E2749]/65 text-[#FAFAFF] backdrop-blur-[2px] hover:border-[#E4D9FF] hover:bg-[#273469]/85'
                 }`}
               >
-                <div className="flex w-full items-baseline justify-between gap-2">
-                  <span
-                    className={`font-mono text-xs font-bold tracking-widest ${
-                      isSelected ? 'text-[#575E8F]' : 'text-[#E4D9FF]/80'
-                    }`}
-                  >
-                    0{layer.order}
-                  </span>
-                  <span
-                    className={`text-[11px] font-semibold uppercase tracking-wider ${
-                      isSelected ? 'text-[#273469]' : 'text-[#E4D9FF]/80'
-                    }`}
-                  >
-                    {layer.role}
-                  </span>
-                </div>
-
-                <div className="mt-4">
-                  <span className="font-display block text-lg font-extrabold tracking-tight xl:text-xl">
-                    {layer.order}. {layer.name}
-                  </span>
-                </div>
+                <span className="font-display text-base font-extrabold tracking-wide xl:text-lg">
+                  {layer.name}
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Horizontal Cutaway Diagram + Selected Layer Editorial Detail Panel */}
+        {/* Horizontal Cutaway Diagram + Direct Ingredient List Panel */}
         <div className="mt-8 grid grid-cols-1 items-center gap-8 border border-[#E4D9FF]/35 bg-[#1E2749]/80 p-5 backdrop-blur-[3px] sm:p-8 lg:grid-cols-12 lg:gap-12">
-          {/* Compact Interactive Cutaway Bowl Cross-Section */}
+          {/* Interactive Cutaway Bowl Cross-Section SVG */}
           <div className="min-w-0 lg:col-span-5">
-            <p className="mb-3 text-xs font-medium tracking-wide text-[#E4D9FF]">
-              {editorialCopy.whatsInABowl.interactionPrompt}
-            </p>
             <svg
               viewBox="0 0 420 285"
               className="mx-auto h-auto w-full max-w-[380px]"
               role="img"
-              aria-label={`Bowl cross-section highlighting layer ${activeLayer.order}: ${activeLayer.name}`}
+              aria-label={`Bowl cross-section highlighting ${activeLayer.name}`}
             >
               <defs>
                 <pattern
@@ -192,7 +161,7 @@ export function BowlAnatomySection() {
                   fontWeight="700"
                   fontFamily="var(--font-mono)"
                 >
-                  1. ACAI SORBET
+                  ACAI SORBET
                 </text>
               </g>
 
@@ -217,7 +186,7 @@ export function BowlAnatomySection() {
                   fontWeight="700"
                   fontFamily="var(--font-mono)"
                 >
-                  2. CRUNCH
+                  CRUNCH
                 </text>
               </g>
 
@@ -241,7 +210,7 @@ export function BowlAnatomySection() {
                   fontWeight="700"
                   fontFamily="var(--font-mono)"
                 >
-                  3. FAVORITE FRUIT
+                  FAVORITE FRUIT
                 </text>
               </g>
 
@@ -265,7 +234,7 @@ export function BowlAnatomySection() {
                   fontWeight="700"
                   fontFamily="var(--font-mono)"
                 >
-                  4. TOPPING
+                  TOPPING
                 </text>
               </g>
 
@@ -285,13 +254,13 @@ export function BowlAnatomySection() {
                   fontWeight="700"
                   fontFamily="var(--font-mono)"
                 >
-                  5. SAUCE
+                  SAUCE
                 </text>
               </g>
             </svg>
           </div>
 
-          {/* Right Wide Editorial Inspector */}
+          {/* Right Direct Ingredient Showcase (Zero Redundant Title/Counter/Description) */}
           <div className="min-w-0 lg:col-span-7">
             <AnimatePresence mode="wait">
               <motion.div
@@ -302,34 +271,22 @@ export function BowlAnatomySection() {
                 transition={{ duration: 0.24, ease: WOODCUT_EASE }}
                 className="border-l-2 border-[#E4D9FF] pl-5 sm:pl-8"
               >
-                <p className="font-mono text-xs font-bold tracking-wider text-[#E4D9FF]">
-                  Layer {activeLayer.order} of 5 · {activeLayer.role}
-                </p>
-
-                <h3 className="font-display mt-2 text-2xl font-extrabold tracking-tight text-[#FAFAFF] sm:text-4xl">
-                  {activeLayer.order}. {activeLayer.name}
-                </h3>
-
-                <p className="mt-3 w-full max-w-[56ch] text-base leading-relaxed text-[#E4D9FF] sm:text-lg">
-                  {activeLayer.description}.
-                </p>
-
-                <div className="mt-6 border-t border-[#E4D9FF]/25 pt-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#E4D9FF]/85">
-                    In This Layer
-                  </p>
-                  <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2.5">
-                    {activeLayer.ingredients.map((item) => (
-                      <li
-                        key={item}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-[#FAFAFF] sm:text-base"
-                      >
-                        <Check size={15} weight="bold" className="text-[#E4D9FF]" aria-hidden="true" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-4">
+                  {activeLayer.ingredients.map((item) => (
+                    <li
+                      key={item}
+                      className="inline-flex items-center gap-2.5 font-display text-lg font-bold text-[#FAFAFF] sm:text-xl"
+                    >
+                      <Check
+                        size={17}
+                        weight="bold"
+                        className="shrink-0 text-[#E4D9FF]"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             </AnimatePresence>
           </div>
