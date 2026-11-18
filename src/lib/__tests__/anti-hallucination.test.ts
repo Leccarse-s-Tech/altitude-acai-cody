@@ -226,7 +226,11 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
     it('enforces exact Hero copy, 5-layer bowl anatomy, 3-bowl preview, and ZERO DRY repetitions', () => {
       const { container } = renderRoute('/');
 
-      // Header links
+      // Header logo-only crest (ZERO "Altitude Açaí" text beside logo) & links
+      const header = container.querySelector('header') as HTMLElement;
+      expect(header.querySelector('img[src*="logo-official.webp"]')).not.toBeNull();
+      expect(header.textContent).not.toContain('Altitude Açaí');
+
       const nav = container.querySelector('header nav');
       expect(nav).not.toBeNull();
       expect(within(nav as HTMLElement).getByText('Inside a Bowl')).toBeInTheDocument();
@@ -234,10 +238,10 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(within(nav as HTMLElement).getByText('Hours')).toBeInTheDocument();
       expect(within(nav as HTMLElement).getByText('Visit Us')).toBeInTheDocument();
 
-      // Hero exact copy & CTAs (open editorial kicker — zero boxed pill badge, zero bottom mountain box)
+      // Hero exact copy & CTAs (ZERO "FRESH SUPERFOOD BOWLS" kicker, zero bottom mountain box)
       const hero = container.querySelector('#top') as HTMLElement;
       expect(hero).not.toBeNull();
-      expect(hero.textContent).toContain('FRESH SUPERFOOD BOWLS');
+      expect(hero.textContent).not.toMatch(/FRESH SUPERFOOD BOWLS/i);
       expect(hero.querySelector('img[src*="wyoming-mountains-cordel.svg"]')).toBeNull();
       expect(within(hero).getByRole('heading', { level: 1 })).toHaveTextContent(
         'Handcrafted Açaí Bowls in Cody, Wyoming',
@@ -257,11 +261,17 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(hero.textContent).not.toMatch(/altitudeacai@gmail\.com/i);
       expect(hero.textContent).not.toMatch(/12\s*oz|16\s*oz/i);
 
-      // Bowl Anatomy verbatim copy, full-bleed mountain backdrop & horizontal 5 layers
+      // Bowl Anatomy: zero kickers, zero numbering, zero technical role labels, direct ingredient list
       const anatomy = container.querySelector('#whats-in-a-bowl') as HTMLElement;
       expect(anatomy.querySelector('img[src*="wyoming-mountains-cordel.svg"]')).not.toBeNull();
       expect(anatomy.textContent).toContain("What's in an Açaí Bowl?");
       expect(anatomy.textContent).toContain(VERBATIM_WHATS_IN_A_BOWL_COPY);
+      expect(anatomy.textContent).not.toContain('STACKED BOTTOM TO TOP');
+      expect(anatomy.textContent).not.toContain('Select any layer in the diagram');
+      expect(anatomy.textContent).not.toMatch(/Layer \d+ of 5/i);
+      expect(anatomy.textContent).not.toMatch(/\b(01|02|03|04|05)\b/);
+      expect(anatomy.textContent).not.toMatch(/\b[1-5]\.\s*(ACAI SORBET|CRUNCH|FAVORITE FRUIT|TOPPING|SAUCE)/i);
+      expect(anatomy.textContent).not.toMatch(/Base Layer|Granola Layer|Fresh Fruit Layer|Toppings Layer|Finish Layer/i);
       expect(anatomy.textContent).not.toMatch(/12\s*oz|16\s*oz/i);
       expect(anatomy.textContent).not.toMatch(/1302\s+Beck/i);
       expect(anatomy.textContent).not.toMatch(/Cody,\s*Wyoming/i);
@@ -292,13 +302,14 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(cssRaw).toContain('1600px');
       expect(container.querySelectorAll('.widescreen-container').length).toBeGreaterThanOrEqual(6);
 
-      // 3-Bowl Signature Preview on Home + CTA to /menu
+      // 3-Bowl Signature Preview on Home (Zero numbering 01/02/03) + CTA to /menu
       const preview = container.querySelector('#signature-bowls-preview') as HTMLElement;
       expect(preview).not.toBeNull();
       expect(preview.querySelectorAll('article')).toHaveLength(3);
       expect(preview.textContent).toContain('Mountain Man');
       expect(preview.textContent).toContain('Montana Mama');
       expect(preview.textContent).toContain('Goldilocks');
+      expect(preview.textContent).not.toMatch(/\b(01|02|03)\b/);
       expect(preview.textContent).not.toContain('Bear Attack');
       expect(preview.textContent).not.toMatch(/12\s*oz|16\s*oz/i);
       expect(preview.textContent).not.toContain('All bowls start with');
@@ -343,6 +354,7 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(liveClockWidget.textContent).not.toMatch(/Summer Hours|Fall Hours|Winter Hours|Spring Hours/);
 
       expect(hours.textContent).not.toContain('Times follow Mountain Time');
+      expect(hours.textContent).not.toContain('Shop Posters & Notices');
       expect(hours.textContent).not.toMatch(
         /September - November|June - August|December - February|March - May/,
       );
@@ -350,6 +362,12 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
         /Cody Concerts in the Park|Softball Tournament|Soccer Tournament|Stampede Rodeo|Lacrosse Tournament/,
       );
       expect(hours.textContent).toContain('Food Truck & Local Events');
+
+      // TASK-FAB-4: Persistent floating "Text us" SMS button present on /
+      const fab = container.querySelector('[data-testid="floating-text-us-fab"]') as HTMLElement;
+      expect(fab).not.toBeNull();
+      expect(fab).toHaveAttribute('href', 'sms:+13075270812');
+      expect(fab.textContent).toContain('Text us');
 
       // TASK-FIX-4: Organically scattered Cordel background motifs in every section of /
       const cordelLayers = container.querySelectorAll('[data-cordel-background]');
@@ -393,8 +411,11 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
 
       const anatomySection = container.querySelector('#whats-in-a-bowl') as HTMLElement;
       const anatomy = within(anatomySection);
-      fireEvent.click(anatomy.getByRole('button', { name: /3\. FAVORITE FRUIT/i }));
-      expect(await anatomy.findByText(/Layer 3 of 5/i)).toBeInTheDocument();
+      fireEvent.click(anatomy.getByRole('button', { name: /^FAVORITE FRUIT$/i }));
+      expect(await anatomy.findByText('Strawberries')).toBeInTheDocument();
+      expect(anatomySection.textContent).toContain('Pineapple');
+      expect(anatomySection.textContent).toContain('Mango');
+      expect(anatomySection.textContent).not.toMatch(/Layer 3 of 5/i);
 
       const hoursSection = container.querySelector('#hours') as HTMLElement;
       const hours = within(hoursSection);
@@ -429,8 +450,9 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(mainText).not.toMatch(/307-527-0812/);
       expect(mainText).not.toMatch(/\$|¢/);
 
-      // All 6 Signature Bowls rendered
+      // All 6 Signature Bowls rendered WITHOUT numbers 01..06
       const signatureSection = container.querySelector('#signature-bowls') as HTMLElement;
+      expect(signatureSection.textContent).not.toMatch(/\b(01|02|03|04|05|06)\b/);
       for (const name of [
         'Mountain Man',
         'Montana Mama',
@@ -442,8 +464,12 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
         expect(signatureSection.textContent).toContain(name);
       }
 
-      // Create Your Own limits (3 Fruits, 2 Toppings, 1 Sauce) + exact verified items
+      // Create Your Own limits (3 Fruits, 2 Toppings, 1 Sauce) WITHOUT numbered headings (1. / 2. / 3.)
       const buildSection = container.querySelector('#build-your-own') as HTMLElement;
+      expect(buildSection.textContent).not.toMatch(/1\.\s*Fruits|2\.\s*Toppings|3\.\s*Sauces/i);
+      const cyoFab = container.querySelector('[data-testid="floating-text-us-fab"]');
+      expect(cyoFab).not.toBeNull();
+      expect(cyoFab).toHaveAttribute('href', 'sms:+13075270812');
       const builder = within(buildSection);
       expect(buildSection.textContent).toContain('Banana');
       expect(buildSection.textContent).toContain('Graham Cracker');
@@ -489,6 +515,7 @@ describe('Anti-Hallucination, Multi-Route, DRY & Semiotic Compliance Audit', () 
       expect(container.querySelector('header')).toBeNull();
       expect(container.querySelector('nav')).toBeNull();
       expect(container.querySelector('footer')).toBeNull();
+      expect(container.querySelector('[data-testid="floating-text-us-fab"]')).toBeNull();
 
       expect(container.querySelector('[aria-label="404"]')).not.toBeNull();
       const bowlImg = container.querySelector('img[src*="cordel-bowl-404.svg"]');
