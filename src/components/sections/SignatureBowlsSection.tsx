@@ -127,7 +127,6 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
         <div className="mt-10 grid grid-cols-1 gap-x-12 gap-y-12 md:grid-cols-2 lg:gap-x-16 lg:gap-y-14">
           {bowls.map((bowl, index) => {
             const config = BOWL_CONFIG_BY_ID[bowl.id];
-            const isMountainMan = bowl.id === 'mountain-man';
 
             return (
               <motion.article
@@ -165,15 +164,6 @@ export function SignatureBowlsSection({ onPreviewBowl }: SignatureBowlsSectionPr
                     }`}
                   >
                     <div>
-                      {isMountainMan && (
-                        <div className="mb-1.5 flex items-center gap-3">
-                          <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#273469]">
-                            House Favorite
-                          </span>
-                          <span className="editorial-menu-leader" aria-hidden="true" />
-                        </div>
-                      )}
-
                       <h3 className="font-display text-2xl font-extrabold tracking-tight text-[#1E2749] sm:text-3xl">
                         {bowl.name}
                       </h3>

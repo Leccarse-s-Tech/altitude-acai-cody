@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { Sparkle } from '@phosphor-icons/react';
 import {
   CreateYourOwnSimulator,
   type BowlBuilderPreset,
@@ -53,9 +52,9 @@ export function MenuPage() {
               </p>
             </div>
 
-            {/* Single Canonical Sizes & Base Rule Editorial Print Strip */}
+            {/* Single Canonical Sizes Strip */}
             <div className="min-w-0 border-l-2 border-[#E4D9FF]/60 pl-5 lg:col-span-5">
-              <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+              <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
                 {menuPage.sizes.map((size) => (
                   <span
                     key={size}
@@ -65,11 +64,6 @@ export function MenuPage() {
                   </span>
                 ))}
               </div>
-
-              <p className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-[#E4D9FF] sm:text-base">
-                <Sparkle size={15} weight="bold" className="shrink-0" aria-hidden="true" />
-                <span>{menuPage.baseRule}</span>
-              </p>
             </div>
           </div>
         </div>
